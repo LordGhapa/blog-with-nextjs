@@ -18,7 +18,7 @@ export const Container = styled.div`
     bottom: 0;
     right: 0;
     z-index: 10;
-    background-color: ${theme.colors.primaryColor};
+    background-color: ${theme.colors.darkBg};
  h2{
   position: absolute;
       color: #fff;
@@ -46,16 +46,16 @@ export const Container = styled.div`
     &:after {
       width: 6rem;
       height: 6rem;
-      border-left: 0.5rem solid ${theme.colors.secondaryColor};
-      border-top: 0.5rem solid ${theme.colors.secondaryColor};
+      border-left: 0.5rem solid ${theme.colors.secondary};
+      border-top: 0.5rem solid ${theme.colors.secondary};
       animation: ${rotate()} 600ms linear infinite;
     }
 
     &:before {
       width: 2rem;
       height: 2rem;
-      border-left: 0.5rem solid ${theme.colors.secondaryColor};
-      border-top: 0.5rem solid ${theme.colors.secondaryColor};
+      border-left: 0.5rem solid ${theme.colors.secondary};
+      border-top: 0.5rem solid ${theme.colors.secondary};
       animation: ${rotate()} 1s linear reverse infinite;
     }
   `}

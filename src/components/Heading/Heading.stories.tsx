@@ -5,10 +5,9 @@ export default {
   component: Heading,
   tags: ['autodocs'],
   args: {
-    title: 'Default',
+    children: 'default',
   },
   argTypes: {
-    title: { type: 'string' },
     colorDark: { type: 'boolean' },
   },
   parameters: {
@@ -21,16 +20,20 @@ export default {
 export const Light = (args) => <Heading {...args} />;
 export const Dark = (args) => <Heading {...args} />;
 Dark.args = {
-  title: 'texto esta claro',
   colorDark: false,
 };
 Light.args = {
-  title: 'texto esta escuro',
   colorDark: true,
 };
 
 Light.parameters = {
   backgrounds: {
     default: 'light',
+  },
+};
+
+Dark.parameters = {
+  backgrounds: {
+    default: 'dark',
   },
 };

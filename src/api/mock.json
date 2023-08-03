@@ -1,0 +1,81 @@
+{
+  "data": {
+    "setting": {
+      "data": {
+        "id": "2",
+        "attributes": {
+          "blogName": "meu blog",
+          "blogDescription": "blog-descrição",
+          "logo": {
+            "data": {
+              "id": "2",
+              "attributes": {
+                "altText": "sou o texto alternativo",
+                "url": "https://res.cloudinary.com/duqhyfegq/image/upload/v1690917958/24ee2b3a_edb4_43ee_8a3f_442fd78dd9a3_d0d60705fc.jpg"
+              }
+            }
+          },
+          "menuLink": [
+            {
+              "id": "1",
+              "link": "#link",
+              "text": "link do menu",
+              "newTab": false
+            }
+          ],
+          "footerText": "<p>sou um footer</p>"
+        }
+      }
+    },
+    "posts": {
+      "data": [
+        {
+          "id": "1",
+          "attributes": {
+            "title": "sou um titulo",
+            "slug": "post",
+            "resumo": "sou um resumo",
+            "allowComments": true,
+            "cover": {
+              "data": {
+                "attributes": {
+                  "altText": "sou o texto alternativo",
+                  "url": "https://res.cloudinary.com/duqhyfegq/image/upload/v1690917958/24ee2b3a_edb4_43ee_8a3f_442fd78dd9a3_d0d60705fc.jpg"
+                }
+              }
+            },
+            "category": {
+              "data": {
+                "attributes": {
+                  "displayName": "categoria-Teste"
+                }
+              }
+            },
+            "tags": {
+              "data": [
+                {
+                  "attributes": {
+                    "displayName": "tag-Teste"
+                  }
+                },
+                {
+                  "attributes": {
+                    "displayName": "React"
+                  }
+                }
+              ]
+            },
+            "author": {
+              "data": {
+                "attributes": {
+                  "displayName": "felipe",
+                  "slug": "author"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

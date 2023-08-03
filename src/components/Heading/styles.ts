@@ -9,11 +9,11 @@ const titleSize = {
   font-size: ${theme.font.sizes.large};
   `,
 
-  large: (theme: DefaultTheme) => css`
+  big: (theme: DefaultTheme) => css`
   font-size: ${theme.font.sizes.xlarge};
   `,
   huge: (theme: DefaultTheme) => css`
-  font-size: ${theme.font.sizes.xhuge};
+  font-size: ${theme.font.sizes.xxlarge};
   ${mediaFont(theme)}
   `,
 };
@@ -24,8 +24,11 @@ text-transform:${uppercase ? 'uppercase' : 'none'};
 
 export const Title = styled.h1<HeadingProps>`
 ${({ theme, colorDark, size, uppercase }) => css`
-color:${colorDark ? theme.colors.primaryColor : theme.colors.white};
+
+color:${colorDark ? theme.colors.primary : theme.colors.white};
+
 ${titleSize[size](theme)}
+
 ${titleCase(uppercase)}
 `}
 `;
