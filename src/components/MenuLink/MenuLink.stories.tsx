@@ -26,3 +26,9 @@ export const Template = (args) => {
     </div>
   );
 };
+
+Template.parameters = {
+  backgrounds: {
+    default: 'dark',
+  },
+};

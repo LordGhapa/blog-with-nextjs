@@ -36,4 +36,9 @@ export const theme = {
       xhuge: '6.4rem',
     },
   },
+
+  sizes: {
+    max: '96rem',
+    content: '80rem',
+  },
 };

@@ -8,11 +8,11 @@ text-decoration: none;
 color: inherit;
 display: flex;
 align-items: center;
+
 >img{
   width: 15rem;
   height: 15rem;
   border-radius: 50%;
-  background-color: red;
   object-fit:  cover;
 }
 
