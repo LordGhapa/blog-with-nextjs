@@ -36,6 +36,7 @@
             "title": "sou um titulo",
             "slug": "post",
             "resumo": "sou um resumo",
+            "content": "<p>sou um conteúdo</p>",
             "allowComments": true,
             "cover": {
               "data": {
