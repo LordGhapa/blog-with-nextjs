@@ -17,3 +17,10 @@ export const Template: StoryFn<ArticleMetaProps> = (args) => {
     </div>
   );
 };
+export const Nodata: StoryFn<ArticleMetaProps> = (args) => {
+  return (
+    <div>
+      <ArticleMeta {...args} author={undefined} category={undefined} />
+    </div>
+  );
+};
