@@ -3,10 +3,12 @@ import { Title as HeadingStyles } from '../Heading/styles';
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
+
     ${HeadingStyles} {
       margin: 0;
       margin-block:1rem;
     }
+
 
     a {
       text-decoration: none;
@@ -33,4 +35,5 @@ export const Cover = styled.img`
 export const Resumo = styled.p`
 font-size: 1.6rem;
 margin: 0;
+
 `;

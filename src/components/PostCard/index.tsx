@@ -7,7 +7,6 @@ import { Cover } from '../../shared-types/Cover';
 export type PostCardProps = {
   slug: string;
   resumo: string;
-  covered: string;
   title: string;
   cover: Cover;
 };
