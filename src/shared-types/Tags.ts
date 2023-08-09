@@ -1,11 +1,10 @@
 export type Tags = {
-  data: [
-    {
-      id: string;
-      attributes: {
-        slug: string;
-        displayName: string;
-      };
-    },
-  ];
+  data: tag[];
+};
+type tag = {
+  id: string;
+  attributes: {
+    slug: string;
+    displayName: string;
+  };
 };

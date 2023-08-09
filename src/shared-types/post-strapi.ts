@@ -6,7 +6,7 @@ import { Author } from './author';
 export type PostStrapi = {
   data: PostData[];
 };
-type PostData = {
+export type PostData = {
   id: string;
   attributes: {
     createdAt: string;
