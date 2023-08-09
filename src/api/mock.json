@@ -21,6 +21,18 @@
               "link": "#link",
               "text": "link do menu",
               "newTab": false
+            },
+            {
+              "id": "2",
+              "link": "#link2",
+              "text": "link do menu2",
+              "newTab": false
+            },
+            {
+              "id": "3",
+              "link": "#lin3",
+              "text": "link do menu3",
+              "newTab": false
             }
           ],
           "footerText": "<p>sou um footer</p>"

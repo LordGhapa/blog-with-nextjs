@@ -5,21 +5,21 @@ import React from 'react';
 export type HeaderProps = {
   blogName: string;
   blogDescription: string;
-  logo: string;
+  logoUrl: string;
   showText?: boolean;
 };
 
 export const Header = ({
   blogName,
   blogDescription,
-  logo,
+  logoUrl,
   showText,
 }: HeaderProps) => {
   return (
     <Styled.Wrapper>
       <LogoLink
         link="/"
-        srcImg={logo}
+        srcImg={logoUrl}
         text={`${blogName}-${blogDescription}`}
       />
       {showText && (

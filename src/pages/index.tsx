@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from '../templates/Home';
+import Home from '../templates/Base';
 
 export default function Index() {
   return <Home />;
