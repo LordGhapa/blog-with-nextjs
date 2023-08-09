@@ -4,9 +4,7 @@ import { Tags } from './Tags';
 import { Author } from './author';
 
 export type PostStrapi = {
-  posts: {
-    data: PostData[];
-  };
+  data: PostData[];
 };
 type PostData = {
   id: string;

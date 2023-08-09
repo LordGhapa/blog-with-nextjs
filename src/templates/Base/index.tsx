@@ -1,36 +1,34 @@
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Hearder';
 import { Menu } from '../../components/Menu';
-import { Settings } from '../../shared-types/Settings';
+import { Setting } from '../../shared-types/Setting';
 import * as Styled from './styles';
 
 export type BaseProps = {
-  settings: Settings;
+  setting: Setting;
   children: React.ReactNode;
 };
 
-export const Base = ({ settings, children }: BaseProps) => {
+export const Base = ({ setting, children }: BaseProps) => {
   return (
     <Styled.Wrapper>
       <Menu
-        menuLink={settings.setting.data.attributes.menuLink}
-        blogName={settings.setting.data.attributes.blogName}
-        logo={settings.setting.data.attributes.logo}
+        menuLink={setting.data.attributes.menuLink}
+        blogName={setting.data.attributes.blogName}
+        logo={setting.data.attributes.logo}
       />
 
       <Styled.HeaderContainer>
         <Header
-          blogName={settings.setting.data.attributes.blogName}
-          blogDescription={settings.setting.data.attributes.blogDescription}
-          logoUrl={settings.setting.data.attributes.logo.data.attributes.url}
+          blogName={setting.data.attributes.blogName}
+          blogDescription={setting.data.attributes.blogDescription}
+          logoUrl={setting.data.attributes.logo.data.attributes.url}
           showText={true}
         />
       </Styled.HeaderContainer>
       <Styled.ContentContainer>{children}</Styled.ContentContainer>
       <Styled.FooterContainer>
-        <Footer
-          footerHtml={settings.setting.data.attributes.footerText}
-        ></Footer>
+        <Footer footerHtml={setting.data.attributes.footerText}></Footer>
       </Styled.FooterContainer>
     </Styled.Wrapper>
   );

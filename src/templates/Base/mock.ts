@@ -2,6 +2,6 @@ import { BaseProps } from '.';
 import { data } from '../../api/mock.json';
 
 export default {
-  settings: data,
+  setting: data.setting,
   children: 'Olá mundo',
 } as BaseProps;
