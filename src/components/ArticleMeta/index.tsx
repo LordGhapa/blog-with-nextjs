@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Category } from '../../shared-types/Category';
 import { Author } from '../../shared-types/author';
 import { formatDate } from '../../utils/format-date';
@@ -19,9 +20,9 @@ export const ArticleMeta = ({
       <p>
         Por:{' '}
         {typeof author !== 'undefined' ? (
-          <a href={`/author/${author.data.attributes.slug}`}>
+          <Link href={`/author/${author.data.attributes.slug}`}>
             {author.data.attributes.displayName}
-          </a>
+          </Link>
         ) : (
           'Desconhecido'
         )}{' '}
@@ -32,9 +33,9 @@ export const ArticleMeta = ({
         |{' '}
         {typeof category !== 'undefined' && (
           <span className="categories">
-            <a href={`/category/${category.data.attributes.slug}`}>
+            <Link href={`/category/${category.data.attributes.slug}`}>
               {category.data.attributes.displayName}
-            </a>
+            </Link>
           </span>
         )}
       </p>
