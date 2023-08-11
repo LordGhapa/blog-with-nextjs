@@ -33,18 +33,16 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async () => {
   };
 };
 export default function Index({ posts, setting }: LoadPostsProps) {
-  // console.log(setting.data.attributes.blogName);
-
   return (
     <>
       <Head>
         <title>
-          {`  ${setting.data.attributes.blogName} -
-          ${setting.data.attributes.blogDescription}`}
+          {`  ${setting?.data?.attributes?.blogName} -
+          ${setting?.data?.attributes?.blogDescription}`}
         </title>
         <meta
           name="description"
-          content={setting.data.attributes.blogDescription}
+          content={setting?.data?.attributes?.blogDescription}
         />
       </Head>
       <PostsTemplate posts={posts} setting={setting} />

@@ -2,7 +2,6 @@ import { gql } from 'graphql-request';
 
 export const GRAPHQL_QUERY = gql`
 
-
 fragment cover on Post {
   cover {
     data {
@@ -106,4 +105,38 @@ query GET_POSTS($start: Int = 0, $limit: Int = 6) {
     }
   }
 }
+`;
+
+export const GRAPHQL_QUERY_POST = gql`
+query GET_POST($id: ID) {
+  setting {
+    ...settings
+  }
+  post(id: $id) {
+    data {
+      id
+      attributes {
+        createdAt
+        title
+        slug
+        resumo: excerpt
+        allowComments
+        content
+        ...cover
+        category {
+          ...category
+        }
+        tags {
+          ...tags
+        }
+        author {
+          ...author
+        }
+      }
+    }
+  }
+}
+
+
+
 `;

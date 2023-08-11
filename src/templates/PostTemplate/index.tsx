@@ -10,12 +10,10 @@ import * as Styled from './styles';
 
 export type PostTemplateProps = {
   setting: Setting;
-  posts?: { data: PostData };
+  posts?: { data: PostData[] };
 };
 
 export const PostTemplate = ({ setting, posts }: PostTemplateProps) => {
-  console.log(posts?.data[0].attributes.tags.data);
-
   return (
     <Base setting={setting}>
       {posts?.data === undefined ? (
