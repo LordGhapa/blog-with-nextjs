@@ -7,9 +7,8 @@ ${({ theme }) => css`
 
 text-align: center;
 font-size: ${theme.font.sizes.small};
-border-top: .2rem solid ${theme.colors.mediumGray};
+border-top: .2rem solid ${theme.colors.darkBg};
 padding-block: 3rem;
-background-color: #fff;
 a{
   color: inherit;
   text-decoration: none;

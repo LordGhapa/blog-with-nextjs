@@ -8,7 +8,7 @@ export type LoadPostVariables = {
   start?: number;
   limit?: number;
 };
-type LoadPostsProps = {
+export type LoadPostsProps = {
   setting: Setting;
   posts: PostStrapi;
 };
