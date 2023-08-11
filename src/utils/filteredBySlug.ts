@@ -1,4 +1,6 @@
-export function getPostBySlug(data, targetSlug) {
+import { PostData } from '../shared-types/post-strapi';
+
+export function getPostBySlug(data, targetSlug): PostData {
   const matchingPost = data.find((post) => post.attributes.slug === targetSlug);
 
   if (matchingPost) {

@@ -3,19 +3,16 @@ import { LoadPostsProps, loadPosts } from '../../api/load-posts';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { PostTemplate } from '../../templates/PostTemplate';
-import { getPostBySlug } from '../../utils/targetbyslug';
+import { getPostBySlug } from '../../utils/filteredBySlug';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let data = null;
 
   try {
     data = await loadPosts();
-    console.log(data);
-
     const paths = data.posts.data.map((post) => ({
       params: { slug: post.attributes.slug },
     }));
-    console.log(paths);
     return {
       paths: paths,
       fallback: false,
@@ -39,6 +36,7 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
     post = { data: [filteredInfo] };
   } catch (e) {
     post = null;
+    data = null;
   }
 
   if (!data || !data?.posts || !data?.posts?.data?.length) {
@@ -46,7 +44,6 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
       notFound: true,
     };
   }
-
   return {
     props: {
       posts: post,
@@ -54,7 +51,6 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
     },
   };
 };
-
 export default function Index({ posts, setting }: LoadPostsProps) {
   return (
     <>

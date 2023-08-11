@@ -2,6 +2,7 @@ import { LogoLink } from '../LogoLink';
 import { Heading } from '../Heading';
 import * as Styled from './styles';
 import React from 'react';
+import Link from 'next/link';
 export type HeaderProps = {
   blogName: string;
   blogDescription: string;
@@ -25,7 +26,7 @@ export const Header = ({
       {showText && (
         <Styled.Content>
           <Heading size="small" as="h2" colorDark={true}>
-            {blogName}
+            <Link href={'/'}> {blogName}</Link>
           </Heading>
           <p>{blogDescription}</p>
         </Styled.Content>

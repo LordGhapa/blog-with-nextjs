@@ -34,6 +34,13 @@ export const Content = styled.div`
     flex-flow: column wrap;
     margin-left: ${theme.spacings.sizes.large};
     max-width: 48rem;
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
 
     @media ${theme.media.lteSmall} {
       margin-left: 0;
