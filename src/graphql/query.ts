@@ -234,3 +234,17 @@ query GET_POSTS_BY_SLUG($authorSlug: String,$categorySlug: String,$tagSlug: Stri
 }
 
 `;
+
+export const GRAPHQL_QUERY_ALL_AUTHORS = gql`
+query GET_ALL_AUTHOR {
+  authors {
+    data {
+      id
+      attributes {
+        displayName
+        slug
+      }
+    }
+  }
+}
+`;
