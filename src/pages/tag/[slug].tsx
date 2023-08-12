@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { PostsTemplate } from '../../templates/PostsTemplate';
 
 import { loadTags } from '../../api/load-tags';
+import { useRouter } from 'next/router';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let data = null;
@@ -54,12 +55,12 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
 };
 
 export default function Index({ posts, setting }: LoadPostsProps) {
+  const router = useRouter();
   return (
     <>
       <Head>
         <title>
-          {`  ${setting?.data?.attributes?.blogName} -
-          ${setting?.data?.attributes?.blogDescription}`}
+          {`Tag: ${router.query.slug} - ${setting?.data?.attributes?.blogName}`}
         </title>
         <meta
           name="description"
