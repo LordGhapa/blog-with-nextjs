@@ -20,8 +20,8 @@ export const ArticleMeta = ({
       <p>
         Por:{' '}
         {typeof author !== 'undefined' ? (
-          <Link href={`/author/${author.data.attributes.slug}`}>
-            {author.data.attributes.displayName}
+          <Link href={`/author/${author?.data?.attributes?.slug}`}>
+            {author?.data?.attributes?.displayName}
           </Link>
         ) : (
           'Desconhecido'
@@ -33,8 +33,8 @@ export const ArticleMeta = ({
         |{' '}
         {typeof category !== 'undefined' && (
           <span className="categories">
-            <Link href={`/category/${category.data.attributes.slug}`}>
-              {category.data.attributes.displayName}
+            <Link href={`/category/${category?.data?.attributes?.slug}`}>
+              {category?.data?.attributes?.displayName}
             </Link>
           </span>
         )}

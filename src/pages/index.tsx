@@ -4,12 +4,6 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { PostsTemplate } from '../templates/PostsTemplate';
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   return {
-//     paths: [],
-//     fallback: false,
-//   };
-// };
 
 export const getStaticProps: GetStaticProps<LoadPostsProps> = async () => {
   let data = null;
