@@ -12,7 +12,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     data = await loadCategories();
 
     const paths = data.categories.data.map((category) => ({
-      params: { slug: category.attributes.slug },
+      params: { slug: category?.attributes?.slug },
     }));
     return {
       paths: paths,
@@ -45,8 +45,8 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
   }
   return {
     props: {
-      posts: data.posts,
-      setting: data.setting,
+      posts: data?.posts,
+      setting: data?.setting,
     },
   };
 };

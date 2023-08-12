@@ -248,3 +248,17 @@ query GET_ALL_AUTHOR {
   }
 }
 `;
+
+export const GRAPHQL_QUERY_ALL_TAGS = gql`
+query GET_ALL_TAGS {
+tags {
+    data {
+      id
+      attributes {
+        displayName
+        slug
+      }
+    }
+  }
+}
+`;

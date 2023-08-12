@@ -13,7 +13,9 @@ export const PostTags = (tags: PostTagsProps) => {
       Tags:
       {tags.data.map((r) => (
         <span key={r.id}>
-          <Link href={`/${r.attributes.slug}`}>{r.attributes.displayName}</Link>
+          <Link href={`/tag/${r.attributes.slug}`}>
+            {r.attributes.displayName}
+          </Link>
         </span>
       ))}
     </Styled.Wrapper>

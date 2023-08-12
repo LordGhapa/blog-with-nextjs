@@ -4,16 +4,16 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { PostsTemplate } from '../../templates/PostsTemplate';
 
-import { loadAuthors } from '../../api/load-authors';
+import { loadTags } from '../../api/load-tags';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let data = null;
 
   try {
-    data = await loadAuthors();
+    data = await loadTags();
 
-    const paths = data.authors.data.map((author) => ({
-      params: { slug: author.attributes.slug },
+    const paths = data.tags.data.map((tag) => ({
+      params: { slug: tag.attributes.slug },
     }));
 
     return {
@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
   let data = null;
 
   try {
-    data = await loadPosts({ authorSlug: `${ctx.params.slug}` });
+    data = await loadPosts({ tagSlug: `${ctx.params.slug}` });
   } catch (e) {
     data = null;
     console.log('ERRO NO PROPS');
