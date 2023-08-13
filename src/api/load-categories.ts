@@ -2,7 +2,7 @@ import { request } from 'graphql-request';
 import config from '../config';
 import { GRAPHQL_QUERY_ALL_CATEGORIES } from '../graphql/query';
 
-type dataCategories = {
+export type dataCategories = {
   categories: {
     data: {
       id: string;

@@ -2,8 +2,8 @@ import { request } from 'graphql-request';
 import config from '../config';
 import { GRAPHQL_QUERY_ALL_TAGS } from '../graphql/query';
 
-type dataTags = {
-  categories: {
+export type dataTags = {
+  tags: {
     data: {
       id: string;
       attributes: { displayName: string; slug: string };

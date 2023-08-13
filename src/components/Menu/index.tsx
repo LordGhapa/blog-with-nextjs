@@ -14,7 +14,7 @@ export type MenuLink = {
 };
 
 export type MenuProps = {
-  menuLink: MenuLink[];
+  menuLink?: MenuLink[];
   blogName: string;
   logo: Cover;
 };

@@ -2,8 +2,8 @@ import { request } from 'graphql-request';
 import config from '../config';
 import { GRAPHQL_QUERY_ALL_AUTHORS } from '../graphql/query';
 
-type dataAuthors = {
-  categories: {
+export type dataAuthors = {
+  authors: {
     data: {
       id: string;
       attributes: { displayName: string; slug: string };
