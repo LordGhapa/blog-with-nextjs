@@ -187,11 +187,11 @@ fragment settings on SettingEntityResponse {
 }
 
 
-query GET_POSTS_BY_SLUG($authorSlug: String,$categorySlug: String,$tagSlug: String) {
+query GET_POSTS_BY_SLUG($pageSize: Int =9999999,$authorSlug: String,$categorySlug: String,$tagSlug: String) {
   setting {
     ...settings
   }
-  posts( sort: ["id:desc"],filters: {
+  posts( sort: ["id:desc"], pagination: { pageSize: $pageSize },filters: {
     author: {
      slug: {
         eq: $authorSlug

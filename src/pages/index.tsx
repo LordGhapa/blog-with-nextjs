@@ -11,6 +11,7 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async () => {
   let menuAllLinks = null;
   try {
     data = await loadPosts();
+
     menuAllLinks = await loadMenuAllLinks();
   } catch (e) {
     data = null;
