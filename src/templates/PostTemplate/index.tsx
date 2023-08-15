@@ -7,15 +7,21 @@ import { PostData } from '../../shared-types/post-strapi';
 import { Base } from '../Base';
 import { PostTags } from '../../components/PostTags';
 import * as Styled from './styles';
+import { loadMenuAllLinksProps } from '../../utils/menuLinks';
 
 export type PostTemplateProps = {
   setting: Setting;
   posts?: { data: PostData[] };
+  menuAllLinks: loadMenuAllLinksProps;
 };
 
-export const PostTemplate = ({ setting, posts }: PostTemplateProps) => {
+export const PostTemplate = ({
+  setting,
+  posts,
+  menuAllLinks,
+}: PostTemplateProps) => {
   return (
-    <Base setting={setting}>
+    <Base menuAllLinks={menuAllLinks} setting={setting}>
       {posts?.data === undefined ? (
         <>
           <span>Post Encontrado </span>

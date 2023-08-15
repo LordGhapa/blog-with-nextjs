@@ -4,6 +4,8 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { PostTemplate } from '../../templates/PostTemplate';
 import { getPostBySlug } from '../../utils/filteredBySlug';
+import { indexProps } from '..';
+import { loadMenuAllLinks } from '../../utils/menuLinks';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let data = null;
@@ -29,14 +31,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
   let data = null;
   let post = null;
+  let menuAllLinks = null;
 
   try {
     data = await loadPosts();
     const filteredInfo = getPostBySlug(data.posts.data, ctx.params.slug);
     post = { data: [filteredInfo] };
+    menuAllLinks = await loadMenuAllLinks();
   } catch (e) {
     post = null;
     data = null;
+    menuAllLinks = null;
   }
 
   if (!data || !data?.posts || !data?.posts?.data?.length) {
@@ -48,10 +53,11 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
     props: {
       posts: post,
       setting: data.setting,
+      menuAllLinks,
     },
   };
 };
-export default function Index({ posts, setting }: LoadPostsProps) {
+export default function Index({ posts, setting, menuAllLinks }: indexProps) {
   return (
     <>
       <Head>
@@ -64,7 +70,11 @@ export default function Index({ posts, setting }: LoadPostsProps) {
           content={setting?.data?.attributes?.blogDescription}
         />
       </Head>
-      <PostTemplate posts={posts} setting={setting} />
+      <PostTemplate
+        posts={posts}
+        setting={setting}
+        menuAllLinks={menuAllLinks}
+      />
     </>
   );
 }
