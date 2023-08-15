@@ -6,6 +6,8 @@ import { PostsTemplate } from '../../templates/PostsTemplate';
 
 import { loadTags } from '../../api/load-tags';
 import { useRouter } from 'next/router';
+import { loadMenuAllLinks } from '../../utils/menuLinks';
+import { indexProps } from '..';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let data = null;
@@ -13,8 +15,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   try {
     data = await loadTags();
 
-    const paths = data.tags.data.map((tag) => ({
-      params: { slug: tag.attributes.slug },
+    const paths = data?.tags?.data?.map((tag) => ({
+      params: { slug: tag?.attributes?.slug },
     }));
 
     return {
@@ -33,12 +35,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
   let data = null;
-
+  let menuAllLinks = null;
   try {
     data = await loadPosts({ tagSlug: `${ctx.params.slug}` });
+    menuAllLinks = await loadMenuAllLinks();
   } catch (e) {
     data = null;
-    console.log('ERRO NO PROPS');
+    menuAllLinks = null;
+    console.log('ERRO  tag props');
   }
 
   if (!data || !data?.posts || !data?.posts?.data?.length) {
@@ -46,16 +50,19 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
       notFound: true,
     };
   }
+
   return {
     props: {
-      posts: data?.posts,
-      setting: data?.setting,
+      posts: data.posts,
+      setting: data.setting,
+      menuAllLinks,
     },
   };
 };
 
-export default function Index({ posts, setting }: LoadPostsProps) {
+export default function Index({ posts, setting, menuAllLinks }: indexProps) {
   const router = useRouter();
+
   return (
     <>
       <Head>
@@ -67,7 +74,11 @@ export default function Index({ posts, setting }: LoadPostsProps) {
           content={setting?.data?.attributes?.blogDescription}
         />
       </Head>
-      <PostsTemplate posts={posts} setting={setting} />
+      <PostsTemplate
+        posts={posts}
+        setting={setting}
+        menuAllLinks={menuAllLinks}
+      />
     </>
   );
 }

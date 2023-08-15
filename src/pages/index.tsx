@@ -11,6 +11,7 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async () => {
   let menuAllLinks = null;
   try {
     data = await loadPosts();
+
     menuAllLinks = await loadMenuAllLinks();
   } catch (e) {
     data = null;
@@ -31,7 +32,9 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async () => {
     },
   };
 };
-type indexProps = LoadPostsProps & { menuAllLinks: loadMenuAllLinksProps };
+export type indexProps = LoadPostsProps & {
+  menuAllLinks: loadMenuAllLinksProps;
+};
 export default function Index({ posts, setting, menuAllLinks }: indexProps) {
   return (
     <>

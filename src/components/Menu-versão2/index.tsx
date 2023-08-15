@@ -82,7 +82,7 @@ export const Menu = ({ blogName, logo, menuAllLinks }: MenuProps) => {
 
           <Details nameDetails="Tags">
             {menuAllLinks.tags.tags.data.map((tag) => (
-              <MenuLink key={tag.id} link={`/tags/${tag.attributes.slug}`}>
+              <MenuLink key={tag.id} link={`/tag/${tag.attributes.slug}`}>
                 {tag.attributes.displayName}
               </MenuLink>
             ))}
