@@ -33,4 +33,10 @@ ul,ol{
 a{
   color: ${({ theme }) => theme.colors.secondary};
 }
+.currentFilter{
+  font-weight: bold;
+  text-align: center;
+  font-size:3rem;
+  margin:0;
+}
 `;

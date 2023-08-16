@@ -8,6 +8,7 @@ import { loadTags } from '../../api/load-tags';
 import { useRouter } from 'next/router';
 import { loadMenuAllLinks } from '../../utils/menuLinks';
 import { indexProps } from '..';
+import { capitalizeFirstLetter } from '../../utils/capitalizerFirstLetter';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let data = null;
@@ -63,6 +64,8 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
 export default function Index({ posts, setting, menuAllLinks }: indexProps) {
   const router = useRouter();
 
+  const currentFilter = `Tag: ${capitalizeFirstLetter(router.query.slug)} `;
+
   return (
     <>
       <Head>
@@ -78,6 +81,7 @@ export default function Index({ posts, setting, menuAllLinks }: indexProps) {
         posts={posts}
         setting={setting}
         menuAllLinks={menuAllLinks}
+        currentFilter={currentFilter}
       />
     </>
   );

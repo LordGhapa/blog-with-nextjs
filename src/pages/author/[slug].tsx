@@ -8,6 +8,7 @@ import { loadAuthors } from '../../api/load-authors';
 import { useRouter } from 'next/router';
 import { indexProps } from '..';
 import { loadMenuAllLinks } from '../../utils/menuLinks';
+import { capitalizeFirstLetter } from '../../utils/capitalizerFirstLetter';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let data = null;
@@ -61,6 +62,7 @@ export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
 
 export default function Index({ posts, setting, menuAllLinks }: indexProps) {
   const router = useRouter();
+  const currentFilter = `Autor: ${capitalizeFirstLetter(router.query.slug)} `;
   return (
     <>
       <Head>
@@ -76,6 +78,7 @@ export default function Index({ posts, setting, menuAllLinks }: indexProps) {
         posts={posts}
         setting={setting}
         menuAllLinks={menuAllLinks}
+        currentFilter={currentFilter}
       />
     </>
   );

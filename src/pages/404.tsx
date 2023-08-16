@@ -16,7 +16,7 @@ export default function notFount() {
   }, []);
 
   useEffect(() => {
-    if (time <= 0) {
+    if (time <= 1) {
       router.push('/');
     }
   }, [router, time]);
