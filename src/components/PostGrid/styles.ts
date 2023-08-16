@@ -22,6 +22,14 @@ export const Grid = styled.div`
     gap: ${theme.spacings.sizes.large};
     padding: ${theme.spacings.sizes.large};
     min-height: 50vh;
+
+    div:hover{
+      scale: 1.1;
+    }
+    :has(:hover) > div:not(:hover) {
+    opacity: 0.8;
+    scale: 0.98;
+  }
     @media ${theme.media.lteSmall} {
       grid-template-columns: 1fr;
     }

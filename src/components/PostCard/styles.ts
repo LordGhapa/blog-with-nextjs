@@ -4,6 +4,8 @@ import { Title as HeadingStyles } from '../Heading/styles';
 export const Wrapper = styled.div`
   ${({ theme }) => css`
 
+  transition: all 300ms ease-in-out ;
+
     ${HeadingStyles} {
       margin: 0;
       margin-block:1rem;
@@ -20,9 +22,6 @@ export const Wrapper = styled.div`
       color: ${theme.colors.secondary};
     }
 
-    &:hover img {
-      opacity: 0.8;
-    }
   `}
 `;
 
