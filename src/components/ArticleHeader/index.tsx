@@ -6,14 +6,12 @@ import * as Styled from './styles';
 export type ArticleHeaderProps = {
   title: string;
   slug: string;
-  resumo: string;
   allowComments: boolean;
   cover: Cover;
 } & ArticleMetaProps;
 
 export const ArticleHeader = ({
   title,
-  resumo,
   cover,
   author,
   category,
@@ -22,7 +20,7 @@ export const ArticleHeader = ({
   return (
     <Styled.Wrapper>
       <Heading size="huge">{title}</Heading>
-      <Styled.Resumo>{resumo}</Styled.Resumo>
+
       <Styled.Cover src={cover.data.attributes.url} alt={title} />
       <ArticleMeta author={author} createdAt={createdAt} category={category} />
     </Styled.Wrapper>

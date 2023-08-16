@@ -3,6 +3,8 @@ import { Title as HeadingStyles } from '../Heading/styles';
 
 export const Wrapper = styled.header`
   ${({ theme }) => css`
+display: flex;
+flex-direction: column;
     padding-bottom: ${theme.spacings.sizes.xlarge};
     margin-bottom: ${theme.spacings.sizes.xlarge};
     border-bottom: 0.1rem solid ${theme.colors.mediumGray};
