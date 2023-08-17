@@ -5,19 +5,13 @@ export const Wrapper = styled.header`
   ${({ theme }) => css`
 display: flex;
 flex-direction: column;
-    padding-bottom: ${theme.spacings.sizes.xlarge};
-    margin-bottom: ${theme.spacings.sizes.xlarge};
 
     font-size: ${theme.font.sizes.medium};
     ${HeadingStyles} {
       margin: 0;
       margin-bottom: ${theme.spacings.sizes.medium};
     }
-    @media ${theme.media.lteSmall} {
-      padding-bottom:0;
-    margin-bottom: 0;
 
-    }
   `}
 `;
 

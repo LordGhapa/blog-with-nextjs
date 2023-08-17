@@ -19,7 +19,7 @@ export const ArticleMeta = ({
     <Styled.Wrapper>
       <p>
         Por:{' '}
-        {typeof author !== 'undefined' ? (
+        {author !== undefined && category !== null ? (
           <Link href={`/author/${author?.data?.attributes?.slug}`}>
             {author?.data?.attributes?.displayName}
           </Link>
@@ -31,7 +31,7 @@ export const ArticleMeta = ({
           <time dateTime={createdAt}>{formatDate(createdAt)}</time>
         </span>{' '}
         |{' '}
-        {typeof category !== 'undefined' && (
+        {category !== undefined && category !== null && (
           <span className="categories">
             <Link href={`/category/${category?.data?.attributes?.slug}`}>
               {category?.data?.attributes?.displayName}
