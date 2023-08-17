@@ -68,12 +68,6 @@ fragment settings on SettingEntityResponse {
           }
         }
       }
-      menuLink {
-        id
-        link
-        text
-        newTab
-      }
       footerText
     }
   }

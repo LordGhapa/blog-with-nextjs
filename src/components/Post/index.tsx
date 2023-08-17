@@ -14,7 +14,7 @@ export const Post = ({
   content,
   cover,
   createdAt,
-  resumo,
+
   slug,
 }: PostProps) => {
   return (
@@ -25,7 +25,6 @@ export const Post = ({
           author={author}
           category={category}
           title={title}
-          resumo={resumo}
           cover={cover}
           createdAt={createdAt}
           slug={slug}

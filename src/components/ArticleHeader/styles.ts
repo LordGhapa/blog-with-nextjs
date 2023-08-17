@@ -7,11 +7,16 @@ display: flex;
 flex-direction: column;
     padding-bottom: ${theme.spacings.sizes.xlarge};
     margin-bottom: ${theme.spacings.sizes.xlarge};
-    border-bottom: 0.1rem solid ${theme.colors.mediumGray};
+
     font-size: ${theme.font.sizes.medium};
     ${HeadingStyles} {
       margin: 0;
       margin-bottom: ${theme.spacings.sizes.medium};
+    }
+    @media ${theme.media.lteSmall} {
+      padding-bottom:0;
+    margin-bottom: 0;
+
     }
   `}
 `;
@@ -25,7 +30,9 @@ export const Resumo = styled.p`
 
 export const Cover = styled.img`
   ${({ theme }) => css`
-    max-width: 100%;
+  max-width: 100%;
+  max-height: 52rem;
+  object-fit:cover;
     display: block;
     margin-bottom: ${theme.spacings.sizes.medium};
   `}

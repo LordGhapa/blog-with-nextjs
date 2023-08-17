@@ -20,7 +20,7 @@ export const Wrapper = styled.header`
     @media ${theme.media.lteSmall} {
       display: flex;
       flex-flow: column wrap;
-
+      padding-bottom:0;
       & > ${HeadingStyles} {
         margin: 0 0 ${theme.spacings.sizes.medium} 0;
       }
