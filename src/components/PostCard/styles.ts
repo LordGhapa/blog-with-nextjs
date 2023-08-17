@@ -3,7 +3,15 @@ import { Title as HeadingStyles } from '../Heading/styles';
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-
+  @keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+animation: fadeIn 500ms ease-in-out;
   transition: all 300ms ease-in-out ;
 
     ${HeadingStyles} {
