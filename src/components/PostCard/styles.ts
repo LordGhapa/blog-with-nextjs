@@ -37,6 +37,7 @@ export const Cover = styled.img`
   max-width: 100%;
   transition: opacity 300ms ease-in-out;
   aspect-ratio: 3/2;
+  border-radius: 1.5rem;
 `;
 
 export const Resumo = styled.p`

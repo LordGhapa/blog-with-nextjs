@@ -94,4 +94,4 @@ export default {
   author,
   category,
   createdAt,
-} as PostProps;
+} as unknown as PostProps;

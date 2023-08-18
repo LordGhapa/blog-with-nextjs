@@ -22,3 +22,42 @@ export const Button = styled.button`
     }
   `}
 `;
+export const SearchContainer = styled.div`
+  ${({ theme }) => css`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+
+    .total{
+      font-weight:bold;
+    margin-left: 1rem;
+    }
+    svg{
+      color:${theme.colors.secondary};
+      height: 100%;
+      background-color:${theme.colors.darkBg};
+      border-radius: 0px 8px  8px 0;
+      padding: 5px;
+
+    }
+
+    `}
+`;
+
+export const SearchInput = styled.input`
+  ${({ theme }) => css`
+    padding: 0.5rem ${theme.spacings.sizes.small};
+    height: 4rem;
+    border-radius: 8px 0px  0px 8px;
+    border-right: 0px;
+    border-style: solid;
+   outline: none;
+   :focus,:focus-visible{
+      border: 2px solid ${theme.colors.darkBg};
+      border-right: 0px;
+      outline: none;
+    }
+  `}
+`;

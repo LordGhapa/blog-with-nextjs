@@ -18,10 +18,6 @@ export type PostGridProps = {
 export const PostGrid = ({ posts = [] }: PostGridProps) => {
   return (
     <Styled.Wrapper>
-      <h1 style={{ background: 'gray', textAlign: 'center' }}>
-        LOCAL PARA COLOCA CAMPO DE BUSCA E PAGINA PARA COLOCA FILTRO PARA
-        CARREGA MAIS POSTS
-      </h1>{' '}
       {posts.length === 0 && (
         <Styled.NotFound>Nenhum post encontrado aqui 😢</Styled.NotFound>
       )}

@@ -50,4 +50,4 @@ export default {
   author,
   category,
   createdAt,
-} as ArticleHeaderProps;
+} as unknown as ArticleHeaderProps;
