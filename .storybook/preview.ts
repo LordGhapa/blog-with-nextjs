@@ -3,7 +3,7 @@ import { GlobalStyles } from '../src/styles/global-styles';
 import { theme } from '../src/styles/theme';
 
 import { withThemeFromJSXProvider } from '@storybook/addon-styling';
-import { ThemeProvider } from 'styled-components';
+import { BlogThemeProvider } from '../src/contexts/BlogThemeContext';
 
 const preview = {
   parameters: {
@@ -22,7 +22,7 @@ export const decorators = [
     themes: {
       theme: theme,
     },
-    Provider: ThemeProvider,
+    Provider: BlogThemeProvider,
     GlobalStyles,
   }),
 ];
@@ -43,4 +43,3 @@ export const parameters = {
     ],
   },
 };
-

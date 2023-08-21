@@ -1,6 +1,7 @@
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Hearder';
 import { Menu } from '../../components/Menu-versão2';
+import { ToggleTheme } from '../../components/ToggleTheme';
 import { Setting } from '../../shared-types/Setting';
 import { loadMenuAllLinksProps } from '../../utils/menuLinks';
 import * as Styled from './styles';
@@ -14,6 +15,7 @@ export type BaseProps = {
 export const Base = ({ setting, children, menuAllLinks }: BaseProps) => {
   return (
     <Styled.Wrapper>
+      <ToggleTheme />
       <Menu
         blogName={setting.data.attributes.blogName}
         logo={setting.data.attributes.logo}

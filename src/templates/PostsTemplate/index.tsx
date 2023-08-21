@@ -25,7 +25,6 @@ export const PostsTemplate = ({
   const [noMorePosts, setNoMorePosts] = useState(false);
   const [numberPosts, setNumberPosts] = useState(6);
   const [searchValue, setSearchValue] = useState('');
-
   const [newStatePosts, setNewStatePosts] = useState(undefined);
   /* CARREGAMENTO INICIAL DE POSTS */
   useEffect(() => {
@@ -50,7 +49,7 @@ export const PostsTemplate = ({
   };
   /* FILTRO DE POSTS- */
 
-  /* VERIFICANDO DEVE CARREGA MAIS POSTS */
+  /* VERIFICANDO SE DEVE CARREGA MAIS POSTS */
   const verifyLoadMorePosts = () => {
     if (newStatePosts?.length && newStatePosts?.length < statePosts?.length) {
       setButtonDisabled(false);
@@ -68,7 +67,7 @@ export const PostsTemplate = ({
   const handleLoadMorePosts = async () => {
     setNumberPosts((s) => (s = s + 3));
   };
-  /* VERIFICANDO DEVE CARREGA MAIS POSTS */
+  /* VERIFICANDO SE DEVE CARREGA MAIS POSTS */
 
   /* CARREGAMENTO APOS FILTRO E APOS VERIFICA TOTAL DE POSTS */
   useEffect(() => {

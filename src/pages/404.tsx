@@ -20,6 +20,7 @@ export default function notFount() {
       router.push('/');
     }
   }, [router, time]);
+  //FALTA CORRIGIR ERRO CASO O PROBLEMA SE JA NA HOME
   return (
     <h1>PAGINA NÃO ENCONTRADA OU SEM POST retornando ao inicio em {time} </h1>
   );

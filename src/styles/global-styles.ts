@@ -14,7 +14,7 @@ html{
 }
 body{
   font-family: 'Open Sans', sans-serif;
-  background-color: #dfdfdf;
+  background-color: ${({ theme }) => theme.colors.background};
   font-family: ${({ theme }) => theme.font.family.default};
   color: ${({ theme }) => theme.colors.darkText};
 }

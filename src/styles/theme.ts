@@ -1,13 +1,15 @@
 export const theme = {
+  name: 'default',
   colors: {
     primary: '#000000',
     darkText: '#333333',
     secondary: '#dc143c',
-    lightBg: '#ffffff',
+    lightBg: '#dfdfdf',
     darkBg: '#0a1128',
     white: '#ffffff',
     mediumGray: '#dddddd',
     darkerGray: '#AAAAAA',
+    background: '#dfdfdf',
   },
   font: {
     family: {
