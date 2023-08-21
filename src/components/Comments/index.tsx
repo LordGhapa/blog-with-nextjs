@@ -1,5 +1,6 @@
 import * as Styled from './styles';
 import { DiscussionEmbed } from 'disqus-react';
+import config from '../../config/index';
 
 export type CommentsProps = {
   slug: string;
@@ -12,7 +13,7 @@ export const Comments = ({ slug, title }: CommentsProps) => {
       <DiscussionEmbed
         shortname="ia-historietas"
         config={{
-          url: `/post/${slug}`,
+          url: `${config.URL_SITE}/post/${slug}`,
           identifier: slug,
           title: title,
           language: 'pt_BR',
