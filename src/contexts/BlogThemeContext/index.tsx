@@ -55,7 +55,7 @@ export const BlogThemeProvider = ({ children }: BlogThemeProviderProps) => {
     <BlogThemeContext.Provider
       value={{ theme: blogTheme, setTheme: handleSetTheme }}
     >
-      <ThemeProvider theme={blogTheme}>{children}</ThemeProvider>;
+      <ThemeProvider theme={blogTheme}>{children}</ThemeProvider>
     </BlogThemeContext.Provider>
   );
 };
