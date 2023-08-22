@@ -3,6 +3,7 @@ import Link from 'next/link';
 import * as Styled from './styles';
 import { Heading } from '../Heading';
 import { Cover } from '../../shared-types/Cover';
+import Image from 'next/image';
 
 export type PostCardProps = {
 	slug: string;
@@ -15,11 +16,13 @@ export const PostCard = ({ title, cover, resumo, slug }: PostCardProps) => {
 	return (
 		<Styled.Wrapper>
 			<Link href={`/post/${slug}`}>
-				<Styled.Cover
-					src={
+				<Image
+					width={357}
+					height={238}
+					src={`${
 						cover?.data?.attributes?.formats.small?.url ??
 						cover?.data?.attributes?.url
-					}
+					}`}
 					alt={cover.data.attributes.altText}
 				/>
 			</Link>

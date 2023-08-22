@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
     opacity: 1;
   }
 }
+position: relative;
 animation: fadeIn 500ms ease-in-out;
   transition: all 300ms ease-in-out ;
 
@@ -29,15 +30,11 @@ animation: fadeIn 500ms ease-in-out;
     &:hover a {
       color: ${theme.colors.secondary};
     }
-
-  `}
-`;
-
-export const Cover = styled.img`
-  max-width: 100%;
+    img{
   transition: opacity 300ms ease-in-out;
-  aspect-ratio: 3/2;
   border-radius: 1.5rem;
+    }
+  `}
 `;
 
 export const Resumo = styled.p`
