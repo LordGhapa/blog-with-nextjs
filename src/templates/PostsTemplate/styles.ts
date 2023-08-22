@@ -44,6 +44,9 @@ export const SearchContainer = styled.div`
 
     }
 
+    input[type="search"]::-webkit-search-cancel-button {
+cursor: pointer;
+        }
     `}
 `;
 
@@ -60,5 +63,6 @@ export const SearchInput = styled.input`
       border-right: 0px;
       outline: none;
     }
+
   `}
 `;

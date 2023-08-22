@@ -31,8 +31,9 @@ animation: fadeIn 500ms ease-in-out;
       color: ${theme.colors.secondary};
     }
     img{
-  transition: opacity 300ms ease-in-out;
-  border-radius: 1.5rem;
+     width: 100%;
+    transition: opacity 300ms ease-in-out;
+     border-radius: 1.5rem;
     }
   `}
 `;
