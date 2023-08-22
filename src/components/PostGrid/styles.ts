@@ -28,7 +28,7 @@ export const Grid = styled.div`
     }
     :has(:hover) > div:not(:hover) {
     opacity: 0.8;
-    scale: 0.98;
+    transform: scale(0.98);
   }
     @media ${theme.media.lteSmall} {
       grid-template-columns: 1fr;

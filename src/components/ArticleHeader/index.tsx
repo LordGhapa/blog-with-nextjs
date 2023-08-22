@@ -19,7 +19,9 @@ export const ArticleHeader = ({
 }: ArticleHeaderProps) => {
   return (
     <Styled.Wrapper>
-      <Heading size="huge">{title}</Heading>
+      <Heading as="h2" size="huge">
+        {title}
+      </Heading>
 
       <Styled.Cover src={cover.data.attributes.url} alt={title} />
       <ArticleMeta author={author} createdAt={createdAt} category={category} />

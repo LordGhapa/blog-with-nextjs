@@ -14,7 +14,6 @@ export const Post = ({
   content,
   cover,
   createdAt,
-
   slug,
 }: PostProps) => {
   return (

@@ -13,7 +13,7 @@ export const theme = {
   },
   font: {
     family: {
-      default: "font-family: 'Open Sans', sans-serif",
+      default: "'Open Sans', 'sans-serif'",
     },
     sizes: {
       small: '1.6rem',

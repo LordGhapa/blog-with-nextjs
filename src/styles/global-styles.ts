@@ -6,7 +6,6 @@ export const GlobalStyles = createGlobalStyle`
  padding: 0;
  box-sizing: border-box;
  font-family: 'Open Sans', sans-serif;
- font-size: 1.6rem;
 }
 html{
   font-size: 62.5%;

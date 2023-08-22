@@ -1,6 +1,7 @@
 import * as Styled from './styles';
 import { DiscussionEmbed } from 'disqus-react';
 import config from '../../config/index';
+import { useEffect, useState } from 'react';
 
 export type CommentsProps = {
   slug: string;
@@ -8,17 +9,20 @@ export type CommentsProps = {
 };
 
 export const Comments = ({ slug, title }: CommentsProps) => {
+  const [disqusConfig, setDisqusConfig] = useState({});
+
+  useEffect(() => {
+    setDisqusConfig({
+      url: `${config.URL_SITE}/post/${slug}`,
+      identifier: slug.split('-').join('_'),
+      title: title.split('-').join('_'),
+      language: 'pt_BR',
+    });
+  }, [slug, title]);
+
   return (
     <Styled.Wrapper>
-      <DiscussionEmbed
-        shortname="ia-historietas"
-        config={{
-          url: `${config.URL_SITE}/post/${slug}`,
-          identifier: slug,
-          title: title,
-          language: 'pt_BR',
-        }}
-      />
+      <DiscussionEmbed shortname="iahistorias" config={disqusConfig} />
     </Styled.Wrapper>
   );
 };

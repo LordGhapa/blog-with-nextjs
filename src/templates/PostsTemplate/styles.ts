@@ -29,6 +29,7 @@ export const SearchContainer = styled.div`
     align-items: center;
     justify-content: center;
     height: 4rem;
+    font-size: ${theme.font.sizes.small};
 
     .total{
       font-weight:bold;

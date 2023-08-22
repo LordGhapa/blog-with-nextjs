@@ -41,9 +41,13 @@ export const Content = styled.div`
     a:hover{
       text-decoration: underline;
     }
-
+ p{
+      font-size: ${theme.font.sizes.small};
+      font-weight: normal;
+    }
     @media ${theme.media.lteSmall} {
       margin-left: 0;
     }
+
   `}
 `;
