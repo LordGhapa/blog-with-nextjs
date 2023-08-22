@@ -11,38 +11,38 @@ import { loadMenuAllLinksProps } from '../../utils/menuLinks';
 import { Comments } from '../../components/Comments';
 
 export type PostTemplateProps = {
-  setting: Setting;
-  posts?: { data: PostData[] };
-  menuAllLinks: loadMenuAllLinksProps;
+	setting: Setting;
+	posts?: { data: PostData[] };
+	menuAllLinks: loadMenuAllLinksProps;
 };
 
 export const PostTemplate = ({
-  setting,
-  posts,
-  menuAllLinks,
+	setting,
+	posts,
+	menuAllLinks,
 }: PostTemplateProps) => {
-  const allowComments = posts?.data[0]?.attributes?.allowComments ?? true;
-  return (
-    <Base menuAllLinks={menuAllLinks} setting={setting}>
-      {posts?.data === undefined ? (
-        <>
-          <span>Post Encontrado </span>
-          <Link href={'/'}>Inicio</Link>
-        </>
-      ) : (
-        <>
-          <Post {...posts?.data[0]?.attributes} />
-          <Styled.TagsContainer>
-            <PostTags data={posts?.data[0]?.attributes?.tags?.data} />
-          </Styled.TagsContainer>
-          {allowComments && (
-            <Comments
-              slug={posts?.data[0]?.attributes?.slug}
-              title={posts?.data[0]?.attributes?.title}
-            />
-          )}
-        </>
-      )}
-    </Base>
-  );
+	const allowComments = posts?.data[0]?.attributes?.allowComments ?? true;
+	return (
+		<Base menuAllLinks={menuAllLinks} setting={setting}>
+			{posts?.data === undefined ? (
+				<>
+					<span>Post Encontrado </span>
+					<Link href={'/'}>Inicio</Link>
+				</>
+			) : (
+				<>
+					<Post {...posts?.data[0]?.attributes} />
+					<Styled.TagsContainer>
+						<PostTags data={posts?.data[0]?.attributes?.tags?.data} />
+					</Styled.TagsContainer>
+					{allowComments && (
+						<Comments
+							slug={posts?.data[0]?.attributes?.slug}
+							title={posts?.data[0]?.attributes?.title}
+						/>
+					)}
+				</>
+			)}
+		</Base>
+	);
 };

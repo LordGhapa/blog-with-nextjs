@@ -2,7 +2,7 @@ import styled, { css, DefaultTheme } from 'styled-components';
 import { Title as HeadingStyles } from '../Heading/styles';
 
 type MenuBehaviorProps = {
-  menuVisible: boolean;
+	menuVisible: boolean;
 };
 
 const wrapperChanger = (menuVisible: MenuBehaviorProps['menuVisible']) => css`
@@ -50,8 +50,8 @@ export const Logo = styled.div`
 `;
 
 const buttonChanger = (
-  menuVisible: MenuBehaviorProps['menuVisible'],
-  theme: DefaultTheme,
+	menuVisible: MenuBehaviorProps['menuVisible'],
+	theme: DefaultTheme,
 ) => css`
   left: ${menuVisible ? '26rem' : '1rem'};
   color: ${menuVisible ? theme.colors.secondary : theme.colors.white};

@@ -1,14 +1,14 @@
 import styled, { DefaultTheme, css } from 'styled-components';
 
 export type PostContainerProps = {
-  size: 'max' | 'content';
+	size: 'max' | 'content';
 };
 
 const postContainerStyles = {
-  max: (theme: DefaultTheme) => css`
+	max: (theme: DefaultTheme) => css`
     max-width: ${theme.sizes.max};
   `,
-  content: (theme: DefaultTheme) => css`
+	content: (theme: DefaultTheme) => css`
     max-width: ${theme.sizes.content};
   `,
 };

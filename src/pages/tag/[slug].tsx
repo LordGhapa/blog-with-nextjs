@@ -11,78 +11,78 @@ import { indexProps } from '..';
 import { capitalizeFirstLetter } from '../../utils/capitalizerFirstLetter';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  let data = null;
+	let data = null;
 
-  try {
-    data = await loadTags();
+	try {
+		data = await loadTags();
 
-    const paths = data?.tags?.data?.map((tag) => ({
-      params: { slug: tag?.attributes?.slug },
-    }));
+		const paths = data?.tags?.data?.map((tag) => ({
+			params: { slug: tag?.attributes?.slug },
+		}));
 
-    return {
-      paths: paths,
-      fallback: false,
-    };
-  } catch (e) {
-    data = null;
-    console.log('ERRO NO PATH');
-  }
-  return {
-    paths: [],
-    fallback: false,
-  };
+		return {
+			paths: paths,
+			fallback: false,
+		};
+	} catch (e) {
+		data = null;
+		console.log('ERRO NO PATH');
+	}
+	return {
+		paths: [],
+		fallback: false,
+	};
 };
 
 export const getStaticProps: GetStaticProps<LoadPostsProps> = async (ctx) => {
-  let data = null;
-  let menuAllLinks = null;
-  try {
-    data = await loadPosts({ tagSlug: `${ctx.params.slug}` });
-    menuAllLinks = await loadMenuAllLinks();
-  } catch (e) {
-    data = null;
-    menuAllLinks = null;
-    console.log('ERRO  tag props');
-  }
+	let data = null;
+	let menuAllLinks = null;
+	try {
+		data = await loadPosts({ tagSlug: `${ctx.params.slug}` });
+		menuAllLinks = await loadMenuAllLinks();
+	} catch (e) {
+		data = null;
+		menuAllLinks = null;
+		console.log('ERRO  tag props');
+	}
 
-  if (!data || !data?.posts || !data?.posts?.data?.length) {
-    return {
-      notFound: true,
-    };
-  }
+	if (!data || !data?.posts || !data?.posts?.data?.length) {
+		return {
+			notFound: true,
+		};
+	}
 
-  return {
-    props: {
-      posts: data.posts,
-      setting: data.setting,
-      menuAllLinks,
-    },
-  };
+	return {
+		props: {
+			posts: data.posts,
+			setting: data.setting,
+			menuAllLinks,
+		},
+	};
 };
 
 export default function Index({ posts, setting, menuAllLinks }: indexProps) {
-  const router = useRouter();
+	const router = useRouter();
 
-  const currentFilter = `Tag: ${capitalizeFirstLetter(router.query.slug)} `;
+	const currentFilter = `Tag: ${capitalizeFirstLetter(router.query.slug)} `;
 
-  return (
-    <>
-      <Head>
-        <title>
-          {`Tag: ${router.query.slug} - ${setting?.data?.attributes?.blogName}`}
-        </title>
-        <meta
-          name="description"
-          content={setting?.data?.attributes?.blogDescription}
-        />
-      </Head>
-      <PostsTemplate
-        posts={posts}
-        setting={setting}
-        menuAllLinks={menuAllLinks}
-        currentFilter={currentFilter}
-      />
-    </>
-  );
+	return (
+		<>
+			<Head>
+				<title>
+					{`Tag: ${router.query.slug} - ${setting?.data?.attributes?.blogName}`}
+				</title>
+				<meta
+					name="description"
+					content={setting?.data?.attributes?.blogDescription}
+				/>
+			</Head>
+			<PostsTemplate
+				posts={posts}
+				setting={setting}
+				menuAllLinks={menuAllLinks}
+				currentFilter={currentFilter}
+			/>
+		</>
+	);
 }

@@ -1,39 +1,39 @@
 import { Heading } from '.';
 
 export default {
-  title: 'Heading',
-  component: Heading,
-  tags: ['autodocs'],
-  args: {
-    children: 'default',
-  },
-  argTypes: {
-    colorDark: { type: 'boolean' },
-  },
-  parameters: {
-    backgrounds: {
-      default: 'dark',
-    },
-  },
+	title: 'Heading',
+	component: Heading,
+	tags: ['autodocs'],
+	args: {
+		children: 'default',
+	},
+	argTypes: {
+		colorDark: { type: 'boolean' },
+	},
+	parameters: {
+		backgrounds: {
+			default: 'dark',
+		},
+	},
 };
 
 export const Light = (args) => <Heading {...args} />;
 export const Dark = (args) => <Heading {...args} />;
 Dark.args = {
-  colorDark: false,
+	colorDark: false,
 };
 Light.args = {
-  colorDark: true,
+	colorDark: true,
 };
 
 Light.parameters = {
-  backgrounds: {
-    default: 'light',
-  },
+	backgrounds: {
+		default: 'light',
+	},
 };
 
 Dark.parameters = {
-  backgrounds: {
-    default: 'dark',
-  },
+	backgrounds: {
+		default: 'dark',
+	},
 };

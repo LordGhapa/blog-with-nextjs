@@ -5,40 +5,40 @@ import { formatDate } from '../../utils/format-date';
 import * as Styled from './styles';
 
 export type ArticleMetaProps = {
-  createdAt: string;
-  category: Category;
-  author: Author;
+	createdAt: string;
+	category: Category;
+	author: Author;
 };
 
 export const ArticleMeta = ({
-  createdAt,
-  author,
-  category,
+	createdAt,
+	author,
+	category,
 }: ArticleMetaProps) => {
-  return (
-    <Styled.Wrapper>
-      <p>
-        Por:{' '}
-        {author !== undefined && category !== null ? (
-          <Link href={`/author/${author?.data?.attributes?.slug}`}>
-            {author?.data?.attributes?.displayName}
-          </Link>
-        ) : (
-          'Desconhecido'
-        )}{' '}
-        |{' '}
-        <span>
-          <time dateTime={createdAt}>{formatDate(createdAt)}</time>
-        </span>{' '}
-        |{' '}
-        {category !== undefined && category !== null && (
-          <span className="categories">
-            <Link href={`/category/${category?.data?.attributes?.slug}`}>
-              {category?.data?.attributes?.displayName}
-            </Link>
-          </span>
-        )}
-      </p>
-    </Styled.Wrapper>
-  );
+	return (
+		<Styled.Wrapper>
+			<p>
+				Por:{' '}
+				{author !== undefined && category !== null ? (
+					<Link href={`/author/${author?.data?.attributes?.slug}`}>
+						{author?.data?.attributes?.displayName}
+					</Link>
+				) : (
+					'Desconhecido'
+				)}{' '}
+				|{' '}
+				<span>
+					<time dateTime={createdAt}>{formatDate(createdAt)}</time>
+				</span>{' '}
+				|{' '}
+				{category !== undefined && category !== null && (
+					<span className="categories">
+						<Link href={`/category/${category?.data?.attributes?.slug}`}>
+							{category?.data?.attributes?.displayName}
+						</Link>
+					</span>
+				)}
+			</p>
+		</Styled.Wrapper>
+	);
 };

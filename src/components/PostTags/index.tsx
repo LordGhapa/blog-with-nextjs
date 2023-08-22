@@ -4,20 +4,20 @@ import * as Styled from './styles';
 
 export type PostTagsProps = Tags;
 export const PostTags = (tags: PostTagsProps) => {
-  if (tags?.data?.length < 1 || tags?.data === undefined) {
-    return;
-  }
+	if (tags?.data?.length < 1 || tags?.data === undefined) {
+		return;
+	}
 
-  return (
-    <Styled.Wrapper>
-      Tags:
-      {tags.data.map((r) => (
-        <span key={r.id}>
-          <Link href={`/tag/${r.attributes.slug}`}>
-            {r.attributes.displayName}
-          </Link>
-        </span>
-      ))}
-    </Styled.Wrapper>
-  );
+	return (
+		<Styled.Wrapper>
+			Tags:
+			{tags.data.map((r) => (
+				<span key={r.id}>
+					<Link href={`/tag/${r.attributes.slug}`}>
+						{r.attributes.displayName}
+					</Link>
+				</span>
+			))}
+		</Styled.Wrapper>
+	);
 };

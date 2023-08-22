@@ -2,17 +2,17 @@ import styled, { DefaultTheme, css } from 'styled-components';
 import { HeadingProps } from '.';
 
 const titleSize = {
-  small: (theme: DefaultTheme) => css`
+	small: (theme: DefaultTheme) => css`
   font-size: ${theme.font.sizes.medium};
   `,
-  medium: (theme: DefaultTheme) => css`
+	medium: (theme: DefaultTheme) => css`
   font-size: ${theme.font.sizes.large};
   `,
 
-  big: (theme: DefaultTheme) => css`
+	big: (theme: DefaultTheme) => css`
   font-size: ${theme.font.sizes.xlarge};
   `,
-  huge: (theme: DefaultTheme) => css`
+	huge: (theme: DefaultTheme) => css`
   font-size: ${theme.font.sizes.xxlarge};
   ${mediaFont(theme)}
   `,

@@ -4,23 +4,23 @@ import { ArticleMeta, ArticleMetaProps } from '.';
 import mock from './mock';
 
 export default {
-  title: 'ArticleMeta',
-  component: ArticleMeta,
-  args: mock,
-  argTypes: { createdAt: { control: 'date' } },
+	title: 'ArticleMeta',
+	component: ArticleMeta,
+	args: mock,
+	argTypes: { createdAt: { control: 'date' } },
 } as Meta<ArticleMetaProps>;
 
 export const Template: StoryFn<ArticleMetaProps> = (args) => {
-  return (
-    <div>
-      <ArticleMeta {...args} />
-    </div>
-  );
+	return (
+		<div>
+			<ArticleMeta {...args} />
+		</div>
+	);
 };
 export const Nodata: StoryFn<ArticleMetaProps> = (args) => {
-  return (
-    <div>
-      <ArticleMeta {...args} author={undefined} category={undefined} />
-    </div>
-  );
+	return (
+		<div>
+			<ArticleMeta {...args} author={undefined} category={undefined} />
+		</div>
+	);
 };

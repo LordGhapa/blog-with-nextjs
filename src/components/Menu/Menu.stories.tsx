@@ -3,20 +3,20 @@ import { Menu, MenuProps } from '.';
 import mock from './mock';
 
 export default {
-  title: 'Menu',
-  component: Menu,
-  args: mock,
-  parameters: {
-    backgrounds: {
-      default: 'dark',
-    },
-  },
+	title: 'Menu',
+	component: Menu,
+	args: mock,
+	parameters: {
+		backgrounds: {
+			default: 'dark',
+		},
+	},
 } as Meta<MenuProps>;
 
 export const Template: StoryFn<MenuProps> = (args) => {
-  return (
-    <div>
-      <Menu {...args} />
-    </div>
-  );
+	return (
+		<div>
+			<Menu {...args} />
+		</div>
+	);
 };

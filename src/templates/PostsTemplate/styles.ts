@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const ButtonContainer = styled.div`
   ${({ theme }) => css`
     padding: 0 ${theme.spacings.sizes.large};
-    margin: ${theme.spacings.sizes.large} 0;
+  margin: ${theme.spacings.sizes.large} 0;
     display: flex;
     justify-content: center;
   `}
