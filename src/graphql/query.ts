@@ -22,6 +22,7 @@ fragment cover on Post {
         createdAt
         altText: alternativeText
         url
+        formats
       }
     }
   }

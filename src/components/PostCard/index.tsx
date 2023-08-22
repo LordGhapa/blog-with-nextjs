@@ -16,7 +16,10 @@ export const PostCard = ({ title, cover, resumo, slug }: PostCardProps) => {
     <Styled.Wrapper>
       <Link href={`/post/${slug}`}>
         <Styled.Cover
-          src={cover.data.attributes.url}
+          src={
+            cover?.data?.attributes?.formats.small?.url ??
+            cover?.data?.attributes?.url
+          }
           alt={cover.data.attributes.altText}
         />
       </Link>

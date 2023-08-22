@@ -3,6 +3,11 @@ export type Cover = {
     attributes: {
       altText: string;
       url: string;
+      formats: {
+        small: {
+          url: string;
+        };
+      };
     };
   };
 };
