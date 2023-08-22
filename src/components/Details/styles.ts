@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
  ${({ theme }) => css`
+ font-size: ${theme.font.sizes.small};
 details{
   position:relative;
   padding-block: .5rem;
