@@ -6,7 +6,7 @@ export default {
 	title: 'PostGrid',
 	component: PostGrid,
 	args: mock,
-} as Meta<PostGridProps>;
+} as unknown as Meta<PostGridProps>;
 
 export const Template: StoryFn<PostGridProps> = (args) => {
 	return (

@@ -26,4 +26,4 @@ export default {
 			},
 		},
 	},
-} as MenuProps;
+} as unknown as MenuProps;
