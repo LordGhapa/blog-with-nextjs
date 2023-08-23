@@ -19,6 +19,7 @@ export const Button = styled.button`
     border-radius: 1.5rem;
     &:disabled {
       background: ${theme.colors.darkerGray};
+      cursor: unset;
     }
   `}
 `;
