@@ -1,17 +1,48 @@
-# Example app with styled-components using babel
-This example features how you use a different styling solution than [styled-jsx](https://github.com/vercel/styled-jsx) that also supports universal styles. That means we can serve the required styles for the first render within the HTML and then load the rest in the client. In this case we are using [styled-components](https://github.com/styled-components/styled-components).
-For this purpose we are extending the `<Document />` and injecting the server side rendered styles into the `<head>`, and also adding the `babel-plugin-styled-components` (which is required for server side rendering). Additionally we set up a global [theme](https://www.styled-components.com/docs/advanced#theming) for styled-components using NextJS custom [`<App>`](https://nextjs.org/docs/advanced-features/custom-app) component.
-## Preview
-Preview the example live on [StackBlitz](http://stackblitz.com/):
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-styled-components-babel)
-## Deploy your own
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-styled-components-babel&project-name=with-styled-components-babel&repository-name=with-styled-components-babel)
-## How to use
+<h1 align="center">IA Historietas Blog</h1>
 
 
-```bash
-npx create-next-app . -e https://github.com/LordGhapa/nextjs-exemple-ts-styled-components
-```
+![image](https://github.com/LordGhapa/blog-with-nextjs/assets/99082399/d4db970b-d9cd-4e10-b673-9c0d80aec7ab)
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+<p align="center">
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;
+  <a href="#memo-licença">Licença</a>
+</p>
+
+<p align="center">
+  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000">
+</p>
+
+<br>
+
+## 🚀 Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- HTML e CSS
+- JavaScript
+- [NextJS](https://nextjs.org/)
+- [Storybook](https://storybook.js.org/)
+- [StyledComponents](https://styled-components.com/)
+- [Strapi](https://strapi.io/)
+- [GraphQL](https://graphql.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Disqus](https://disqus.com/)
+
+
+## 💻 Projeto
+
+Blog criado usando Static Site Generation (SSG) do NextJS com as informações vindas de uma api em GraphQL criada usando o CMS Strapi
+cada post foi gerado usando ChatGPT e possue um sistema de comentarios usando o Disqus  
+
+- [Acesse o projeto finalizado, online](https://www.linkedin.com/in/felipe-lacerda-oliveira/)
+
+
+## :memo: Licença
+
+Esse projeto está sob a licença MIT.
+
+---
+
+Feito por Felipe Lacerda :wave: [Linkedin!](https://www.linkedin.com/in/felipe-lacerda-oliveira-274554125/)
