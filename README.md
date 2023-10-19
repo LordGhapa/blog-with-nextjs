@@ -36,7 +36,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 Blog criado usando Static Site Generation (SSG) do NextJS com as informações vindas de uma api em GraphQL criada usando o CMS Strapi
 cada post foi gerado usando ChatGPT e possue um sistema de comentarios usando o Disqus  
 
-- [Acesse o projeto finalizado, online](https://www.linkedin.com/in/felipe-lacerda-oliveira/)
+- [Acesse o projeto finalizado, online](https://ia-historietas.vercel.app/)
 
 
 ## :memo: Licença
@@ -45,4 +45,4 @@ Esse projeto está sob a licença MIT.
 
 ---
 
-Feito por Felipe Lacerda :wave: [Linkedin!](https://www.linkedin.com/in/felipe-lacerda-oliveira-274554125/)
+Feito por Felipe Lacerda :wave: [Linkedin!](https://www.linkedin.com/in/felipe-lacerda-oliveira/)
