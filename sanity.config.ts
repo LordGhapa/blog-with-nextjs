@@ -26,11 +26,11 @@ export default defineConfig({
 
     internationalizedArray({
       languages: [
-        { id: "pt", title: "Português" },
+        { id: "pt-BR", title: "Português" },
         { id: "en", title: "English" },
         { id: "es", title: "Español" },
       ],
-      defaultLanguages: ["pt"], // Idioma padrão
+      defaultLanguages: ["pt-BR"], // Idioma padrão
       fieldTypes: ["string", "text"], // Tipos de campo que você quer internacionalizar
     }),
     // Vision is for querying with GROQ from inside the Studio

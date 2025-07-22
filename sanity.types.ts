@@ -318,67 +318,55 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/fetch/getAllPosts.ts
 // Variable: ALL_POSTS_QUERY
-// Query: *[_type=="historietas-post"]
+// Query: *[_type == "historietas-post"] {  _id,  _createdAt,  "slug": slug.current,  "title": title[_key == $locale][0].value,  "body": body[_key == $locale][0].value,  mainImage {    "alt": alt[_key == $locale][0].value,    asset->{      _id,      url,      metadata {        dimensions      }    }  },  author->{    name,    "slug": slug.current,    image  },  categories[]->{    _id,  "title": title[_key == $locale][0].value,   "slug": slug.current  },  tags[]->{    _id,   "title": title[_key == $locale][0].value,  "slug": slug.current  }}
 export type ALL_POSTS_QUERYResult = Array<{
   _id: string;
-  _type: "historietas-post";
   _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: Array<
-    {
-      _key: string;
-    } & InternationalizedArrayStringValue
-  >;
-  slug?: Slug;
-  author?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "historietas-author";
-  };
-  mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: Array<
-      {
-        _key: string;
-      } & InternationalizedArrayStringValue
-    >;
-    _type: "image";
-  };
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "historietas-category";
-  }>;
-  tags?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "historietas-tag";
-  }>;
-  body?: Array<
-    {
-      _key: string;
-    } & InternationalizedArrayTextValue
-  >;
+  slug: string | null;
+  title: string | null;
+  body: string | null;
+  mainImage: {
+    alt: string | null;
+    asset: {
+      _id: string;
+      url: string | null;
+      metadata: {
+        dimensions: SanityImageDimensions | null;
+      } | null;
+    } | null;
+  } | null;
+  author: {
+    name: string | null;
+    slug: string | null;
+    image: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+  } | null;
+  categories: Array<{
+    _id: string;
+    title: string | null;
+    slug: string | null;
+  }> | null;
+  tags: Array<{
+    _id: string;
+    title: string | null;
+    slug: string | null;
+  }> | null;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type=="historietas-post"]': ALL_POSTS_QUERYResult;
+    '\n*[_type == "historietas-post"] {\n  _id,\n  _createdAt,\n  "slug": slug.current,\n  "title": title[_key == $locale][0].value,\n  "body": body[_key == $locale][0].value,\n  mainImage {\n    "alt": alt[_key == $locale][0].value,\n    asset->{\n      _id,\n      url,\n      metadata {\n        dimensions\n      }\n    }\n  },\n  author->{\n    name,\n    "slug": slug.current,\n    image\n  },\n  categories[]->{\n    _id,\n  "title": title[_key == $locale][0].value,\n   "slug": slug.current\n  },\n  tags[]->{\n    _id,\n   "title": title[_key == $locale][0].value,\n  "slug": slug.current\n  }\n}': ALL_POSTS_QUERYResult;
   }
 }
