@@ -10,9 +10,9 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
+import Header from "../../../components/header";
+import { ThemeProvider } from "@/providers/theme-provider";
 
-
- 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -37,7 +37,7 @@ export default async function RootLayout({
   // Enable static rendering
   setRequestLocale(locale);
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body>
         {(await draftMode()).isEnabled && (
           <>
@@ -45,8 +45,17 @@ export default async function RootLayout({
             <VisualEditing />
           </>
         )}
-
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+          </ThemeProvider>
+          {children}
+        </NextIntlClientProvider>
 
         <SanityLive onError={handleError} />
       </body>

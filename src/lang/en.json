@@ -2,5 +2,22 @@
   "HomePage": {
     "title": "Hello world!",
     "about": "Go to the about page"
+  },
+  "header": {
+    "subtext": "blog with some stories created by an AI",
+    "headerLinks": [
+      {
+        "label": "Home",
+        "link": "/"
+      },
+      {
+        "label": "About",
+        "link": "/about"
+      },
+      {
+        "label": "Contact",
+        "link": "/contact"
+      }
+    ]
   }
 }

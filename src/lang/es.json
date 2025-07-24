@@ -2,5 +2,22 @@
   "HomePage": {
     "title": "titulo es",
     "about": "about es"
+  },
+  "header": {
+    "subtext": "blog con algunas historias creadas por una IA",
+    "headerLinks": [
+      {
+        "label": "Inicio",
+        "link": "/"
+      },
+      {
+        "label": "Acerca de",
+        "link": "/about"
+      },
+      {
+        "label": "Contacto",
+        "link": "/contact"
+      }
+    ]
   }
 }

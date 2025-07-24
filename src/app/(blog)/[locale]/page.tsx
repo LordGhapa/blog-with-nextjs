@@ -41,17 +41,16 @@ export default async function HomePage({
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-red-500">{t("title")}</h1>
+      {/* <h1 className="text-red-500">{t("title")}</h1>
       <h1>IDIOMA : {locale}</h1>
       {data.map((r) => (
         <div key={r._id}>
           <p>API: {r.title}</p>
-          {/* <div className="prose lg:prose-xl text-black marker:text-black">
+          <div className="prose lg:prose-xl text-black marker:text-black">
             <ReactMarkdown>{r.body}</ReactMarkdown>
-          </div> */}
+          </div>
         </div>
-      ))}
-      <LanguageSwitcher />
+      ))} */}
     </main>
   );
 }
