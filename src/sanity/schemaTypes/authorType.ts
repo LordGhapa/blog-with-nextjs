@@ -1,5 +1,5 @@
 import { UserIcon } from "@sanity/icons";
-import {  defineField, defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 
 export const authorType = defineType({
   name: "historietas-author",

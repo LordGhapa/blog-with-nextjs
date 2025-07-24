@@ -1,4 +1,3 @@
-
 # Copilot Instructions for AI Agents
 
 ## Visão Geral da Arquitetura
