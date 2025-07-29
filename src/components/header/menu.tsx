@@ -2,8 +2,9 @@
 import { Link } from "@/i18n/navigation";
 import { BookOpen } from "lucide-react";
 import { useMessages, useTranslations } from "next-intl";
-import LanguageSwitcher2 from "../language-switcher";
+import LanguageSwitcher from "../language-switcher";
 import DarkMode from "./darkMode";
+import MobileMenu from "./mobileMenu";
 
 export default function Menu() {
   const t = useTranslations("header");
@@ -35,7 +36,7 @@ export default function Menu() {
         </Link>
         {/* logo */}
         {/* links */}
-        <div className="flex items-center space-x-4">
+        <div className="hidden items-center space-x-4 md:flex">
           {headerLinks.map((r) => (
             <Link
               href={r.link}
@@ -48,11 +49,16 @@ export default function Menu() {
         </div>
         {/* links */}
         {/* extra */}
-        <div className="flex items-center space-x-4">
-          <LanguageSwitcher2 />
+        <div className="hidden items-center space-x-4 md:flex">
+          <LanguageSwitcher />
           <DarkMode />
         </div>
         {/* extra */}
+        {/* MenuMobile */}
+        <div className="md:hidden">
+          <MobileMenu headerLinks={headerLinks} />
+        </div>
+        {/* MenuMobile */}
       </div>
     </header>
   );
