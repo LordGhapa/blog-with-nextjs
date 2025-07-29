@@ -18,7 +18,7 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "ia-historietas",
+  title: "IA Historietas",
   description: "Pagina feita com next js e informações vinda de uma api",
 };
 

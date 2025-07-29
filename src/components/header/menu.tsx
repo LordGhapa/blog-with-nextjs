@@ -16,7 +16,7 @@ export default function Menu() {
 
   return (
     <header className="border-b border-gray-200 bg-white/95 py-2 backdrop-blur-sm transition-colors dark:border-gray-700 dark:bg-gray-900/95">
-      <div className="container mx-auto flex items-center justify-between px-4">
+      <div className="container mx-auto flex max-w-7xl items-center justify-between px-4">
         {/* logo */}
         <Link
           href={"/"}

@@ -19,5 +19,8 @@
         "link": "/contact"
       }
     ]
+  },
+  "post": {
+    "readMore": "ver más"
   }
 }
