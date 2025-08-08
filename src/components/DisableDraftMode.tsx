@@ -19,7 +19,7 @@ export function DisableDraftMode() {
   return (
     <button
       onClick={handleClick}
-      className="fixed right-4 bottom-4 z-50 cursor-pointer rounded-2xl border border-black bg-gray-50 px-4 py-2 transition duration-300 hover:bg-slate-300"
+      className="fixed right-4 bottom-4 z-50 cursor-pointer rounded-2xl border border-black bg-orange-500 px-4 py-2 transition duration-300 hover:bg-orange-800"
     >
       Disable Draft Mode
     </button>

@@ -19,5 +19,10 @@
   "post": {
     "readMore": "ler mais"
   },
-  "recentPosts": "Posts Recentes"
+  "recentPosts": "Posts Recentes",
+  "notFound": {
+    "title": "Página Não Encontrada",
+    "description": "A página que você está procurando não existe ou foi movida.",
+    "backToHome": "Voltar para a Home"
+  }
 }
