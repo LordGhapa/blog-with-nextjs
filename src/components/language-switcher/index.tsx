@@ -1,5 +1,3 @@
-// components/LanguageSwitcher.tsx
-
 "use client";
 
 import { useLocale } from "next-intl";
@@ -27,15 +25,13 @@ export default function LanguageSwitcher() {
   const [isPending, startTransition] = useTransition();
   const locale = useLocale();
 
-  // Hooks de navegação
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams(); // Hook para ler os search params atuais
+  const searchParams = useSearchParams();
 
   const [open, setOpen] = useState(false);
   const [selectedLocale, setSelectedLocale] = useState(locale);
 
-  // Lista dos idiomas disponíveis
   const locales = [
     { code: "en", flag: "US", label: "English" },
     { code: "pt-BR", flag: "BR", label: "Portugues" },
@@ -44,10 +40,8 @@ export default function LanguageSwitcher() {
 
   const onLanguageChange = useCallback(
     (nextLocale: string) => {
-      // Cria uma cópia mutável dos search params atuais
       const newSearchParams = new URLSearchParams(searchParams.toString());
 
-      // O pathname já está sem o locale. Agora juntamos tudo.
       const newPath = `${pathname}?${newSearchParams}`;
 
       startTransition(() => {

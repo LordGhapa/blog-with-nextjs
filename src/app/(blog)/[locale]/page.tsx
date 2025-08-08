@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 
 import CardContainer from "@/components/post/cardContainer";
+import RecentPosts from "@/components/recent-posts";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -22,7 +23,6 @@ export default async function HomePage({
 
   // Enable static rendering
   setRequestLocale(locale);
-  const t = await getTranslations("HomePage");
 
   const data = await getAllPosts(locale);
 
@@ -33,14 +33,12 @@ export default async function HomePage({
           <CardContainer posts={data} />
         </div>
         {/* aside */}
-        <div className="space-y-4 lg:col-span-1">
+        <aside className="space-y-4 lg:col-span-1">
+          <RecentPosts posts={data.slice(0, 3)} />
           <div className="h-[50%] rounded-lg border border-amber-700 p-4">
             aside
           </div>
-          <div className="h-[50%] rounded-lg border border-amber-700 p-4">
-            aside
-          </div>
-        </div>
+        </aside>
         {/* aside */}
       </div>
 

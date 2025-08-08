@@ -1,8 +1,5 @@
 {
-  "HomePage": {
-    "title": "titulo es",
-    "about": "about es"
-  },
+ 
   "header": {
     "subtext": "blog con algunas historias creadas por una IA",
     "headerLinks": [
@@ -22,5 +19,6 @@
   },
   "post": {
     "readMore": "ver más"
-  }
+  },
+  "recentPosts": "Publicaciones Recientes"
 }

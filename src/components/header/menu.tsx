@@ -1,10 +1,11 @@
 "use client";
 import { Link } from "@/i18n/navigation";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Divide } from "lucide-react";
 import { useMessages, useTranslations } from "next-intl";
 import LanguageSwitcher from "../language-switcher";
 import DarkMode from "./darkMode";
 import MobileMenu from "./mobileMenu";
+import { Suspense } from "react";
 
 export default function Menu() {
   const t = useTranslations("header");
@@ -50,7 +51,9 @@ export default function Menu() {
         {/* links */}
         {/* extra */}
         <div className="hidden items-center space-x-4 md:flex">
-          <LanguageSwitcher />
+          <Suspense fallback={<div className="w-[150px]"></div>}>
+            <LanguageSwitcher />
+          </Suspense>
           <DarkMode />
         </div>
         {/* extra */}

@@ -5,7 +5,6 @@ import { VisualEditing } from "next-sanity";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { SanityLive } from "@/sanity/lib/live";
 import { handleError } from "@/lib/client-utils";
-
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";

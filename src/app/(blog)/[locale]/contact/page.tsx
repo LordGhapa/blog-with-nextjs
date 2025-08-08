@@ -1,3 +1,7 @@
-export default function ContactPage() {
-  return <div>ContactPage</div>;
+export default function AboutPage() {
+  return (
+    <div>
+      <h1>Página Sobre</h1>
+    </div>
+  );
 }

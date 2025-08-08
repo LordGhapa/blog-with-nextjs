@@ -6,17 +6,26 @@ import { PostCard } from "./PostCard";
 interface CardContainerProps {
   posts: ALL_POSTS_QUERYResult;
 }
-import { useState } from "react";
+
 import { useLocale } from "next-intl";
+import useHydration, { useViewStore } from "@/app/store";
+
+import { cn } from "@/lib/utils";
 
 export default function CardContainer({ posts }: CardContainerProps) {
-  const [viewMode, setViewMode] = useState<"list" | "grid">("grid");
-
+  const { viewMode, setViewMode } = useViewStore();
+  const hasHydrated = useHydration();
   const locale = useLocale();
+
+  if (!hasHydrated) {
+    return;
+  }
 
   return (
     <>
-      <div className="mb-6 flex justify-between border-t border-slate-700 pt-4">
+      <div
+        className={`mb-6 flex justify-between border-t border-slate-700 pt-4`}
+      >
         <p className="text-sm text-slate-400">
           <span className="font-bold text-orange-500">{posts.length}</span>{" "}
           Total
@@ -48,13 +57,19 @@ export default function CardContainer({ posts }: CardContainerProps) {
         </div>
       </div>
       <div
-        className={
-          viewMode === "grid"
-            ? "grid grid-cols-1 gap-6 md:grid-cols-2"
-            : "space-y-6"
-        }
+        className={cn({
+          "grid grid-cols-1 gap-6 md:grid-cols-2": viewMode === "grid",
+          "space-y-6": viewMode === "list",
+        })}
       >
-        <PostCard post={posts[0]} viewMode={viewMode} locale={locale} />
+        {posts.map((post) => (
+          <PostCard
+            key={post._id}
+            post={post}
+            viewMode={viewMode}
+            locale={locale}
+          />
+        ))}
       </div>
     </>
   );

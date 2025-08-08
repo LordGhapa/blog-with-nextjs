@@ -15,7 +15,7 @@ export const tagType = defineType({
       name: "slug",
       type: "slug",
       options: {
-        source: "title.0.value",
+        source: "title.1.value",
       },
     }),
   ],
