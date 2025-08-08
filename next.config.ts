@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // api: {
+  //   bodyParser: {
+  //     sizeLimit: "4.5mb", // Defina um limite razoável. Ex: 8MB
+  //   },
+  // },
 };
 
 const withNextIntl = createNextIntlPlugin();
