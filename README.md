@@ -1,38 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blog com Next.js, Sanity e Suporte a Múltiplos Idiomas
 
-## Getting Started
+Este é um projeto de blog desenvolvido com Next.js e Sanity, com suporte a múltiplos idiomas, projetado para ser uma base sólida para projetos futuros.
 
-First, run the development server:
+## ✨ Features
+
+- **Next.js 15:** Framework React para renderização no lado do servidor e geração de sites estáticos.
+- **Sanity v4:** CMS headless para gerenciamento de conteúdo.
+- **Suporte a Múltiplos Idiomas:** Com `next-intl`.
+- **Modo Rascunho (Draft Mode):** Visualize o conteúdo antes de publicar.
+- **Tailwind CSS:** Para estilização.
+- **TypeScript:** Para um código mais robusto e seguro.
+- **Zustand:** Para gerenciamento de estado.
+- **ESLint e Prettier:** Para manter a qualidade e a consistência do código.
+
+## 🚀 Começando
+
+Siga as instruções abaixo para configurar e executar o projeto em seu ambiente local.
+
+### Pré-requisitos
+
+- [Node.js](https://nodejs.org/en/) (versão 20.x ou superior)
+- [pnpm](https://pnpm.io/installation)
+
+### Instalação
+
+1. **Clone o repositório:**
+
+   ```bash
+   git clone https://github.com/seu-usuario/ia-historietas-2.git
+   cd ia-historietas-2
+   ```
+
+2. **Instale as dependências:**
+
+   ```bash
+   pnpm install
+   ```
+
+3. **Configure as variáveis de ambiente:**
+
+   Crie um arquivo `.env` na raiz do projeto, copiando o exemplo de `.env.example`:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Em seguida, preencha as variáveis de ambiente no arquivo `.env` com suas credenciais do Sanity:
+
+   ```
+   NEXT_PUBLIC_SANITY_PROJECT_ID=...
+   NEXT_PUBLIC_SANITY_DATASET=...
+   SANITY_API_TOKEN=...
+   SANITY_API_TOKEN_READ=...
+   NEXT_PUBLIC_BASE_URL="http://localhost:3000"
+   ```
+
+### Executando o Projeto
+
+Para iniciar o servidor de desenvolvimento, execute:
 
 ```bash
-npx create-next-app@latest -e https://github.com/LordGhapa/template-sanity-nextjs.git
-```
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) em seu navegador para ver o resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para acessar o Sanity Studio, navegue para [http://localhost:3000/studio](http://localhost:3000/studio).
 
-## Learn More
+## 📜 Scripts Disponíveis
 
-To learn more about Next.js, take a look at the following resources:
+- `pnpm dev`: Inicia o servidor de desenvolvimento do Next.js.
+- `pnpm devt`: Inicia o servidor de desenvolvimento do Next.js com Turbopack.
+- `pnpm build`: Compila o projeto para produção.
+- `pnpm start`: Inicia o servidor de produção.
+- `pnpm lint`: Executa o linter para verificar a qualidade do código.
+- `pnpm type`: Extrai o esquema do Sanity e gera os tipos TypeScript.
+- `pnpm commit`: Inicia o processo de commit com Commitizen.
+- `pnpm prettier`: Formata o código com o Prettier.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Para fazer o deploy do seu aplicativo Next.js, a maneira mais fácil é usar a [Plataforma Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) dos criadores do Next.js.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Confira a [documentação de deploy do Next.js](https://nextjs.org/docs/app/building-your-application/deploying) para mais detalhes.
