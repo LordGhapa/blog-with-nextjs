@@ -25,7 +25,7 @@ export function PostCard({ post, onClick, viewMode, locale }: PostCardProps) {
 
   const t = useTranslations("post");
 
-const date = new Date(post._createdAt).toLocaleDateString(locale);
+  const date = new Date(post._createdAt).toLocaleDateString(locale);
 
   const handleReadToggle = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -94,8 +94,14 @@ const date = new Date(post._createdAt).toLocaleDateString(locale);
               {post.title}
             </h3>
 
-            <div className="prose prose-sm mb-4 line-clamp-2 text-gray-600 marker:text-black dark:text-gray-300">
-              <ReactMarkdown>{post?.body ?? ""}</ReactMarkdown>
+            <div className="mb-4 line-clamp-2 text-base text-gray-600 dark:text-gray-300">
+              <ReactMarkdown
+                components={{
+                  p: ({ node, ...props }) => <span {...props} />,
+                }}
+              >
+                {post?.body?.replace(/\\n/g, "\n") ?? ""}
+              </ReactMarkdown>
             </div>
 
             <div className="flex items-center justify-between">
@@ -174,8 +180,14 @@ const date = new Date(post._createdAt).toLocaleDateString(locale);
           {post.title}
         </h3>
 
-        <div className="prose lg:prose-xl mb-4 line-clamp-3 text-base! text-gray-600 marker:text-black dark:text-gray-300">
-          <ReactMarkdown>{post?.body ?? ""}</ReactMarkdown>
+        <div className="mb-4 line-clamp-3 text-base text-gray-600 dark:text-gray-300">
+          <ReactMarkdown
+            components={{
+              p: ({ node, ...props }) => <span {...props} />,
+            }}
+          >
+            {post?.body?.replace(/\\n/g, "\n") ?? ""}
+          </ReactMarkdown>
         </div>
 
         <div className="flex items-center justify-between">

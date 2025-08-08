@@ -9,4 +9,3 @@ export const config = {
   // - … os que contêm ponto (ex: `favicon.ico`)
   matcher: "/((?!api|trpc|_next|_vercel|studio|draft-mode|.*\\..*).*)",
 };
-

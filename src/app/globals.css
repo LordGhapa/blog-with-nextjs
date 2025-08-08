@@ -78,7 +78,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: oklch(95% 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -184,4 +184,3 @@
   box-shadow: 0 0 15px rgba(255, 69, 0, 0.6);
   transform: perspective(1000px) rotateY(15deg);
 }
-

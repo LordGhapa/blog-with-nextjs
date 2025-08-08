@@ -33,13 +33,10 @@ const postPayloadSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-
- const authHeader = request.headers.get("authorization");
- if (authHeader !== `Bearer ${process.env.MY_SECRET_API_KEY}`) {
-   return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
- }
-
-
+  const authHeader = request.headers.get("authorization");
+  if (authHeader !== `Bearer ${process.env.MY_SECRET_API_KEY}`) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
 
   let payload;
 
