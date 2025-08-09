@@ -26,9 +26,6 @@ export default async function HomePage({
 
   const post = data[0].body;
 
-  // -------- AQUI ESTÁ A CORREÇÃO --------
-  // Substitui as sequências de caracteres literais '\\n' por quebras de linha reais ('\n').
-  // O regex /\\n/g procura por uma barra literal seguida de 'n' e o 'g' garante que todas as ocorrências sejam substituídas.
   const formattedPost = post?.replace(/\\n/g, "\n");
   // ------------------------------------
 
