@@ -9,34 +9,12 @@ export async function generateStaticParams() {
 
   const locales = routing.locales;
 
-  const routingOnly = routing.locales.map((locale) => ({ locale }));
-  console.log("routingOnly", routingOnly);
-  //routingOnly [ { locale: 'en' }, { locale: 'pt-BR' }, { locale: 'es' } ]
-
   const params = posts.flatMap((post) =>
     locales.map((locale) => ({
       slug: post.slug,
       locale,
     })),
   );
-  console.log("params static", params);
-  /* params static [
-  {
-    slug: 'a-legendary-friendship-in-the-fishing-village',
-    locale: 'en'
-  },
-  {
-    slug: 'a-legendary-friendship-in-the-fishing-village',
-    locale: 'pt-BR'
-  },
-  {
-    slug: 'a-legendary-friendship-in-the-fishing-village',
-    locale: 'es'
-  },
-  { slug: 'the-jungle-treasure', locale: 'en' },
-  { slug: 'the-jungle-treasure', locale: 'pt-BR' },
-  { slug: 'the-jungle-treasure', locale: 'es' }
-] */
 
   return params;
 }
