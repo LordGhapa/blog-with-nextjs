@@ -21,7 +21,6 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
 
-  // Enable static rendering
   setRequestLocale(locale);
 
   const data = await getAllPosts(locale);
@@ -35,7 +34,7 @@ export default async function HomePage({
         {/* aside */}
         <aside className="space-y-4 lg:col-span-1">
           <RecentPosts posts={data.slice(0, 3)} />
-          <div className="h-[50%] rounded-lg border border-amber-700 p-4">
+          <div className="h-[50%] rounded-lg border border-amber-700 p-4 bggray9">
             aside
           </div>
         </aside>

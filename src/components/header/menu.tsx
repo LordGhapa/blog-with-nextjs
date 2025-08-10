@@ -1,6 +1,6 @@
 "use client";
 import { Link } from "@/i18n/navigation";
-import { BookOpen, Divide } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { useMessages, useTranslations } from "next-intl";
 import LanguageSwitcher from "../language-switcher";
 import DarkMode from "./darkMode";

@@ -3,7 +3,7 @@ import { sanityFetch } from "../live";
 
 export const getAllPosts = async (locale: "en" | "pt-BR" | "es") => {
   const ALL_POSTS_QUERY = defineQuery(`
-*[_type == "historietas-post"] {
+*[_type == "historietas-post"]| order(_createdAt desc) {
   _id,
   _createdAt,
   "slug": slug.current,

@@ -68,6 +68,7 @@ export default function CardContainer({ posts }: CardContainerProps) {
             post={post}
             viewMode={viewMode}
             locale={locale}
+            
           />
         ))}
       </div>

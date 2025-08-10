@@ -9,19 +9,20 @@ import { ALL_POSTS_QUERYResult } from "../../../../sanity.types";
 import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import { Link, useRouter } from "@/i18n/navigation";
 
 interface PostCardProps {
   post: ALL_POSTS_QUERYResult[0];
   viewMode?: "list" | "grid";
-  onClick?: () => void;
   locale?: string;
 }
 
-export function PostCard({ post, onClick, viewMode, locale }: PostCardProps) {
+export function PostCard({ post, viewMode, locale }: PostCardProps) {
   // const { isRead, toggleRead } = useReadingStatus();
   // const postIsRead = isRead(post.id);
   const postIsRead = !true; // Placeholder for reading status logic
   // Placeholder for view mode logic, can be passed as prop
+  const router = useRouter();
 
   const t = useTranslations("post");
 
@@ -32,18 +33,9 @@ export function PostCard({ post, onClick, viewMode, locale }: PostCardProps) {
     // toggleRead(post.id);
   };
 
-  const handleCardClick = () => {
-    if (onClick) {
-      onClick();
-    }
-  };
-
   if (viewMode === "list") {
     return (
-      <article
-        className="group cursor-pointer overflow-hidden rounded-xl border border-gray-400 bg-white shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-2xl"
-        onClick={handleCardClick}
-      >
+      <article className="group relative cursor-pointer overflow-hidden rounded-xl border border-gray-700 bg-white shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-2xl">
         <div className="flex flex-col sm:flex-row">
           {/* Image Section */}
           <div className="relative h-48 overflow-hidden sm:h-auto sm:w-48">
@@ -89,12 +81,14 @@ export function PostCard({ post, onClick, viewMode, locale }: PostCardProps) {
                 )}
               </button>
             </div>
+            <Link href={`/${post.slug}`}>
+              <span className="absolute inset-0"></span>
+              <h3 className="relative z-10 mb-3 line-clamp-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-orange-500 dark:text-white dark:group-hover:text-orange-400">
+                {post.title}
+              </h3>
+            </Link>
 
-            <h3 className="mb-3 line-clamp-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-orange-500 dark:text-white dark:group-hover:text-orange-400">
-              {post.title}
-            </h3>
-
-            <div className="mb-4 line-clamp-2 text-base text-gray-600 dark:text-gray-300">
+            <div className="mb-4 line-clamp-3 text-base text-gray-600 dark:text-gray-300">
               <ReactMarkdown
                 components={{
                   p: ({ node, ...props }) => <span {...props} />,
@@ -108,13 +102,16 @@ export function PostCard({ post, onClick, viewMode, locale }: PostCardProps) {
               <div className="flex flex-wrap gap-2">
                 {post.tags &&
                   post.tags.slice(0, 4).map((tag) => (
-                    <span
+                    <Link
+                      href={"#"}
                       key={tag._id}
-                      className="inline-flex items-center space-x-1 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700 dark:bg-gray-700 dark:text-gray-300"
+                      className="group/tag z-10 inline-flex items-center space-x-1 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:text-orange-500 dark:bg-gray-700 dark:text-gray-300"
                     >
-                      <Tag className="h-3 w-3" />
-                      <span>{tag.title}</span>
-                    </span>
+                      <Tag className="h-3 w-3 group-hover/tag:text-orange-500" />
+                      <span className="group-hover/tag:text-orange-500">
+                        {tag.title}
+                      </span>
+                    </Link>
                   ))}
               </div>
 
@@ -129,10 +126,7 @@ export function PostCard({ post, onClick, viewMode, locale }: PostCardProps) {
   }
 
   return (
-    <article
-      className="group cursor-pointer overflow-hidden rounded-xl border border-gray-400 bg-white shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-2xl"
-      onClick={handleCardClick}
-    >
+    <article className="group cursor-pointer overflow-hidden rounded-xl border border-gray-400 bg-white shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-2xl">
       <div className="relative overflow-hidden">
         {post.mainImage?.asset && (
           <Image
