@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  experimental: {
+    viewTransition: true,
+  },
   // api: {
   //   bodyParser: {
   //     sizeLimit: "4.5mb", // Defina um limite razoável. Ex: 8MB
