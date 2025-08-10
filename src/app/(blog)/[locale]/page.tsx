@@ -1,6 +1,6 @@
 import { getAllPosts } from "@/sanity/lib/fetch/getAllPosts";
-import { useTranslations } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+
+import { setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 
@@ -34,7 +34,7 @@ export default async function HomePage({
         {/* aside */}
         <aside className="space-y-4 lg:col-span-1">
           <RecentPosts posts={data.slice(0, 3)} />
-          <div className="h-[50%] rounded-lg border border-amber-700 p-4 bggray9">
+          <div className="h-[50%] rounded-lg border border-gray-700 p-4 bg-gray-800">
             aside
           </div>
         </aside>

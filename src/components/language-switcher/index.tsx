@@ -22,7 +22,7 @@ import {
 import { Globe } from "lucide-react";
 
 export default function LanguageSwitcher() {
-  const [isPending, startTransition] = useTransition();
+  const [_, startTransition] = useTransition();
   const locale = useLocale();
 
   const router = useRouter();

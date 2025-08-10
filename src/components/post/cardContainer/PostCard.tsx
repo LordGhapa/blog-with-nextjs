@@ -41,7 +41,7 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
       )}
     >
       <div
-        className={cn("flex h-full ", {
+        className={cn("flex h-full", {
           "flex-col sm:flex-row": isListView,
           "flex-col": !isListView,
         })}
@@ -73,7 +73,7 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
         <motion.div
           layout
           transition={transition}
-          className={cn("flex flex-col flex-1 p-6", {
+          className={cn("flex flex-1 flex-col p-6", {
             "flex-1": isListView,
           })}
         >

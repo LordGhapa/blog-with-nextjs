@@ -318,7 +318,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/fetch/getAllPosts.ts
 // Variable: ALL_POSTS_QUERY
-// Query: *[_type == "historietas-post"] {  _id,  _createdAt,  "slug": slug.current,  "title": title[_key == $locale][0].value,  "body": body[_key == $locale][0].value,  mainImage {    "alt": alt[_key == $locale][0].value,    asset->{      _id,      url,      metadata {        dimensions      }    }  },  author->{    name,    "slug": slug.current,    image  },  categories[]->{    _id,  "title": title[_key == $locale][0].value,   "slug": slug.current  },  tags[]->{    _id,   "title": title[_key == $locale][0].value,  "slug": slug.current  }}
+// Query: *[_type == "historietas-post"]| order(_createdAt desc) {  _id,  _createdAt,  "slug": slug.current,  "title": title[_key == $locale][0].value,  "body": body[_key == $locale][0].value,  mainImage {    "alt": alt[_key == $locale][0].value,    asset->{      _id,      url,      metadata {        dimensions      }    }  },  author->{    name,    "slug": slug.current,    image  },  categories[]->{    _id,  "title": title[_key == $locale][0].value,   "slug": slug.current  },  tags[]->{    _id,   "title": title[_key == $locale][0].value,  "slug": slug.current  }}
 export type ALL_POSTS_QUERYResult = Array<{
   _id: string;
   _createdAt: string;
@@ -363,10 +363,66 @@ export type ALL_POSTS_QUERYResult = Array<{
   }> | null;
 }>;
 
+// Source: ./src/sanity/lib/fetch/getLatestPostSlugs.ts
+// Variable: LATEST_POST_SLUGS_QUERY
+// Query: *[_type == "historietas-post"] | order(_createdAt desc) [0...20] {  "slug": slug.current,}
+export type LATEST_POST_SLUGS_QUERYResult = Array<{
+  slug: string | null;
+}>;
+
+// Source: ./src/sanity/lib/fetch/getPostbySlug.ts
+// Variable: POST_BY_SLUG_QUERY
+// Query: *[_type == "historietas-post" && slug.current == $slug][0] {  _id,  _createdAt,  "slug": slug.current,  "title": title[_key == $locale][0].value,  "body": body[_key == $locale][0].value,  mainImage {    "alt": alt[_key == $locale][0].value,    asset->{      _id,      url,      metadata {        dimensions      }    }  },  author->{    name,    "slug": slug.current,    image  },  categories[]->{    _id,    "title": title[_key == $locale][0].value,    "slug": slug.current  },  tags[]->{    _id,    "title": title[_key == $locale][0].value,    "slug": slug.current  }}
+export type POST_BY_SLUG_QUERYResult = {
+  _id: string;
+  _createdAt: string;
+  slug: string | null;
+  title: string | null;
+  body: string | null;
+  mainImage: {
+    alt: string | null;
+    asset: {
+      _id: string;
+      url: string | null;
+      metadata: {
+        dimensions: SanityImageDimensions | null;
+      } | null;
+    } | null;
+  } | null;
+  author: {
+    name: string | null;
+    slug: string | null;
+    image: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+  } | null;
+  categories: Array<{
+    _id: string;
+    title: string | null;
+    slug: string | null;
+  }> | null;
+  tags: Array<{
+    _id: string;
+    title: string | null;
+    slug: string | null;
+  }> | null;
+} | null;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n*[_type == "historietas-post"] {\n  _id,\n  _createdAt,\n  "slug": slug.current,\n  "title": title[_key == $locale][0].value,\n  "body": body[_key == $locale][0].value,\n  mainImage {\n    "alt": alt[_key == $locale][0].value,\n    asset->{\n      _id,\n      url,\n      metadata {\n        dimensions\n      }\n    }\n  },\n  author->{\n    name,\n    "slug": slug.current,\n    image\n  },\n  categories[]->{\n    _id,\n  "title": title[_key == $locale][0].value,\n   "slug": slug.current\n  },\n  tags[]->{\n    _id,\n   "title": title[_key == $locale][0].value,\n  "slug": slug.current\n  }\n}': ALL_POSTS_QUERYResult;
+    '\n*[_type == "historietas-post"]| order(_createdAt desc) {\n  _id,\n  _createdAt,\n  "slug": slug.current,\n  "title": title[_key == $locale][0].value,\n  "body": body[_key == $locale][0].value,\n  mainImage {\n    "alt": alt[_key == $locale][0].value,\n    asset->{\n      _id,\n      url,\n      metadata {\n        dimensions\n      }\n    }\n  },\n  author->{\n    name,\n    "slug": slug.current,\n    image\n  },\n  categories[]->{\n    _id,\n  "title": title[_key == $locale][0].value,\n   "slug": slug.current\n  },\n  tags[]->{\n    _id,\n   "title": title[_key == $locale][0].value,\n  "slug": slug.current\n  }\n}': ALL_POSTS_QUERYResult;
+    '\n*[_type == "historietas-post"] | order(_createdAt desc) [0...20] {\n  "slug": slug.current,\n}': LATEST_POST_SLUGS_QUERYResult;
+    '\n*[_type == "historietas-post" && slug.current == $slug][0] {\n  _id,\n  _createdAt,\n  "slug": slug.current,\n  "title": title[_key == $locale][0].value,\n  "body": body[_key == $locale][0].value,\n  mainImage {\n    "alt": alt[_key == $locale][0].value,\n    asset->{\n      _id,\n      url,\n      metadata {\n        dimensions\n      }\n    }\n  },\n  author->{\n    name,\n    "slug": slug.current,\n    image\n  },\n  categories[]->{\n    _id,\n    "title": title[_key == $locale][0].value,\n    "slug": slug.current\n  },\n  tags[]->{\n    _id,\n    "title": title[_key == $locale][0].value,\n    "slug": slug.current\n  }\n}': POST_BY_SLUG_QUERYResult;
   }
 }
