@@ -1,3 +1,4 @@
+/* @config "../../tailwind.config.js"; */
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -212,7 +213,8 @@
   transform: perspective(1000px) rotateY(15deg);
 }
 
-
-#disqus_thread {
-  color-scheme: none;
+#disqus_thread,
+#disqus_thread * {
+  color: #ff4500 !important;
+  background-color: #ffffff !important; /* fundo */
 }

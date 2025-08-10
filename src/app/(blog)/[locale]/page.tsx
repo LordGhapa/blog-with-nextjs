@@ -12,7 +12,7 @@ export function generateStaticParams() {
 }
 
 export const dynamic = "force-static";
-export const revalidate = 3600;
+export const revalidate = 9198000;
 
 export default async function HomePage({
   params,
@@ -41,16 +41,7 @@ export default async function HomePage({
         {/* aside */}
       </div>
 
-      {/* <h1 className="text-red-500">{t("title")}</h1>
-      <h1>IDIOMA : {locale}</h1>
-      {data.map((r) => (
-        <div key={r._id}>
-          <p>API: {r.title}</p>
-          <div className="prose lg:prose-xl  text-white marker:text-black">
-            <ReactMarkdown>{r.body}</ReactMarkdown>
-          </div>
-        </div>
-      ))} */}
+
     </main>
   );
 }

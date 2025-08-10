@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import GoBackButton from "./components/goBackButton";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import { Calendar,  Eye, EyeOff, Tag } from "lucide-react";
+import { Calendar, Eye, EyeOff, Tag } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import { Link } from "@/i18n/navigation";
@@ -27,7 +27,7 @@ export async function generateStaticParams() {
   return params;
 }
 
-export const revalidate = 3600;
+export const revalidate = 9198000;
 
 export default async function PostPage({
   params,
@@ -45,7 +45,6 @@ export default async function PostPage({
   const date = new Date(post._createdAt).toLocaleDateString(locale);
 
   const postIsRead = false;
-
 
   const formattedPost = (post?.body ?? "").replace(/\\n/g, "\n");
 
@@ -154,8 +153,12 @@ export default async function PostPage({
                 </Link>
               ))}
             </div>
-            <DisqusComments post={post} />
           </div>
+        </div>
+      </div>
+      <div className="rounded-2xl bg-white p-4">
+        <div className="overflow-hidden rounded-2xl">
+          <DisqusComments />
         </div>
       </div>
     </main>
