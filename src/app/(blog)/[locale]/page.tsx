@@ -34,14 +34,10 @@ export default async function HomePage({
         {/* aside */}
         <aside className="space-y-4 lg:col-span-1">
           <RecentPosts posts={data.slice(0, 3)} />
-          <div className="h-[50%] rounded-lg border border-gray-700 p-4 bg-gray-800">
-            aside
-          </div>
+          <RecentPosts posts={data.slice(0, 3)} />
         </aside>
         {/* aside */}
       </div>
-
-
     </main>
   );
 }

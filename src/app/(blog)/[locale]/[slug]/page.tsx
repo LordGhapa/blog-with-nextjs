@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
 import { Link } from "@/i18n/navigation";
 import DisqusComments from "@/components/DisqusComments";
-
+import { unstable_ViewTransition as ViewTransition } from "react";
 export async function generateStaticParams() {
   const posts = await getLatestPostSlugs();
 
@@ -52,7 +52,7 @@ export default async function PostPage({
     <main className="container mx-auto w-full max-w-4xl px-4 py-8">
       <div className="mb-8">
         <GoBackButton />
-
+<ViewTransition name={`post-component-${post._id}`}>
         <div className="overflow-hidden rounded-xl border border-gray-700 bg-white shadow-sm dark:bg-gray-800">
           {/* Featured Image */}
           <div className="relative h-64 overflow-hidden md:h-96">
@@ -106,9 +106,11 @@ export default async function PostPage({
             </div>
 
             {/* Title */}
-            <h1 className="mb-6 text-3xl leading-tight font-bold text-gray-900 md:text-4xl dark:text-white">
-              {post.title}
-            </h1>
+
+              <h1 className="mb-6 text-3xl leading-tight font-bold text-gray-900 md:text-4xl dark:text-white">
+                {post.title}
+              </h1>
+
 
             {/* Author */}
             <div className="mb-8 flex items-center space-x-3 border-b border-gray-700 pb-6">
@@ -155,10 +157,11 @@ export default async function PostPage({
             </div>
           </div>
         </div>
+      </ViewTransition>
       </div>
       <div className="rounded-2xl bg-white p-4">
         <div className="overflow-hidden rounded-2xl">
-          <DisqusComments  post={post}/>
+          <DisqusComments post={post} />
         </div>
       </div>
     </main>

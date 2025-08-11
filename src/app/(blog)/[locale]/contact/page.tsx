@@ -1,3 +1,4 @@
+import DisqusComments from "@/components/DisqusComments";
 import {
   ArrowLeft,
   Mail,
@@ -13,8 +14,8 @@ export default function ContactPage() {
   const contactLinks = [
     {
       name: "Email",
-      value: "contato@iahistorietas.com",
-      href: "mailto:contato@iahistorietas.com",
+      value: "felipef32@hotmail.com",
+      href: "mailto:felipef32@hotmail.com",
       icon: Mail,
       description: "Entre em contato direto por email",
       color: "text-blue-600 dark:text-blue-400",
@@ -22,9 +23,9 @@ export default function ContactPage() {
     {
       name: "GitHub",
       value: "github.com/iahistorietas",
-      href: "https://github.com/iahistorietas",
+      href: "https://github.com/LordGhapa/blog-with-nextjs",
       icon: Github,
-      description: "Veja nossos projetos open source",
+      description: "Veja o projeto ",
       color: "text-gray-800 dark:text-gray-200",
     },
     {
@@ -37,10 +38,10 @@ export default function ContactPage() {
     },
     {
       name: "Portfólio",
-      value: "portfolio.iahistorietas.com",
-      href: "https://portfolio.iahistorietas.com",
+      value: "felipe-lacerda.vercel.app/",
+      href: "https://felipe-lacerda.vercel.app/",
       icon: ExternalLink,
-      description: "Conheça nossos trabalhos e projetos",
+      description: "Conheça meus trabalhos e projetos",
       color: "text-orange-600 dark:text-orange-400",
     },
   ];
@@ -49,7 +50,7 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: "Localização",
-      value: "Brasil, São Paulo",
+      value: "Brasil",
       description: "Atendimento remoto em todo o país",
     },
     {
@@ -144,93 +145,10 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="mt-8 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-            <div className="border-b border-gray-200 bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-4 dark:border-gray-700 dark:from-orange-900/20 dark:to-orange-800/20">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Envie uma Mensagem
-              </h2>
-              <p className="mt-1 text-gray-600 dark:text-gray-400">
-                Preencha o formulário abaixo e responderemos em breve
-              </p>
+          <div className="rounded-2xl bg-white p-4">
+            <div className="overflow-hidden rounded-2xl">
+              <DisqusComments title="ContactPage" />
             </div>
-
-            <form className="space-y-6 p-6">
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Nome *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-500 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-orange-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-                    placeholder="Seu nome completo"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-500 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-orange-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-                    placeholder="seu@email.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
-                >
-                  Assunto *
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-500 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-orange-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-                  placeholder="Sobre o que você gostaria de falar?"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
-                >
-                  Mensagem *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={6}
-                  required
-                  className="resize-vertical w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-500 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-orange-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-                  placeholder="Conte-nos mais sobre sua mensagem..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full rounded-lg bg-orange-500 px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-orange-600 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none dark:focus:ring-offset-gray-800"
-              >
-                Enviar Mensagem
-              </button>
-            </form>
           </div>
         </div>
 
@@ -302,7 +220,7 @@ export default function ContactPage() {
                   Tempo de resposta?
                 </h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Respondemos todas as mensagens em até 24 horas úteis.
+                  Respondemos todas as mensagens em até 42 dias úteis.
                 </p>
               </div>
             </div>

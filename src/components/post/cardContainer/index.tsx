@@ -22,10 +22,10 @@ export default function CardContainer({ posts }: CardContainerProps) {
   const hasHydrated = useHydration();
   const locale = useLocale();
 
-  if (!hasHydrated) {
+  // if (!hasHydrated) {
 
-    return null;
-  }
+  //   return null;
+  // }
 
   return (
     <>
