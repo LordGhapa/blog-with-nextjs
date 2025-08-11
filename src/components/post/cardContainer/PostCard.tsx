@@ -85,7 +85,7 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
             <button
               onClick={handleReadToggle}
               title={postIsRead ? "Marcar como não lido" : "Marcar como lido"}
-              className={cn("rounded-full p-2 transition-all duration-200", {
+              className={cn("rounded-full p-2 z-20 transition-all duration-200", {
                 "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400":
                   postIsRead,
                 "bg-gray-100 text-gray-500 hover:bg-orange-100 hover:text-orange-500 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-orange-900/30":
@@ -101,13 +101,13 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
           </div>
 
           <Link href={`/${post.slug}`}>
-            <span className="absolute inset-0 z-0"></span>
+            <span className="absolute inset-0 z-10 "></span>
             <h3 className="relative z-10 mb-3 line-clamp-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-orange-500 dark:text-white dark:group-hover:text-orange-400">
               {post.title}
             </h3>
           </Link>
 
-          <div className="relative z-10 mb-4 line-clamp-3 text-base text-gray-600 dark:text-gray-300">
+          <div className="relative mb-4 line-clamp-3 text-base text-gray-600 dark:text-gray-300">
             <ReactMarkdown
               components={{ p: ({ node, ...props }) => <span {...props} /> }}
             >
@@ -115,13 +115,13 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
             </ReactMarkdown>
           </div>
 
-          <div className="relative z-10 mt-auto flex flex-col gap-1 pt-4">
-            <div className="flex flex-wrap gap-2">
+          <div className="relative mt-auto flex flex-col gap-1 pt-4">
+            <div className="flex flex-wrap gap-2 ">
               {post.tags?.slice(0, isListView ? 4 : 3).map((tag) => (
                 <Link
                   href={"#"}
                   key={tag._id}
-                  className="group/tag inline-flex items-center space-x-1 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:text-orange-500 dark:bg-gray-700 dark:text-gray-300"
+                  className="group/tag z-10 inline-flex items-center space-x-1 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:text-orange-500 dark:bg-gray-700 dark:text-gray-300"
                 >
                   <Tag className="h-3 w-3 group-hover/tag:text-orange-500" />
                   <span className="group-hover/tag:text-orange-500">
@@ -130,7 +130,7 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
                 </Link>
               ))}
             </div>
-            <span className="text-end text-sm font-medium text-orange-500 capitalize transition-colors hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300">
+            <span className="z-0  text-end text-sm font-medium text-orange-500 capitalize transition-colors group-hover:text-orange-600 dark:text-orange-400 dark:group-hover:text-orange-300">
               {t("readMore")} →
             </span>
           </div>

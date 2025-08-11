@@ -7,6 +7,7 @@ Este é um projeto de blog desenvolvido com Next.js e Sanity, com suporte a múl
 - **Next.js 15:** Framework React para renderização no lado do servidor e geração de sites estáticos.
 - **Sanity v4:** CMS headless para gerenciamento de conteúdo.
 - **Suporte a Múltiplos Idiomas:** Com `next-intl`.
+- **Sistema de Comentários com Disqus:** Integração com Disqus para gerenciamento de comentários.
 - **Modo Rascunho (Draft Mode):** Visualize o conteúdo antes de publicar.
 - **Tailwind CSS:** Para estilização.
 - **TypeScript:** Para um código mais robusto e seguro.
@@ -27,8 +28,8 @@ Siga as instruções abaixo para configurar e executar o projeto em seu ambiente
 1. **Clone o repositório:**
 
    ```bash
-   git clone https://github.com/seu-usuario/ia-historietas-2.git
-   cd ia-historietas-2
+   git clone https://github.com/LordGhapa/blog-with-nextjs.git
+   cd blog-with-nextjs
    ```
 
 2. **Instale as dependências:**
@@ -66,6 +67,12 @@ pnpm dev
 Abra [http://localhost:3000](http://localhost:3000) em seu navegador para ver o resultado.
 
 Para acessar o Sanity Studio, navegue para [http://localhost:3000/studio](http://localhost:3000/studio).
+
+##  Disqus
+
+O sistema de comentários é gerenciado pelo Disqus. Para que os comentários funcionem corretamente, você precisa configurar sua conta no Disqus e adicionar o `shortname` do seu site no componente `DisqusComments`.
+
+O componente está localizado em: `src/components/DisqusComments.tsx`
 
 ## 📜 Scripts Disponíveis
 

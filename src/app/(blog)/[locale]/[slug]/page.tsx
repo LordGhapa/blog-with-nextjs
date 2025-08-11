@@ -158,7 +158,7 @@ export default async function PostPage({
       </div>
       <div className="rounded-2xl bg-white p-4">
         <div className="overflow-hidden rounded-2xl">
-          <DisqusComments />
+          <DisqusComments  post={post}/>
         </div>
       </div>
     </main>
