@@ -10,6 +10,7 @@ import {
   Lightbulb,
   Award,
 } from "lucide-react";
+import GoBackButton from "../[slug]/components/goBackButton";
 
 export default function AboutPage() {
   const values = [
@@ -79,11 +80,6 @@ export default function AboutPage() {
     <div className="mx-auto max-w-6xl">
       {/* Header */}
       <div className="mb-8">
-        <button className="mb-6 flex items-center space-x-2 text-orange-500 transition-colors hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300">
-          <ArrowLeft className="h-5 w-5" />
-          <span className="font-medium">Voltar para o blog</span>
-        </button>
-
         {/* Hero Section */}
         <div className="mb-16 text-center">
           <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600">

@@ -39,7 +39,7 @@ export default function DisqusComments({
 
   return (
     <DiscussionEmbed
-      key={pathname}
+      key={fullUrl}
       shortname={disqusShortname}
       config={disqusConfig}
     />

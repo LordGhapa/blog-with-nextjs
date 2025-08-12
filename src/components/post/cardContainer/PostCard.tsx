@@ -26,6 +26,7 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
   };
 
   const isListView = viewMode === "list";
+
   const transition: Transition = {
     type: "spring",
     stiffness: 400,

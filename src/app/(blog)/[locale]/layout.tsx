@@ -11,6 +11,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import Header from "../../../components/header";
 import { ThemeProvider } from "@/providers/theme-provider";
+import ViewTransitionsProvider from "@/provider/ViewTransitionsProvider";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -43,18 +44,21 @@ export default async function RootLayout({
             <VisualEditing />
           </>
         )}
-        <NextIntlClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Header />
-          </ThemeProvider>
-          {children}
-        </NextIntlClientProvider>
 
+        <NextIntlClientProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+              >
+              <Header />
+            </ThemeProvider>
+              <ViewTransitionsProvider>
+
+            {children}
+          </ViewTransitionsProvider>
+        </NextIntlClientProvider>
         <SanityLive onError={handleError} />
       </body>
     </html>

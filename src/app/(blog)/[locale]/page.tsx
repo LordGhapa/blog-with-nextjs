@@ -34,7 +34,6 @@ export default async function HomePage({
         {/* aside */}
         <aside className="space-y-4 lg:col-span-1">
           <RecentPosts posts={data.slice(0, 3)} />
-          <RecentPosts posts={data.slice(0, 3)} />
         </aside>
         {/* aside */}
       </div>

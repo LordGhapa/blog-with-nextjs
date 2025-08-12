@@ -19,13 +19,9 @@ const springTransition: Transition = {
 };
 export default function CardContainer({ posts }: CardContainerProps) {
   const { viewMode, setViewMode } = useViewStore();
-  const hasHydrated = useHydration();
+
   const locale = useLocale();
 
-  // if (!hasHydrated) {
-
-  //   return null;
-  // }
 
   return (
     <>

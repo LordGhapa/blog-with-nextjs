@@ -9,6 +9,7 @@ import {
   Phone,
   Clock,
 } from "lucide-react";
+import GoBackButton from "../[slug]/components/goBackButton";
 
 export default function ContactPage() {
   const contactLinks = [
@@ -71,11 +72,6 @@ export default function ContactPage() {
     <div className="mx-auto max-w-6xl">
       {/* Header */}
       <div className="mb-8">
-        <button className="mb-6 flex items-center space-x-2 text-orange-500 transition-colors hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300">
-          <ArrowLeft className="h-5 w-5" />
-          <span className="font-medium">Voltar para o blog</span>
-        </button>
-
         <div className="mb-12 text-center">
           <h1 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
             Entre em <span className="text-orange-500">Contato</span>

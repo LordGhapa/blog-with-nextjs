@@ -5,23 +5,26 @@
 @custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
 
+.page-loaded::view-transition-new(.site-transition) {
+  animation: circle-in 300ms ease-in-out;
+}
+
+html:not(.dark)::view-transition-new(root) {
+  animation: circle-in 300ms ease-in;
+  mix-blend-mode: normal;
+}
+
+html.dark::view-transition-new(root) {
+  animation: circle-in 300ms ease-in;
+  mix-blend-mode: normal;
+}
+
 ::view-transition-old(root) {
-  animation-delay: 500ms;
+  animation: none;
+  mix-blend-mode: normal;
 }
 
-::view-transition-new(root) {
-  animation: circle-in 500ms ease-in-out;
-}
-
-@keyframes move-in {
-  from {
-    translate: 0 -100%;
-  }
-  to {
-    translate: 0 0;
-  }
-}
-
+/* Keyframes para a animação de entrada */
 @keyframes circle-in {
   from {
     clip-path: circle(0% at 50% 0%);
@@ -174,43 +177,12 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
-    @apply bg-background text-foreground transition-colors! duration-300! ease-in-out;
+    @apply bg-background text-foreground;
     font-family: "Inter", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-}
-
-.loader {
-  width: 84px;
-  aspect-ratio: 1;
-  background:
-    linear-gradient(#ff4500 0 0) left/50% 100% no-repeat,
-    conic-gradient(
-      from -90deg at 32px 9.47px,
-      #fff8dc 135deg,
-      #8b0000 0 270deg,
-      #ffa500 0
-    );
-  background-blend-mode: multiply;
-  -webkit-mask:
-    linear-gradient(to bottom right, #0000 8px, #000 0 52px, #0000 0),
-    conic-gradient(from -90deg at right 6px bottom 6px, #000 90deg, #0000 0);
-  mask:
-    linear-gradient(to bottom right, #0000 8px, #000 0 52px, #0000 0),
-    conic-gradient(from -90deg at right 6px bottom 6px, #000 90deg, #0000 0);
-  background-size: 50% 50%;
-  -webkit-mask-size: 50% 50%;
-  mask-size: 50% 50%;
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
-  animation: l9 1.8s infinite cubic-bezier(0.5, 0.2, 0.5, 1);
-  box-shadow: 0 0 15px rgba(255, 69, 0, 0.6);
-  transform: perspective(1000px) rotateY(15deg);
 }
 
 #disqus_thread,
