@@ -58,7 +58,7 @@ export default function LanguageSwitcher() {
           <PopoverTrigger asChild>
             <Button
               variant="outline"
-              className="group w-full justify-between rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 pr-8 text-gray-900 transition-all duration-200 hover:text-orange-500 focus:border-transparent dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:text-orange-400"
+              className="group w-[145px] justify-between rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 pr-8 text-gray-900 transition-all duration-200 hover:text-orange-500 focus:border-transparent dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:text-orange-400"
             >
               <div className="flex items-center gap-1">
                 {selectedLocale ? (
