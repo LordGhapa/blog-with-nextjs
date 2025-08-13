@@ -75,7 +75,7 @@ export default function LanguageSwitcher() {
                   "Select Language"
                 )}
               </div>
-              <Globe className=": size-4 translate-y-0.5 text-gray-400 group-hover:text-orange-400" />
+              <Globe className=": size-4 translate-y-[1px] text-gray-400 group-hover:text-orange-400" />
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-[150px] p-0" side="bottom" align="start">

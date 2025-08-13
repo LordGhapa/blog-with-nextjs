@@ -11,7 +11,9 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import Header from "../../../components/header";
 import { ThemeProvider } from "@/providers/theme-provider";
-import ViewTransitionsProvider from "@/provider/ViewTransitionsProvider";
+import ViewTransitionsProvider from "@/providers/ViewTransitionsProvider";
+import { ViewModeScript } from "@/components/ViewModeScript";
+import { ViewModeUpdater } from "@/components/ViewModeUpdater";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -37,7 +39,10 @@ export default async function RootLayout({
   setRequestLocale(locale);
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+      </head>
       <body>
+        <ViewModeScript />
         {(await draftMode()).isEnabled && (
           <>
             <DisableDraftMode />
@@ -46,18 +51,16 @@ export default async function RootLayout({
         )}
 
         <NextIntlClientProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-              >
-              <Header />
-            </ThemeProvider>
-              <ViewTransitionsProvider>
-
-            {children}
-          </ViewTransitionsProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+          </ThemeProvider>
+          <ViewTransitionsProvider>{children}</ViewTransitionsProvider>
+          <ViewModeUpdater/>
         </NextIntlClientProvider>
         <SanityLive onError={handleError} />
       </body>

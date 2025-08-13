@@ -8,24 +8,34 @@ import { Link } from "@/i18n/navigation";
 import { urlFor } from "@/sanity/lib/image";
 import { ALL_POSTS_QUERYResult } from "../../../../sanity.types";
 import { cn } from "@/lib/utils";
-
-import { motion, Transition } from "framer-motion";
 import { unstable_ViewTransition as ViewTransition } from "react";
+import { motion, Transition } from "framer-motion";
+import { useEffect, useState } from "react";
+
 interface PostCardProps {
   post: ALL_POSTS_QUERYResult[0];
-  viewMode?: "list" | "grid";
   locale?: string;
 }
 
-export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
+export function PostCard({ post, locale }: PostCardProps) {
   const t = useTranslations("post");
   const date = new Date(post._createdAt).toLocaleDateString(locale);
   const postIsRead = false;
   const handleReadToggle = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    let isActive = true;
 
-  const isListView = viewMode === "list";
+    setTimeout(() => {
+      if (isActive) setIsMounted(true);
+    }, 0);
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
   const transition: Transition = {
     type: "spring",
@@ -37,24 +47,17 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
     <ViewTransition name={`post-component-${post._id}`}>
       <motion.article
         layout
-        transition={transition}
+        initial={false}
+        transition={isMounted ? transition : { duration: 0 }}
         className={cn(
           "group relative cursor-pointer overflow-hidden rounded-xl border border-gray-700 bg-white shadow-sm transition-colors duration-300 hover:shadow-lg dark:bg-gray-800 dark:hover:shadow-2xl",
         )}
       >
-        <div
-          className={cn("flex h-full", {
-            "flex-col sm:flex-row": isListView,
-            "flex-col": !isListView,
-          })}
-        >
+        <div className="flex h-full flex-col [.view-mode-list_&]:sm:flex-row">
           <motion.div
-            layout
-            transition={transition}
-            className={cn("relative overflow-hidden", {
-              "h-48 sm:h-auto sm:w-48": isListView,
-              "h-48": !isListView,
-            })}
+            initial={false}
+            transition={isMounted ? transition : { duration: 0 }}
+            className="relative h-48 overflow-hidden [.view-mode-list_&]:sm:h-auto [.view-mode-list_&]:sm:w-48"
           >
             {post.mainImage?.asset && (
               <Image
@@ -65,19 +68,17 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             )}
+
             <div className="absolute top-4 left-4">
               <span className="rounded-full bg-orange-500 px-3 py-1 text-sm font-medium text-white">
                 {post.categories?.[0]?.title ?? ""}
               </span>
             </div>
           </motion.div>
-
           <motion.div
-            layout
-            transition={transition}
-            className={cn("flex flex-1 flex-col p-6", {
-              "flex-1": isListView,
-            })}
+            initial={false}
+            transition={isMounted ? transition : { duration: 0 }}
+            className="flex flex-1 flex-col p-6"
           >
             <div className="mb-3 flex items-center justify-between">
               <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
@@ -89,12 +90,9 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
                 title={postIsRead ? "Marcar como não lido" : "Marcar como lido"}
                 className={cn(
                   "z-20 rounded-full p-2 transition-all duration-200",
-                  {
-                    "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400":
-                      postIsRead,
-                    "bg-gray-100 text-gray-500 hover:bg-orange-100 hover:text-orange-500 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-orange-900/30":
-                      !postIsRead,
-                  },
+                  postIsRead
+                    ? "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400"
+                    : "bg-gray-100 text-gray-500 hover:bg-orange-100 hover:text-orange-500 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-orange-900/30",
                 )}
               >
                 {postIsRead ? (
@@ -107,7 +105,6 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
 
             <Link href={`/${post.slug}`}>
               <span className="absolute inset-0 z-10"></span>
-
               <h3 className="relative z-10 mb-3 line-clamp-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-orange-500 dark:text-white dark:group-hover:text-orange-400">
                 {post.title}
               </h3>
@@ -123,11 +120,15 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
 
             <div className="relative mt-auto flex flex-col gap-1 pt-4">
               <div className="flex flex-wrap gap-2">
-                {post.tags?.slice(0, isListView ? 4 : 3).map((tag) => (
+                {post.tags?.slice(0, 4).map((tag, index) => (
                   <Link
                     href={"#"}
                     key={tag._id}
-                    className="group/tag z-10 inline-flex items-center space-x-1 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:text-orange-500 dark:bg-gray-700 dark:text-gray-300"
+                    className={cn(
+                      "group/tag z-10 inline-flex items-center space-x-1 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:text-orange-500 dark:bg-gray-700 dark:text-gray-300",
+                      // A quarta tag (index 3) é escondida por padrão no Grid View
+                      { "[.view-mode-grid_&]:hidden": index === 3 },
+                    )}
                   >
                     <Tag className="h-3 w-3 group-hover/tag:text-orange-500" />
                     <span className="group-hover/tag:text-orange-500">
@@ -142,7 +143,7 @@ export function PostCard({ post, viewMode = "grid", locale }: PostCardProps) {
             </div>
           </motion.div>
         </div>
-      </motion.article>{" "}
+      </motion.article>
     </ViewTransition>
   );
 }
