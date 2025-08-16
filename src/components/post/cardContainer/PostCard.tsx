@@ -57,15 +57,15 @@ export function PostCard({ post, locale }: PostCardProps) {
           <motion.div
             initial={false}
             transition={isMounted ? transition : { duration: 0 }}
-            className="relative h-48 overflow-hidden [.view-mode-list_&]:sm:h-auto [.view-mode-list_&]:sm:w-48"
+            className="relative overflow-hidden [.view-mode-list_&]:sm:aspect-[3/4] [.view-mode-list_&]:sm:h-auto [.view-mode-list_&]:sm:w-48"
           >
             {post.mainImage?.asset && (
               <Image
                 src={urlFor(post.mainImage).url()}
                 alt={post.mainImage.alt || post.title || "Post image"}
-                width={300}
+                width={565}
                 height={300}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                className="aspect-[16/7] h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             )}
 
