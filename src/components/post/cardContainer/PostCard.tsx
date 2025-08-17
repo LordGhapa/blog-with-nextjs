@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { unstable_ViewTransition as ViewTransition } from "react";
 import { motion, Transition } from "framer-motion";
 import { useEffect, useState } from "react";
+import IsReadButton from "@/components/isReadButton";
 
 interface PostCardProps {
   post: ALL_POSTS_QUERYResult[0];
@@ -20,10 +21,7 @@ interface PostCardProps {
 export function PostCard({ post, locale }: PostCardProps) {
   const t = useTranslations("post");
   const date = new Date(post._createdAt).toLocaleDateString(locale);
-  const postIsRead = false;
-  const handleReadToggle = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
+
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     let isActive = true;
@@ -39,7 +37,7 @@ export function PostCard({ post, locale }: PostCardProps) {
 
   const transition: Transition = {
     type: "spring",
-    stiffness: 400,
+    stiffness: 1000,
     damping: 40,
   };
 
@@ -50,14 +48,14 @@ export function PostCard({ post, locale }: PostCardProps) {
         initial={false}
         transition={isMounted ? transition : { duration: 0 }}
         className={cn(
-          "group relative cursor-pointer overflow-hidden rounded-xl border border-gray-700 bg-white shadow-sm transition-colors duration-300 hover:shadow-lg dark:bg-gray-800 dark:hover:shadow-2xl",
+          "group relative cursor-pointer overflow-hidden rounded-xl border border-gray-700 bg-white shadow-sm transition-colors duration-300 hover:shadow-lg dark:bg-gray-800 dark:hover:shadow-2xl [.view-mode-grid_&]:max-w-[565px]",
         )}
       >
         <div className="flex h-full flex-col [.view-mode-list_&]:sm:flex-row">
           <motion.div
             initial={false}
             transition={isMounted ? transition : { duration: 0 }}
-            className="relative overflow-hidden [.view-mode-list_&]:sm:aspect-[3/4] [.view-mode-list_&]:sm:h-auto [.view-mode-list_&]:sm:w-48"
+            className="relative max-w-[565px] overflow-hidden [.view-mode-list_&]:sm:aspect-[3/4] [.view-mode-list_&]:sm:h-auto [.view-mode-list_&]:sm:w-48"
           >
             {post.mainImage?.asset && (
               <Image
@@ -65,7 +63,7 @@ export function PostCard({ post, locale }: PostCardProps) {
                 alt={post.mainImage.alt || post.title || "Post image"}
                 width={565}
                 height={300}
-                className="aspect-[16/7] h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 [.view-mode-grid_&]:aspect-[16/7]"
               />
             )}
 
@@ -85,22 +83,8 @@ export function PostCard({ post, locale }: PostCardProps) {
                 <Calendar className="h-4 w-4" />
                 <span>{date}</span>
               </div>
-              <button
-                onClick={handleReadToggle}
-                title={postIsRead ? "Marcar como não lido" : "Marcar como lido"}
-                className={cn(
-                  "z-20 rounded-full p-2 transition-all duration-200",
-                  postIsRead
-                    ? "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400"
-                    : "bg-gray-100 text-gray-500 hover:bg-orange-100 hover:text-orange-500 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-orange-900/30",
-                )}
-              >
-                {postIsRead ? (
-                  <Eye className="h-4 w-4" />
-                ) : (
-                  <EyeOff className="h-4 w-4" />
-                )}
-              </button>
+
+              <IsReadButton postId={post._id} />
             </div>
 
             <Link href={`/${post.slug}`}>

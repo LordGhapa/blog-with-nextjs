@@ -17,7 +17,7 @@ export function ViewModeToggle() {
       aria-label={`Mudar para visualização em ${
         viewMode === "grid" ? "list" : "grid"
       }`}
-      className="relative hidden h-10 w-20 items-center rounded-lg bg-gray-300 p-1 transition-colors sm:flex dark:bg-gray-800"
+      className="relative hidden h-10 w-20 cursor-pointer items-center rounded-lg bg-gray-300 p-1 transition-colors sm:flex dark:bg-gray-800"
     >
       <div className="absolute h-8 w-8 translate-x-0 cursor-pointer rounded-md bg-orange-500 shadow-md ring-1 ring-gray-900/5 transition-transform duration-300 ease-in-out [.view-mode-grid_&]:translate-x-[0.2rem] [.view-mode-list_&]:translate-x-[2.3rem]" />
 
