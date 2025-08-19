@@ -1,5 +1,5 @@
 "use client";
-import { Tag, Eye, EyeOff, Calendar } from "lucide-react";
+import { Tag, Calendar } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -8,7 +8,7 @@ import { Link } from "@/i18n/navigation";
 import { urlFor } from "@/sanity/lib/image";
 import { ALL_POSTS_QUERYResult } from "../../../../sanity.types";
 import { cn } from "@/lib/utils";
-import { unstable_ViewTransition as ViewTransition } from "react";
+
 import { motion, Transition } from "framer-motion";
 import { useEffect, useState } from "react";
 import IsReadButton from "@/components/isReadButton";
@@ -42,92 +42,90 @@ export function PostCard({ post, locale }: PostCardProps) {
   };
 
   return (
-    <ViewTransition name={`post-component-${post._id}`}>
-      <motion.article
-        layout
-        initial={false}
-        transition={isMounted ? transition : { duration: 0 }}
-        className={cn(
-          "group relative cursor-pointer overflow-hidden rounded-xl border border-gray-700 bg-white shadow-sm transition-colors duration-300 hover:shadow-lg dark:bg-gray-800 dark:hover:shadow-2xl [.view-mode-grid_&]:max-w-[565px]",
-        )}
-      >
-        <div className="flex h-full flex-col [.view-mode-list_&]:sm:flex-row">
-          <motion.div
-            initial={false}
-            transition={isMounted ? transition : { duration: 0 }}
-            className="relative max-w-[565px] overflow-hidden [.view-mode-list_&]:sm:aspect-[3/4] [.view-mode-list_&]:sm:h-auto [.view-mode-list_&]:sm:w-48"
-          >
-            {post.mainImage?.asset && (
-              <Image
-                src={urlFor(post.mainImage).url()}
-                alt={post.mainImage.alt || post.title || "Post image"}
-                width={565}
-                height={300}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 [.view-mode-grid_&]:aspect-[16/7]"
-              />
-            )}
+    <motion.article
+      layout
+      initial={false}
+      transition={isMounted ? transition : { duration: 0 }}
+      className={cn(
+        "group relative cursor-pointer overflow-hidden rounded-xl border border-gray-700 bg-white shadow-sm transition-colors duration-300 hover:shadow-lg dark:bg-gray-800 dark:hover:shadow-2xl [.view-mode-grid_&]:max-w-[565px]",
+      )}
+    >
+      <div className="flex h-full flex-col [.view-mode-list_&]:sm:flex-row">
+        <motion.div
+          initial={false}
+          transition={isMounted ? transition : { duration: 0 }}
+          className="relative max-w-[565px] overflow-hidden [.view-mode-list_&]:sm:aspect-[3/4] [.view-mode-list_&]:sm:h-auto [.view-mode-list_&]:sm:w-48"
+        >
+          {post.mainImage?.asset && (
+            <Image
+              src={urlFor(post.mainImage).url()}
+              alt={post.mainImage.alt || post.title || "Post image"}
+              width={565}
+              height={300}
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 [.view-mode-grid_&]:aspect-[16/7]"
+            />
+          )}
 
-            <div className="absolute top-4 left-4">
-              <span className="rounded-full bg-orange-500 px-3 py-1 text-sm font-medium text-white">
-                {post.categories?.[0]?.title ?? ""}
-              </span>
-            </div>
-          </motion.div>
-          <motion.div
-            initial={false}
-            transition={isMounted ? transition : { duration: 0 }}
-            className="flex flex-1 flex-col p-6"
-          >
-            <div className="mb-3 flex items-center justify-between">
-              <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-                <Calendar className="h-4 w-4" />
-                <span>{date}</span>
-              </div>
-
-              <IsReadButton postId={post._id} />
+          <div className="absolute top-4 left-4">
+            <span className="rounded-full bg-orange-500 px-3 py-1 text-sm font-medium text-white">
+              {post.categories?.[0]?.title ?? ""}
+            </span>
+          </div>
+        </motion.div>
+        <motion.div
+          initial={false}
+          transition={isMounted ? transition : { duration: 0 }}
+          className="flex flex-1 flex-col p-6"
+        >
+          <div className="mb-3 flex items-center justify-between">
+            <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+              <Calendar className="h-4 w-4" />
+              <span>{date}</span>
             </div>
 
-            <Link href={`/${post.slug}`}>
-              <span className="absolute inset-0 z-10"></span>
-              <h3 className="relative z-10 mb-3 line-clamp-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-orange-500 dark:text-white dark:group-hover:text-orange-400">
-                {post.title}
-              </h3>
-            </Link>
+            <IsReadButton postId={post._id} />
+          </div>
 
-            <div className="relative mb-4 line-clamp-3 text-base text-gray-600 dark:text-gray-300">
-              <ReactMarkdown
-                components={{ p: ({ node, ...props }) => <span {...props} /> }}
-              >
-                {post?.body?.replace(/\\n/g, "\n") ?? ""}
-              </ReactMarkdown>
-            </div>
+          <Link href={`/post/${post.slug}`}>
+            <span className="absolute inset-0 z-10"></span>
+            <h3 className="relative z-10 mb-3 line-clamp-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-orange-500 dark:text-white dark:group-hover:text-orange-400">
+              {post.title}
+            </h3>
+          </Link>
 
-            <div className="relative mt-auto flex flex-col gap-1 pt-4">
-              <div className="flex flex-wrap gap-2">
-                {post.tags?.slice(0, 4).map((tag, index) => (
-                  <Link
-                    href={"#"}
-                    key={tag._id}
-                    className={cn(
-                      "group/tag z-10 inline-flex items-center space-x-1 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:text-orange-500 dark:bg-gray-700 dark:text-gray-300",
-                      // A quarta tag (index 3) é escondida por padrão no Grid View
-                      { "[.view-mode-grid_&]:hidden": index === 3 },
-                    )}
-                  >
-                    <Tag className="h-3 w-3 group-hover/tag:text-orange-500" />
-                    <span className="group-hover/tag:text-orange-500">
-                      {tag.title}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-              <span className="z-0 text-end text-sm font-medium text-orange-500 capitalize transition-colors group-hover:text-orange-600 dark:text-orange-400 dark:group-hover:text-orange-300">
-                {t("readMore")} →
-              </span>
+          <div className="relative mb-4 line-clamp-3 text-base text-gray-600 dark:text-gray-300">
+            <ReactMarkdown
+              components={{ p: ({ node, ...props }) => <span {...props} /> }}
+            >
+              {post?.body?.replace(/\\n/g, "\n") ?? ""}
+            </ReactMarkdown>
+          </div>
+
+          <div className="relative mt-auto flex flex-col gap-1 pt-4">
+            <div className="flex flex-wrap gap-2">
+              {post.tags?.slice(0, 4).map((tag, index) => (
+                <Link
+                  href={"#"}
+                  key={tag._id}
+                  className={cn(
+                    "group/tag z-10 inline-flex items-center space-x-1 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:text-orange-500 dark:bg-gray-700 dark:text-gray-300",
+                    // A quarta tag (index 3) é escondida por padrão no Grid View
+                    { "[.view-mode-grid_&]:hidden": index === 3 },
+                  )}
+                >
+                  <Tag className="h-3 w-3 group-hover/tag:text-orange-500" />
+                  <span className="group-hover/tag:text-orange-500">
+                    {tag.title}
+                  </span>
+                </Link>
+              ))}
             </div>
-          </motion.div>
-        </div>
-      </motion.article>
-    </ViewTransition>
+            <span className="z-0 text-end text-sm font-medium text-orange-500 capitalize transition-colors group-hover:text-orange-600 dark:text-orange-400 dark:group-hover:text-orange-300">
+              {t("readMore")} →
+            </span>
+          </div>
+        </motion.div>
+      </div>
+    </motion.article>
   );
 }

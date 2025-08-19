@@ -15,10 +15,7 @@ const nextConfig: NextConfig = {
         hostname: "cdn.sanity.io",
       },
     ],
-  },
-  experimental: {
-    viewTransition: true,
-  },
+  }
 };
 
 const withNextIntl = createNextIntlPlugin();

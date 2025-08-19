@@ -6,16 +6,7 @@ import { ArrowLeft } from "lucide-react";
 export default function GoBackButton() {
   const router = useRouter();
 
-  // const onBack = () => {
-  //   if (!document.startViewTransition) {
-  //     router.back();
-  //     return;
-  //   }
 
-  //   document.startViewTransition(() => {
-  //     router.back();
-  //   });
-  // };
 
   return (
     <Link

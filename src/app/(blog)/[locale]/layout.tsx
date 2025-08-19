@@ -11,7 +11,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import Header from "../../../components/header";
 import { ThemeProvider } from "@/providers/theme-provider";
-import ViewTransitionsProvider from "@/providers/ViewTransitionsProvider";
+
 import { ViewModeScript } from "@/components/ViewModeScript";
 import { ViewModeUpdater } from "@/components/ViewModeUpdater";
 
@@ -59,7 +59,9 @@ export default async function RootLayout({
           >
             <Header />
           </ThemeProvider>
-          <ViewTransitionsProvider>{children}</ViewTransitionsProvider>
+
+            {children}
+           
           <ViewModeUpdater/>
         </NextIntlClientProvider>
         <SanityLive onError={handleError} />

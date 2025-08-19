@@ -6,7 +6,7 @@ import LanguageSwitcher from "../language-switcher";
 import DarkMode from "./darkMode";
 import MobileMenu from "./mobileMenu";
 import { Suspense } from "react";
-import { unstable_ViewTransition as ViewTransition } from "react";
+
 export default function Menu() {
   const t = useTranslations("header");
   const messages = useMessages();
@@ -16,7 +16,7 @@ export default function Menu() {
   }[];
 
   return (
-    <ViewTransition name={`menu`}>
+
       <header className="border-b border-gray-200 bg-white/95 py-2 backdrop-blur-sm transition-colors dark:border-gray-700 dark:bg-gray-900/95">
         <div className="container mx-auto flex max-w-7xl items-center justify-between px-4">
           {/* logo */}
@@ -65,6 +65,6 @@ export default function Menu() {
           {/* MenuMobile */}
         </div>
       </header>
-    </ViewTransition>
+
   );
 }

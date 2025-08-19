@@ -5,8 +5,6 @@ import { PostCard } from "./PostCard";
 import { useLocale } from "next-intl";
 import { useViewStore } from "@/app/store";
 
-import { useEffect, useState } from "react";
-
 import { ViewModeToggle } from "./ViewModeToggle";
 
 interface CardContainerProps {
@@ -14,21 +12,8 @@ interface CardContainerProps {
 }
 
 export default function CardContainer({ posts }: CardContainerProps) {
-  const { viewMode, setViewMode } = useViewStore();
+  useViewStore();
   const locale = useLocale();
-
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
-    let isActive = true;
-
-    setTimeout(() => {
-      if (isActive) setIsMounted(true);
-    }, 0);
-
-    return () => {
-      isActive = false;
-    };
-  }, []);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { create, StateCreator } from "zustand";
-import { persist, PersistOptions,subscribeWithSelector } from "zustand/middleware";
+import { persist, PersistOptions } from "zustand/middleware";
 
 
 function createSyncedStore<T extends object>(
@@ -59,7 +59,7 @@ export const useReadPostsStore = createSyncedStore<ReadPostsState>(
     addReadPost: (id) =>
       set((state) => {
         if (state.readPosts.includes(id)) {
-          return state; 
+          return state;
         }
         return { readPosts: [...state.readPosts, id] };
       }),

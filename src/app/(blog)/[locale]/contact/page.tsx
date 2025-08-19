@@ -9,7 +9,7 @@ import {
   Phone,
   Clock,
 } from "lucide-react";
-import GoBackButton from "../[slug]/components/goBackButton";
+
 
 export default function ContactPage() {
   const contactLinks = [
