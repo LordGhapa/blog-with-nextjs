@@ -64,6 +64,7 @@ export default function LanguageSwitcher() {
                 {selectedLocale ? (
                   <>
                     <Flag
+                      alt={`flag ${locales.find((l) => l.code === selectedLocale)?.flag}`}
                       code={
                         locales.find((l) => l.code === selectedLocale)?.flag
                       }
