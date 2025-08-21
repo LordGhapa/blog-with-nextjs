@@ -10,7 +10,7 @@ import { ALL_POSTS_QUERYResult } from "../../../../sanity.types";
 import { cn } from "@/lib/utils";
 
 import { motion, Transition } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import IsReadButton from "@/components/isReadButton";
 
 interface PostCardProps {
@@ -22,18 +22,13 @@ export function PostCard({ post, locale }: PostCardProps) {
   const t = useTranslations("post");
   const date = new Date(post._createdAt).toLocaleDateString(locale);
 
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
-    let isActive = true;
+  const [isInitialPageLoad] = useState(() => {
+    if (typeof window !== "undefined") {
+      return !document.documentElement.classList.contains("page-loaded");
+    }
 
-    setTimeout(() => {
-      if (isActive) setIsMounted(true);
-    }, 0);
-
-    return () => {
-      isActive = false;
-    };
-  }, []);
+    return true;
+  });
 
   const transition: Transition = {
     type: "spring",
@@ -43,17 +38,17 @@ export function PostCard({ post, locale }: PostCardProps) {
 
   return (
     <motion.article
+      key={post._id}
       layout
-      initial={false}
-      transition={isMounted ? transition : { duration: 0 }}
+      layoutId={post._id}
+      transition={isInitialPageLoad ? { duration: 0 } : transition}
       className={cn(
         "group relative cursor-pointer overflow-hidden rounded-xl border border-gray-700 bg-white shadow-sm transition-colors duration-300 hover:shadow-lg dark:bg-gray-800 dark:hover:shadow-2xl [.view-mode-grid_&]:max-w-[565px]",
       )}
     >
       <div className="flex h-full flex-col [.view-mode-list_&]:sm:flex-row">
         <motion.div
-          initial={false}
-          transition={isMounted ? transition : { duration: 0 }}
+          transition={isInitialPageLoad ? { duration: 0 } : transition}
           className="relative max-w-[565px] overflow-hidden [.view-mode-list_&]:sm:aspect-[3/4] [.view-mode-list_&]:sm:h-auto [.view-mode-list_&]:sm:w-48"
         >
           {post.mainImage?.asset && (
@@ -72,37 +67,49 @@ export function PostCard({ post, locale }: PostCardProps) {
             </span>
           </div>
         </motion.div>
-        <motion.div
-          initial={false}
-          transition={isMounted ? transition : { duration: 0 }}
-          className="flex flex-1 flex-col p-6"
-        >
-          <div className="mb-3 flex items-center justify-between">
+        <div className="flex flex-1 flex-col p-6">
+          <motion.div
+            transition={isInitialPageLoad ? { duration: 0 } : transition}
+            layoutId={`post-extra-${post._id}`}
+            className="mb-3 flex items-center justify-between"
+          >
             <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
               <Calendar className="h-4 w-4" />
               <span>{date}</span>
             </div>
 
             <IsReadButton postId={post._id} />
-          </div>
+          </motion.div>
 
           <Link href={`/post/${post.slug}`}>
-            <span className="absolute inset-0 z-10"></span>
-            <h3 className="relative z-10 mb-3 line-clamp-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-orange-500 dark:text-white dark:group-hover:text-orange-400">
+            <span className="absolute inset-0 z-10" />
+            <motion.h3
+              transition={isInitialPageLoad ? { duration: 0 } : transition}
+              layoutId={`post-title-${post._id}`}
+              className="relative z-10 mb-3 line-clamp-2 text-xl font-bold text-gray-900 transition-colors group-hover:text-orange-500 dark:text-white dark:group-hover:text-orange-400"
+            >
               {post.title}
-            </h3>
+            </motion.h3>
           </Link>
 
-          <div className="relative mb-4 line-clamp-3 text-base text-gray-600 dark:text-gray-300">
+          <motion.div
+            transition={isInitialPageLoad ? { duration: 0 } : transition}
+            layoutId={`post-text-${post._id}`}
+            className="relative mb-4 line-clamp-3 text-base text-gray-600 dark:text-gray-300"
+          >
             <ReactMarkdown
               components={{ p: ({ node, ...props }) => <span {...props} /> }}
             >
               {post?.body?.replace(/\\n/g, "\n") ?? ""}
             </ReactMarkdown>
-          </div>
+          </motion.div>
 
           <div className="relative mt-auto flex flex-col gap-1 pt-4">
-            <div className="flex flex-wrap gap-2">
+            <motion.div
+              transition={isInitialPageLoad ? { duration: 0 } : transition}
+              layoutId={`post-tags-${post._id}`}
+              className="flex flex-wrap gap-2"
+            >
               {post.tags?.slice(0, 4).map((tag, index) => (
                 <Link
                   href={"#"}
@@ -119,12 +126,12 @@ export function PostCard({ post, locale }: PostCardProps) {
                   </span>
                 </Link>
               ))}
-            </div>
+            </motion.div>
             <span className="z-0 text-end text-sm font-medium text-orange-500 capitalize transition-colors group-hover:text-orange-600 dark:text-orange-400 dark:group-hover:text-orange-300">
               {t("readMore")} →
             </span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </motion.article>
   );

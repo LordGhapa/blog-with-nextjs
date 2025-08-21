@@ -14,7 +14,7 @@ export default function IsReadButton({ postId }: IsReadButtonProps) {
   useEffect(() => {
     setIsMounted(true);
   }, []);
-  if (isMounted === false) return;
+  if (isMounted === false) return <div className="size-8 rounded-full" />;
 
   const postIsRead = isPostRead(postId);
 

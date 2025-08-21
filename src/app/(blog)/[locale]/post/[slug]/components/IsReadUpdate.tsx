@@ -8,8 +8,9 @@ interface IsReadUpdateProps {
 }
 
 export default function IsReadUpdate({ postId }: IsReadUpdateProps) {
-  const { addReadPost } = useReadPostsStore();
+  const { addReadPost, isPostRead } = useReadPostsStore();
   useEffect(() => {
+    if (isPostRead(postId)) return;
     const timer = setTimeout(() => {
       addReadPost(postId);
     }, 120000); // 2 minutes in milliseconds

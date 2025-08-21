@@ -1,7 +1,6 @@
 import { create, StateCreator } from "zustand";
 import { persist, PersistOptions } from "zustand/middleware";
 
-
 function createSyncedStore<T extends object>(
   creator: StateCreator<T, [], [["zustand/persist", T]]>,
   options: PersistOptions<T>,
@@ -17,7 +16,10 @@ function createSyncedStore<T extends object>(
             useStore.setState(newPersistedState.state);
           }
         } catch (error) {
-          console.error(`Error parsing ${options.name} from localStorage`, error);
+          console.error(
+            `Error parsing ${options.name} from localStorage`,
+            error,
+          );
         }
       }
     });
@@ -26,12 +28,10 @@ function createSyncedStore<T extends object>(
   return useStore;
 }
 
-
 interface ViewState {
   viewMode: "grid" | "list";
   setViewMode: (mode: "grid" | "list") => void;
 }
-
 
 export const useViewStore = createSyncedStore<ViewState>(
   (set) => ({
@@ -43,7 +43,6 @@ export const useViewStore = createSyncedStore<ViewState>(
   },
 );
 
-
 interface ReadPostsState {
   readPosts: string[];
   addReadPost: (id: string) => void;
@@ -51,7 +50,6 @@ interface ReadPostsState {
   isPostRead: (id: string) => boolean;
   getAllReadPosts: () => string[];
 }
-
 
 export const useReadPostsStore = createSyncedStore<ReadPostsState>(
   (set, get) => ({
@@ -74,3 +72,5 @@ export const useReadPostsStore = createSyncedStore<ReadPostsState>(
     name: "read-posts-storage",
   },
 );
+
+
