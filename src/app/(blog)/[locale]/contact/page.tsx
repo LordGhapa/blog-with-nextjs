@@ -8,8 +8,8 @@ import {
   MapPin,
   Phone,
   Clock,
+  BookOpen,
 } from "lucide-react";
-
 
 export default function ContactPage() {
   const contactLinks = [
@@ -31,8 +31,10 @@ export default function ContactPage() {
     },
     {
       name: "LinkedIn",
+      // value: "linkedin.com/in/iahistorietas",
       value: "linkedin.com/in/iahistorietas",
       href: "https://linkedin.com/in/iahistorietas",
+
       icon: Linkedin,
       description: "Conecte-se conosco profissionalmente",
       color: "text-blue-700 dark:text-blue-300",
@@ -69,10 +71,13 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl">
+    <div className="mx-auto max-w-6xl py-8">
       {/* Header */}
       <div className="mb-8">
         <div className="mb-12 text-center">
+          <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600">
+            <BookOpen className="h-12 w-12 text-white" />
+          </div>
           <h1 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
             Entre em <span className="text-orange-500">Contato</span>
           </h1>
@@ -120,7 +125,7 @@ export default function ContactPage() {
                         >
                           <IconComponent className="h-6 w-6" />
                         </div>
-                        <div className="flex-1">
+                        <div className="">
                           <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
                             {link.name}
                           </h3>
@@ -131,7 +136,9 @@ export default function ContactPage() {
                             {link.description}
                           </p>
                         </div>
-                        <ExternalLink className="h-4 w-4 text-gray-400 transition-colors group-hover:text-orange-500" />
+                        <div>
+                          <ExternalLink className="size-4 text-gray-400 transition-colors group-hover:text-orange-500" />
+                        </div>
                       </div>
                     </a>
                   );

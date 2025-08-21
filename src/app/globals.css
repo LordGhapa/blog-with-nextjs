@@ -4,9 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
 
-.page-loaded::view-transition-new(.site-transition) {
-  animation: circle-in 300ms ease-in-out;
-}
+
 
 html:not(.dark)::view-transition-new(root) {
   animation: circle-in 300ms ease-in;

@@ -34,29 +34,29 @@ export function PageTransition({ children }: PageTransitionProps) {
 
   const shouldUseCircleAnimation = !isLeavingHomeToPost && !isLeavingPostToHome;
 
-  // Animação de círculo AGORA com a propriedade 'exit' inversa
   const circleAnimation: Variants = {
     initial: { clipPath: "circle(0% at 50% 0%)" },
-    animate: { clipPath: "circle(120% at 50% 0%)" },
-    exit: { clipPath: "circle(0% at 50% 100%)" }, // <-- A MÁGICA ESTÁ AQUI
+    animate: { clipPath: "circle(100% at 50% 0%)" },
+    exit: {
+      clipPath: "circle(100% at 50% 0%)",
+    },
   };
 
   const animation = shouldUseCircleAnimation ? circleAnimation : undefined;
 
   return (
-    <AnimatePresence>
+    <AnimatePresence key={pathname}>
       <motion.div
-      // key={pathname}
-      // variants={animation}
-      // initial="initial"
-
-      // animate="animate"
-      // exit="exit"
-      // transition={{ duration: 2.5, ease: "easeInOut" }}
+        key={pathname}
+        variants={animation}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={{
+          duration: 0.5,
+          ease: [0.22, 1, 0.36, 1],
+        }}
       >
-        <div className="border border-red-500">
-          pathname:{pathname} -- previousPathname: {previousPathname}
-        </div>
         {children}
       </motion.div>
     </AnimatePresence>

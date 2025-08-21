@@ -77,7 +77,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl">
+    <div className="mx-auto max-w-6xl py-8">
       {/* Header */}
       <div className="mb-8">
         {/* Hero Section */}
