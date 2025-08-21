@@ -54,15 +54,12 @@ export default async function RootLayout({
         <NextIntlClientProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >
-
-              <Header />
-            <PageTransition>
-              {children}
-            </PageTransition>
+            <Header />
+            <PageTransition>{children}</PageTransition>
           </ThemeProvider>
 
           <ViewModeUpdater />
