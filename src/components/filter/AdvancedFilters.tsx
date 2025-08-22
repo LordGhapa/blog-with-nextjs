@@ -1,0 +1,133 @@
+import FilterChip from "./filterChip";
+import { BookOpenIcon, TagIcon, SearchIcon } from "lucide-react";
+import {
+  ALL_CATEGORIES_QUERYResult,
+  ALL_TAGS_QUERYResult,
+} from "../../../sanity.types";
+import { CategoryFilterValues, TagFilterValues } from "./index";
+import { FilterState } from "./filterChip";
+
+interface AdvancedFiltersProps {
+  categories: ALL_CATEGORIES_QUERYResult;
+  tags: ALL_TAGS_QUERYResult;
+  categoryFilters: CategoryFilterValues;
+  tagFilters: TagFilterValues;
+  onCategoryFilterChange: (category: string) => void;
+  onTagFilterChange: (tag: string) => void;
+  onClearFilters: () => void;
+}
+
+import React, { useState } from "react";
+
+export default function AdvancedFilters({
+  categories,
+  tags,
+  categoryFilters,
+  tagFilters,
+  onCategoryFilterChange,
+  onTagFilterChange,
+  onClearFilters,
+}: AdvancedFiltersProps) {
+  const [tagSearchQuery, setTagSearchQuery] = useState("");
+
+  const filteredTags = tags.filter((tag) => tag.title);
+
+  const handleClear = () => {
+    onClearFilters();
+    setTagSearchQuery("");
+  };
+
+  return (
+    <div className="mt-6 border-t border-slate-700/50 pt-6">
+      <div className="mb-2 flex items-center justify-between">
+        <h3 className="text-lg font-semibold text-white">Filtros Avançados</h3>
+        <button
+          onClick={handleClear}
+          className="rounded-md px-3 py-1 text-sm font-semibold text-slate-400 transition-colors hover:bg-slate-700/50 hover:text-orange-500"
+        >
+          Limpar Filtros
+        </button>
+      </div>
+
+      <div className="mb-6 flex flex-wrap gap-x-6 gap-y-2 rounded-lg bg-slate-700/30 p-3 text-sm text-slate-400">
+        <span className="font-semibold text-slate-300">
+          Como usar os filtros:
+        </span>
+        <div className="flex items-center gap-2">
+          <div className="h-4 w-4 rounded-full border-2 border-slate-500 bg-slate-600"></div>
+          <span>1º clique: Neutro</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="h-4 w-4 rounded-full border-2 border-green-400 bg-green-500"></div>
+          <span>2º clique: Incluir</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="h-4 w-4 rounded-full border-2 border-red-400 bg-red-500"></div>
+          <span>3º clique: Excluir</span>
+        </div>
+      </div>
+
+      <div className="space-y-6">
+        <div>
+          <h4 className="mb-3 flex items-center gap-2 font-bold text-white">
+            <BookOpenIcon className="h-5 w-5 text-slate-400" />
+            Categorias
+          </h4>
+          <div className="flex flex-wrap gap-3">
+            {categories.map(
+              (category) =>
+                category.slug &&
+                category.title && (
+                  <FilterChip
+                    key={category._id}
+                    label={category.title}
+                    state={
+                      categoryFilters[category.slug] || FilterState.NEUTRAL
+                    }
+                    onClick={() =>
+                      category.slug && onCategoryFilterChange(category.slug)
+                    }
+                  />
+                ),
+            )}
+          </div>
+        </div>
+
+        <div>
+          <h4 className="mb-3 flex items-center gap-2 font-bold text-white">
+            <TagIcon className="h-5 w-5 text-slate-400" />
+            Tags
+          </h4>
+          <div className="relative mb-3">
+            <input
+              type="text"
+              placeholder="Pesquisar tags..."
+              value={tagSearchQuery}
+              onChange={(e) => setTagSearchQuery(e.target.value)}
+              className="w-full rounded-lg border border-slate-700 bg-slate-800 py-2 pr-4 pl-10 text-sm transition-colors focus:ring-2 focus:ring-orange-500 focus:outline-none"
+            />
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <SearchIcon className="h-5 w-5 text-slate-400" />
+            </div>
+          </div>
+          <div className="h-48 overflow-y-auto rounded-lg border border-slate-700 bg-slate-900/50 p-4">
+            <div className="flex flex-wrap gap-3">
+              {filteredTags.map(
+                (tag) =>
+                  tag.slug &&
+                  tag.title && (
+                    <FilterChip
+                      key={tag._id}
+                      label={tag.title}
+                      state={tagFilters[tag.slug] || FilterState.NEUTRAL}
+                      onClick={() => tag.slug && onTagFilterChange(tag.slug)}
+                    />
+                  ),
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

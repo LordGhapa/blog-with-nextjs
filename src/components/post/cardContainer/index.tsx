@@ -11,8 +11,6 @@ interface CardContainerProps {
   posts: ALL_POSTS_QUERYResult;
 }
 
-
-
 export default function CardContainer({ posts }: CardContainerProps) {
   useViewStore();
   const locale = useLocale();

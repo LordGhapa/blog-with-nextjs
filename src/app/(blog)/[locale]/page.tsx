@@ -9,6 +9,8 @@ import { routing } from "@/i18n/routing";
 import CardContainer from "@/components/post/cardContainer";
 import RecentPosts from "@/components/recent-posts";
 
+import Filter from "@/components/filter";
+import HomeView from "@/components/post/homeView";
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -27,15 +29,18 @@ export default async function HomePage({
 
   const data = await getAllPosts(locale);
   const allCategories = await getAllCategories(locale);
-  // console.log("TODAS AS CATEGORIAS", allCategories);
+
   const allTags = await getAllTags(locale);
-  // console.log("TODAS AS Tags", allTags);
 
   return (
     <main className="container mx-auto max-w-7xl px-4 py-8">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
         <div className="lg:col-span-3">
-          <CardContainer posts={data} />
+          <HomeView
+            initialData={data}
+            allCategories={allCategories}
+            allTags={allTags}
+          />
         </div>
         {/* aside */}
         <aside className="space-y-4 lg:col-span-1">
