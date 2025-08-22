@@ -34,7 +34,7 @@ export default function MobileMenu({ headerLinks }: MobileMenuProps) {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" aria-label="Menu Trigger" size="icon">
           <MenuIcon className="h-5 w-5" />
         </Button>
       </SheetTrigger>

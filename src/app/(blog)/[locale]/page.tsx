@@ -1,4 +1,6 @@
 import { getAllPosts } from "@/sanity/lib/fetch/getAllPosts";
+import { getAllCategories } from "@/sanity/lib/fetch/getAllCategories";
+import { getAllTags } from "@/sanity/lib/fetch/getAllTags";
 
 import { setRequestLocale } from "next-intl/server";
 
@@ -24,6 +26,10 @@ export default async function HomePage({
   setRequestLocale(locale);
 
   const data = await getAllPosts(locale);
+  const allCategories = await getAllCategories(locale);
+  // console.log("TODAS AS CATEGORIAS", allCategories);
+  const allTags = await getAllTags(locale);
+  // console.log("TODAS AS Tags", allTags);
 
   return (
     <main className="container mx-auto max-w-7xl px-4 py-8">
