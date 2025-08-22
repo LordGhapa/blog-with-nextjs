@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useMemo, useCallback, useEffect } from "react";
+import React, { useState, useMemo, useCallback, useEffect, useRef } from "react";
 
 import { SearchIcon, XIcon } from "lucide-react";
 import {
@@ -35,6 +35,17 @@ export default function Filter({
   const [searchQuery, setSearchQuery] = useState(
     () => searchParams.get("search") || "",
   );
+  const [inputValue, setInputValue] = useState(searchQuery);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setSearchQuery(inputValue);
+    }, 1500);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [inputValue]);
 
   const [categoryFilters, setCategoryFilters] = useState<CategoryFilterValues>(
     () => {
@@ -243,8 +254,8 @@ export default function Filter({
             <input
               type="text"
               placeholder="Pesquisar histórias..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
               className="w-full rounded-lg border border-slate-600 bg-slate-700/50 py-3 pr-10 pl-10 transition-colors focus:ring-2 focus:ring-orange-500 focus:outline-none"
             />
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
