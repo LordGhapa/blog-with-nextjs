@@ -8,7 +8,7 @@ import IsReadButton from "@/components/isReadButton";
 import { urlFor } from "@/sanity/lib/image";
 import ReactMarkdown from "react-markdown";
 import { POST_BY_SLUG_QUERYResult } from "../../../../../../../../sanity.types";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 
@@ -35,7 +35,9 @@ export default function PageView({
   return (
     <motion.main className="container mx-auto w-full max-w-4xl px-4 py-8">
       <div className="mb-8">
-        <GoBackButton />
+        <Suspense>
+          <GoBackButton />
+        </Suspense>
         <IsReadUpdate postId={post?._id} />
 
         <motion.div

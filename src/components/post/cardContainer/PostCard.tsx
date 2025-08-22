@@ -3,6 +3,7 @@ import { Tag, Calendar } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 
 import { Link } from "@/i18n/navigation";
 import { urlFor } from "@/sanity/lib/image";
@@ -35,6 +36,13 @@ export function PostCard({ post, locale }: PostCardProps) {
     stiffness: 1000,
     damping: 40,
   };
+
+  const searchParams = useSearchParams();
+
+  // Monta a URL do post mantendo os search params atuais
+  const postUrl = `/post/${post.slug}${
+    searchParams?.toString() ? `?${searchParams.toString()}` : ""
+  }`;
 
   return (
     <motion.article
@@ -81,7 +89,7 @@ export function PostCard({ post, locale }: PostCardProps) {
             <IsReadButton postId={post._id} />
           </motion.div>
 
-          <Link href={`/post/${post.slug}`}>
+          <Link href={postUrl}>
             <span className="absolute inset-0 z-10" />
             <motion.h3
               transition={isInitialPageLoad ? { duration: 0 } : transition}

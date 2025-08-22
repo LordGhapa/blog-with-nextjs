@@ -21,7 +21,8 @@
     ]
   },
   "post": {
-    "readMore": "read more"
+    "readMore": "read more",
+    "backToHome": "Back to Home"
   },
   "recentPosts": "Recent Posts",
   "loadMore": "Load More",

@@ -35,11 +35,9 @@ export function PageTransition({ children }: PageTransitionProps) {
   const shouldUseCircleAnimation = !isLeavingHomeToPost && !isLeavingPostToHome;
 
   const circleAnimation: Variants = {
-    initial: { clipPath: "circle(0% at 50% 0%)" },
-    animate: { clipPath: "circle(300vmax at 50% 0%)" },
-    exit: {
-      clipPath: "circle(100% at 50% 0%)",
-    },
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
   };
 
   const animation = shouldUseCircleAnimation ? circleAnimation : undefined;
@@ -53,8 +51,8 @@ export function PageTransition({ children }: PageTransitionProps) {
         animate="animate"
         exit="exit"
         transition={{
-          duration: 0.5,
-          ease: [0.22, 1, 0.36, 1],
+          duration: 0.3,
+          ease: "easeInOut",
         }}
       >
         {children}

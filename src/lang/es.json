@@ -17,7 +17,8 @@
     ]
   },
   "post": {
-    "readMore": "ver más"
+    "readMore": "ver más",
+    "backToHome": "Volver al Inicio"
   },
   "recentPosts": "Publicaciones Recientes",
   "loadMore": "Ver Más",

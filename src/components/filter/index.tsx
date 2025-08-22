@@ -15,7 +15,7 @@ import { useTranslations } from "next-intl";
 
 export type CategoryFilterValues = Record<string, FilterState>;
 export type TagFilterValues = Record<string, FilterState>;
-
+import { motion } from "framer-motion";
 interface FilterProps {
   posts: ALL_POSTS_QUERYResult;
   categories: ALL_CATEGORIES_QUERYResult;
@@ -32,7 +32,7 @@ export default function Filter({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const t = useTranslations('filter');
+  const t = useTranslations("filter");
 
   const [searchQuery, setSearchQuery] = useState(
     () => searchParams.get("search") || "",
@@ -248,13 +248,13 @@ export default function Filter({
     Object.keys(tagFilters).length > 0;
 
   return (
-    <div>
+    <motion.div layout transition={{ duration: 0.3 }}>
       <div className="mb-8 rounded-xl border bg-white p-6 dark:border-slate-700 dark:bg-slate-800/50">
         <div className="flex flex-col gap-4 md:flex-row">
           <div className="relative flex-grow">
             <input
               type="text"
-              placeholder={t('searchStories')}
+              placeholder={t("searchStories")}
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               className="w-full rounded-lg border border-gray-300 bg-gray-100 py-3 pr-10 pl-10 transition-colors focus:ring-2 focus:ring-orange-500 focus:outline-none dark:border-slate-600 dark:bg-slate-700/50"
@@ -266,7 +266,7 @@ export default function Filter({
               <button
                 onClick={handleClearFilters}
                 className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3 text-gray-500 transition-colors hover:text-gray-700 dark:text-slate-400 dark:hover:text-white"
-                aria-label={t('clearAllFilters')}
+                aria-label={t("clearAllFilters")}
               >
                 <XIcon className="h-5 w-5" />
               </button>
@@ -276,7 +276,7 @@ export default function Filter({
             onClick={toggleAdvancedFilters}
             className="flex shrink-0 items-center justify-center gap-2 rounded-lg bg-orange-600 px-6 py-3 font-bold text-white transition-colors hover:bg-orange-700"
           >
-            {t('advancedSearch')}{" "}
+            {t("advancedSearch")}{" "}
             <span
               className={`transform transition-transform duration-300 ${
                 isAdvancedFiltersOpen ? "rotate-180" : ""
@@ -299,6 +299,6 @@ export default function Filter({
           />
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

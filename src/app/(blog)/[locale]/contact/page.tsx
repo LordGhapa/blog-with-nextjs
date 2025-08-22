@@ -31,8 +31,8 @@ export default function ContactPage() {
     {
       name: "LinkedIn",
       // value: "linkedin.com/in/iahistorietas",
-      value: "linkedin.com/in/iahistorietas",
-      href: "https://linkedin.com/in/iahistorietas",
+      value: "linkedin.com/in/felipe-lacerda-oliveira/",
+      href: "https://www.linkedin.com/in/felipe-lacerda-oliveira/",
 
       icon: Linkedin,
       description: "Conecte-se conosco profissionalmente",
