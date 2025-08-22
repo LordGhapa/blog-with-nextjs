@@ -24,6 +24,22 @@
     "readMore": "read more"
   },
   "recentPosts": "Recent Posts",
+  "loadMore": "Load More",
+  "filter": {
+    "title": "Filter",
+    "advancedSearch": "Advanced Search",
+    "searchStories": "Search stories...",
+    "clearAllFilters": "Clear all filters",
+    "advancedFilters": "Advanced Filters",
+    "clearFilters": "Clear Filters",
+    "howToUseFilters": "How to use filters:",
+    "firstClick": "1st click: Neutral",
+    "secondClick": "2nd click: Include",
+    "thirdClick": "3rd click: Exclude",
+    "categories": "Categories",
+    "tags": "Tags",
+    "searchTags": "Search tags..."
+  },
   "notFound": {
     "title": "Page Not Found",
     "description": "The page you are looking for does not exist or has been moved.",

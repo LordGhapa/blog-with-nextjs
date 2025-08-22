@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ALL_POSTS_QUERYResult } from "../../../../sanity.types";
 import { PostCard } from "./PostCard";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useViewStore } from "@/app/store";
 
 import { ViewModeToggle } from "./ViewModeToggle";
@@ -17,6 +17,7 @@ interface CardContainerProps {
 export default function CardContainer({ posts }: CardContainerProps) {
   useViewStore();
   const locale = useLocale();
+  const t = useTranslations();
   const [visiblePosts, setVisiblePosts] = useState(POSTS_PER_PAGE);
 
   const handleLoadMore = () => {
@@ -49,7 +50,7 @@ export default function CardContainer({ posts }: CardContainerProps) {
             onClick={handleLoadMore}
             className="rounded-lg bg-orange-500 px-6 py-3 font-bold text-white transition-colors duration-300 hover:bg-orange-600"
           >
-            Ver Mais
+            {t('loadMore')}
           </button>
         </div>
       )}

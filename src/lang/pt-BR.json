@@ -20,6 +20,22 @@
     "readMore": "ler mais"
   },
   "recentPosts": "Posts Recentes",
+  "loadMore": "Ver Mais",
+  "filter": {
+    "title": "Filtro",
+    "advancedSearch": "Busca Avançada",
+    "searchStories": "Pesquisar histórias...",
+    "clearAllFilters": "Limpar todos os filtros",
+    "advancedFilters": "Filtros Avançados",
+    "clearFilters": "Limpar Filtros",
+    "howToUseFilters": "Como usar os filtros:",
+    "firstClick": "1º clique: Neutro",
+    "secondClick": "2º clique: Incluir",
+    "thirdClick": "3º clique: Excluir",
+    "categories": "Categorias",
+    "tags": "Tags",
+    "searchTags": "Pesquisar tags..."
+  },
   "notFound": {
     "title": "Página Não Encontrada",
     "description": "A página que você está procurando não existe ou foi movida.",
