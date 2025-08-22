@@ -1,16 +1,11 @@
 "use client";
 
-import { Link, useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { ArrowLeft } from "lucide-react";
 
 export default function GoBackButton() {
-  const router = useRouter();
-
-
-
   return (
     <Link
-      // onClick={onBack}
       href={"/"}
       className="mb-6 flex items-center space-x-2 text-orange-500 transition-colors hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300"
     >

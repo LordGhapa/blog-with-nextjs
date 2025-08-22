@@ -98,7 +98,7 @@ export function PostCard({ post, locale }: PostCardProps) {
             className="relative mb-4 line-clamp-3 text-base text-gray-600 dark:text-gray-300"
           >
             <ReactMarkdown
-              components={{ p: ({ node, ...props }) => <span {...props} /> }}
+              components={{ p: ({ ...props }) => <span {...props} /> }}
             >
               {post?.body?.replace(/\\n/g, "\n") ?? ""}
             </ReactMarkdown>

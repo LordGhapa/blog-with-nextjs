@@ -42,7 +42,7 @@ export default function AdvancedFilters({
   };
 
   return (
-    <div className="mt-6 border-t border-gray-200 dark:border-slate-700/50 pt-6">
+    <div className="mt-6 border-t border-gray-200 pt-6 dark:border-slate-700/50">
       <div className="mb-2 flex items-center justify-between">
         <h3 className="text-lg font-semibold text-black dark:text-white">
           Filtros Avançados
@@ -110,13 +110,13 @@ export default function AdvancedFilters({
               placeholder="Pesquisar tags..."
               value={tagSearchQuery}
               onChange={(e) => setTagSearchQuery(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 pr-4 pl-10 text-sm transition-colors focus:ring-2 focus:ring-orange-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 bg-white py-2 pr-4 pl-10 text-sm transition-colors focus:ring-2 focus:ring-orange-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             />
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <SearchIcon className="h-5 w-5 text-gray-500 dark:text-slate-400" />
             </div>
           </div>
-          <div className="h-48 overflow-y-auto rounded-lg border border-gray-300 dark:border-slate-700 bg-gray-50 p-4 dark:bg-slate-900/50">
+          <div className="h-48 overflow-y-auto rounded-lg border border-gray-300 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900/50">
             <div className="flex flex-wrap gap-3">
               {filteredTags.map(
                 (tag) =>

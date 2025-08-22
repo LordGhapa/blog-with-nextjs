@@ -1,5 +1,4 @@
 import {
-  ArrowLeft,
   Sparkles,
   Target,
   Heart,
@@ -10,7 +9,6 @@ import {
   Lightbulb,
   Award,
 } from "lucide-react";
-import GoBackButton from "../post/[slug]/components/goBackButton";
 
 export default function AboutPage() {
   const values = [

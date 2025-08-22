@@ -68,7 +68,7 @@ Abra [http://localhost:3000](http://localhost:3000) em seu navegador para ver o 
 
 Para acessar o Sanity Studio, navegue para [http://localhost:3000/studio](http://localhost:3000/studio).
 
-##  Disqus
+## Disqus
 
 O sistema de comentários é gerenciado pelo Disqus. Para que os comentários funcionem corretamente, você precisa configurar sua conta no Disqus e adicionar o `shortname` do seu site no componente `DisqusComments`.
 

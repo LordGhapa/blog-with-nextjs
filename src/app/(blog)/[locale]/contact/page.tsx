@@ -1,6 +1,5 @@
 import DisqusComments from "@/components/DisqusComments";
 import {
-  ArrowLeft,
   Mail,
   Github,
   Linkedin,

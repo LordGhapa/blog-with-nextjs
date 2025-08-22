@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
     if (mainImage && mainImage.base64) {
       const base64Data = mainImage.base64.split(";base64,").pop();
 
-    //  @ts-expect-error
+      // @ts-expect-error: base64Data might be undefined if split returns an empty array, but Buffer.from expects a string.
       const imageBuffer = Buffer.from(base64Data, "base64");
 
       const imageAsset = await client.assets.upload("image", imageBuffer);

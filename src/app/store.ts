@@ -72,5 +72,3 @@ export const useReadPostsStore = createSyncedStore<ReadPostsState>(
     name: "read-posts-storage",
   },
 );
-
-

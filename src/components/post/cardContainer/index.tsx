@@ -47,7 +47,7 @@ export default function CardContainer({ posts }: CardContainerProps) {
         <div className="mt-8 text-center">
           <button
             onClick={handleLoadMore}
-            className="px-6 py-3 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600 transition-colors duration-300"
+            className="rounded-lg bg-orange-500 px-6 py-3 font-bold text-white transition-colors duration-300 hover:bg-orange-600"
           >
             Ver Mais
           </button>

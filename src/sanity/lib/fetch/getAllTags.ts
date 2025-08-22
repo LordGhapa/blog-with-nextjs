@@ -1,6 +1,5 @@
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "../live";
-import next from "next";
 
 export const getAllTags = async (locale: "en" | "pt-BR" | "es") => {
   const ALL_TAGS_QUERY = defineQuery(`

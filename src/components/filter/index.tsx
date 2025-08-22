@@ -1,11 +1,5 @@
 "use client";
-import React, {
-  useState,
-  useMemo,
-  useCallback,
-  useEffect,
-  useRef,
-} from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 
 import { SearchIcon, XIcon } from "lucide-react";
 import {
@@ -261,7 +255,7 @@ export default function Filter({
               placeholder="Pesquisar histórias..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 dark:border-slate-600 bg-gray-100 py-3 pr-10 pl-10 transition-colors focus:ring-2 focus:ring-orange-500 focus:outline-none dark:bg-slate-700/50"
+              className="w-full rounded-lg border border-gray-300 bg-gray-100 py-3 pr-10 pl-10 transition-colors focus:ring-2 focus:ring-orange-500 focus:outline-none dark:border-slate-600 dark:bg-slate-700/50"
             />
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <SearchIcon className="h-5 w-5 text-gray-500 dark:text-slate-400" />

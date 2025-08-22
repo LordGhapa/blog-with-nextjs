@@ -1,16 +1,16 @@
 import { useFormatter } from "next-intl";
 
-export default function formatTime() {
-  const format = useFormatter();
-  const dateTime = new Date("2020-11-20T10:36:01.516Z");
-
-  // Renders "Nov 20, 2020"
-  format.dateTime(dateTime, {
+// This function is a placeholder. It should be called from a React component
+// where `useFormatter` is available, and the `format` object should be passed
+// as an argument along with the date to be formatted.
+export function formatTime(
+  date: Date,
+  format: ReturnType<typeof useFormatter>,
+) {
+  // Example usage:
+  return format.dateTime(date, {
     year: "numeric",
     month: "short",
     day: "numeric",
   });
-
-  // Renders "11:36 AM"
-  format.dateTime(dateTime, { hour: "numeric", minute: "numeric" });
 }

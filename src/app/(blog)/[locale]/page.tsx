@@ -6,11 +6,10 @@ import { setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 
-import CardContainer from "@/components/post/cardContainer";
 import RecentPosts from "@/components/recent-posts";
 
-import Filter from "@/components/filter";
 import HomeView from "@/components/post/homeView";
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }

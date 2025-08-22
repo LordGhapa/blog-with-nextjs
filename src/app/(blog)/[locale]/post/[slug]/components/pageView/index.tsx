@@ -10,7 +10,7 @@ import ReactMarkdown from "react-markdown";
 import { POST_BY_SLUG_QUERYResult } from "../../../../../../../../sanity.types";
 import { useState, useEffect } from "react";
 import { Link } from "@/i18n/navigation";
-import { AnimatePresence, motion, Transition, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface PageViewProps {
   post: POST_BY_SLUG_QUERYResult;
@@ -33,12 +33,7 @@ export default function PageView({
 
   if (!post) return;
   return (
-    <motion.main
-      // key={post._id}
-      // layoutId={post._id}
-      // transition={{ duration: 0.3 }}
-      className="container mx-auto w-full max-w-4xl px-4 py-8"
-    >
+    <motion.main className="container mx-auto w-full max-w-4xl px-4 py-8">
       <div className="mb-8">
         <GoBackButton />
         <IsReadUpdate postId={post?._id} />

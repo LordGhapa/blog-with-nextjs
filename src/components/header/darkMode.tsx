@@ -12,13 +12,11 @@ export default function DarkMode() {
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
 
-    
     if (!document.startViewTransition) {
       setTheme(newTheme);
       return;
     }
 
-    
     document.startViewTransition(() => {
       setTheme(newTheme);
     });

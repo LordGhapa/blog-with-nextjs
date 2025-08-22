@@ -18,7 +18,7 @@ export default function IsReadUpdate({ postId }: IsReadUpdateProps) {
     return () => {
       clearTimeout(timer);
     };
-  }, [postId, addReadPost]);
+  }, [postId, addReadPost, isPostRead]);
 
   return null;
 }
