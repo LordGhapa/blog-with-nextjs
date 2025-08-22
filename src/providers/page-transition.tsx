@@ -36,7 +36,7 @@ export function PageTransition({ children }: PageTransitionProps) {
 
   const circleAnimation: Variants = {
     initial: { clipPath: "circle(0% at 50% 0%)" },
-    animate: { clipPath: "circle(100% at 50% 0%)" },
+    animate: { clipPath: "circle(300vmax at 50% 0%)" },
     exit: {
       clipPath: "circle(100% at 50% 0%)",
     },

@@ -17,7 +17,7 @@ export default function FilterChip({ label, state, onClick }: FilterChipProps) {
 
   const stateClasses = {
     [FilterState.NEUTRAL]:
-      "bg-slate-700/50 text-slate-300 hover:bg-slate-600/50",
+      "bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600",
     [FilterState.INCLUDE]:
       "bg-green-500/80 text-white hover:bg-green-500 ring-2 ring-green-400",
     [FilterState.EXCLUDE]:

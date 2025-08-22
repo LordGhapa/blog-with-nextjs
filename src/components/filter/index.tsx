@@ -1,5 +1,11 @@
 "use client";
-import React, { useState, useMemo, useCallback, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useMemo,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react";
 
 import { SearchIcon, XIcon } from "lucide-react";
 import {
@@ -179,7 +185,7 @@ export default function Filter({
     const newParamsString = newParams.toString();
 
     if (currentParams !== newParamsString) {
-      router.replace(`${pathname}?${newParamsString}`);
+      router.replace(`${pathname}?${newParamsString}`, { scroll: false });
     }
     onFilterChange(filteredPosts);
   }, [
@@ -234,8 +240,7 @@ export default function Filter({
     setSearchQuery("");
     setCategoryFilters({});
     setTagFilters({});
-    setIsAdvancedFiltersOpen(false);
-  }, [setIsAdvancedFiltersOpen]);
+  }, []);
 
   const toggleAdvancedFilters = () => {
     setIsAdvancedFiltersOpen((prev) => !prev);
@@ -248,7 +253,7 @@ export default function Filter({
 
   return (
     <div>
-      <div className="mb-8 rounded-xl border border-slate-700 bg-slate-800/50 p-6">
+      <div className="mb-8 rounded-xl border bg-white p-6 dark:border-slate-700 dark:bg-slate-800/50">
         <div className="flex flex-col gap-4 md:flex-row">
           <div className="relative flex-grow">
             <input
@@ -256,15 +261,15 @@ export default function Filter({
               placeholder="Pesquisar histórias..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              className="w-full rounded-lg border border-slate-600 bg-slate-700/50 py-3 pr-10 pl-10 transition-colors focus:ring-2 focus:ring-orange-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 dark:border-slate-600 bg-gray-100 py-3 pr-10 pl-10 transition-colors focus:ring-2 focus:ring-orange-500 focus:outline-none dark:bg-slate-700/50"
             />
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <SearchIcon className="h-5 w-5 text-slate-400" />
+              <SearchIcon className="h-5 w-5 text-gray-500 dark:text-slate-400" />
             </div>
             {areFiltersActive && (
               <button
                 onClick={handleClearFilters}
-                className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3 text-slate-400 transition-colors hover:text-white"
+                className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3 text-gray-500 transition-colors hover:text-gray-700 dark:text-slate-400 dark:hover:text-white"
                 aria-label="Limpar todos os filtros"
               >
                 <XIcon className="h-5 w-5" />
