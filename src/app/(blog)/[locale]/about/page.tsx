@@ -1,95 +1,119 @@
+import { Link } from "@/i18n/navigation";
 import {
-  Sparkles,
-  Target,
-  Heart,
-  Zap,
-  Users,
-  BookOpen,
-  Code,
-  Lightbulb,
   Award,
+  Code,
+  Layers,
+  Lightbulb,
+  Rocket,
+  ShieldCheck,
+  Target,
+  Zap,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
+
+// Define a type for the translation function
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type TFunction = (key: string) => any;
+
+// --- ESTRUTURAS DE DADOS COM TRADUÇÃO ---
+const getChallenges = (t: TFunction) => [
+  {
+    icon: Layers,
+    title: t("challengeTitles.i18n"),
+    description: t("challenges.i18n"),
+  },
+  {
+    icon: Code,
+    title: t("challengeTitles.nextjs"),
+    description: t("challenges.nextjs"),
+  },
+  {
+    icon: Zap,
+    title: t("challengeTitles.headless"),
+    description: t("challenges.headless"),
+  },
+  {
+    icon: ShieldCheck,
+    title: t("challengeTitles.ux"),
+    description: t("challenges.ux"),
+  },
+];
+
+const getSkills = (t: TFunction) => [
+  {
+    name: "Next.js",
+    description: t("skills.nextjs"),
+    level: t("skillLevels.advanced"),
+  },
+  {
+    name: "Sanity.io",
+    description: t("skills.sanity"),
+    level: t("skillLevels.experienced"),
+  },
+  {
+    name: "TypeScript",
+    description: t("skills.typescript"),
+    level: t("skillLevels.advanced"),
+  },
+  {
+    name: "Internacionalização (i18n)",
+    description: t("skills.i18n"),
+    level: t("skillLevels.experienced"),
+  },
+  {
+    name: "Tailwind CSS",
+    description: t("skills.tailwind"),
+    level: t("skillLevels.intermediate"),
+  },
+];
+
+const getLearnings = (t: TFunction) => [
+  {
+    year: t("learningTypes.hardSkill"),
+    title: t("learnings.hardSkill"),
+    description: t("learnings.hardSkillDescription"),
+  },
+  {
+    year: t("learningTypes.integration"),
+    title: t("learnings.integration"),
+    description: t("learnings.integrationDescription"),
+  },
+  {
+    year: t("learningTypes.feature"),
+    title: t("learnings.feature"),
+    description: t("learnings.featureDescription"),
+  },
+];
+
+const getStats = (t: TFunction) => [
+  { number: "3", label: t("stats.languages") },
+  { number: "10+", label: t("stats.serverComponents") },
+  { number: "5+", label: t("stats.sanitySchemas") },
+  { number: "100%", label: t("stats.challengeCompleted") },
+];
 
 export default function AboutPage() {
-  const values = [
-    {
-      icon: Sparkles,
-      title: "Criatividade",
-      description:
-        "Exploramos os limites da imaginação através da tecnologia, criando histórias únicas e envolventes.",
-    },
-    {
-      icon: Target,
-      title: "Qualidade",
-      description:
-        "Cada história é cuidadosamente refinada para oferecer a melhor experiência de leitura possível.",
-    },
-    {
-      icon: Heart,
-      title: "Paixão",
-      description:
-        "Amamos contar histórias e acreditamos no poder da narrativa para conectar pessoas.",
-    },
-    {
-      icon: Zap,
-      title: "Inovação",
-      description:
-        "Utilizamos as mais avançadas tecnologias de IA para revolucionar a criação de conteúdo.",
-    },
-  ];
+  const t = useTranslations("aboutPage");
 
-  const skills = [
-    { name: "Inteligência Artificial", level: 95 },
-    { name: "Storytelling", level: 90 },
-    { name: "Desenvolvimento Web", level: 85 },
-    { name: "Design UX/UI", level: 80 },
-    { name: "Marketing Digital", level: 75 },
-  ];
-
-  const timeline = [
-    {
-      year: "2024",
-      title: "Lançamento do IA Historietas",
-      description:
-        "Início do projeto com foco em histórias geradas por inteligência artificial.",
-    },
-    {
-      year: "2023",
-      title: "Pesquisa e Desenvolvimento",
-      description:
-        "Período de estudos e testes com diferentes modelos de IA para geração de conteúdo.",
-    },
-    {
-      year: "2022",
-      title: "Conceito Inicial",
-      description:
-        "Primeira ideia de combinar tecnologia e narrativa para criar algo único.",
-    },
-  ];
-
-  const stats = [
-    { number: "100+", label: "Histórias Criadas" },
-    { number: "50K+", label: "Leitores Mensais" },
-    { number: "15+", label: "Categorias" },
-    { number: "99%", label: "Satisfação" },
-  ];
+  const challenges = getChallenges(t);
+  const skills = getSkills(t);
+  const learnings = getLearnings(t);
+  const stats = getStats(t);
 
   return (
     <div className="mx-auto max-w-6xl py-8">
       {/* Header */}
       <div className="mb-8">
-        {/* Hero Section */}
         <div className="mb-16 text-center">
           <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600">
-            <BookOpen className="h-12 w-12 text-white" />
+            <Rocket className="h-12 w-12 text-white" />
           </div>
           <h1 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
-            Sobre o <span className="text-orange-500">IA Historietas</span>
+            {t("mainTitle")}{" "}
+            <span className="text-orange-500">{t("mainTitleHighlight")}</span>
           </h1>
           <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600 dark:text-gray-300">
-            Somos pioneiros na criação de histórias através de inteligência
-            artificial, combinando tecnologia de ponta com a arte milenar de
-            contar histórias.
+            {t("subtitle")}
           </p>
         </div>
       </div>
@@ -114,40 +138,41 @@ export default function AboutPage() {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         {/* Main Content */}
         <div className="space-y-8 lg:col-span-2">
-          {/* Mission Section */}
+          {/* Objetivo do Projeto */}
           <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
             <div className="border-b border-gray-200 bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-4 dark:border-gray-700 dark:from-orange-900/20 dark:to-orange-800/20">
               <h2 className="flex items-center space-x-2 text-2xl font-bold text-gray-900 dark:text-white">
                 <Target className="h-6 w-6 text-orange-500" />
-                <span>Nossa Missão</span>
+                <span>{t("mainGoal.title")}</span>
               </h2>
             </div>
             <div className="p-6">
-              <p className="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">
-                Nossa missão é democratizar a criação de histórias através da
-                inteligência artificial, tornando a narrativa acessível a todos
-                e explorando novos horizontes criativos que apenas a tecnologia
-                pode proporcionar.
-              </p>
-              <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-                Acreditamos que cada pessoa tem histórias para contar, e nossa
-                tecnologia serve como uma ponte entre a imaginação humana e as
-                possibilidades infinitas da IA.
-              </p>
+              <p
+                className="mb-4 leading-relaxed text-gray-700 dark:text-gray-300"
+                dangerouslySetInnerHTML={{
+                  __html: t.raw("mainGoal.paragraph1"),
+                }}
+              />
+              <p
+                className="leading-relaxed text-gray-700 dark:text-gray-300"
+                dangerouslySetInnerHTML={{
+                  __html: t.raw("mainGoal.paragraph2"),
+                }}
+              />
             </div>
           </div>
 
-          {/* Values Section */}
+          {/* Desafios e Soluções */}
           <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
             <div className="border-b border-gray-200 bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-4 dark:border-gray-700 dark:from-orange-900/20 dark:to-orange-800/20">
               <h2 className="flex items-center space-x-2 text-2xl font-bold text-gray-900 dark:text-white">
-                <Heart className="h-6 w-6 text-orange-500" />
-                <span>Nossos Valores</span>
+                <ShieldCheck className="h-6 w-6 text-orange-500" />
+                <span>{t("challenges.title")}</span>
               </h2>
             </div>
             <div className="p-6">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                {values.map((value, index) => {
+                {challenges.map((value, index) => {
                   const IconComponent = value.icon;
                   return (
                     <div key={index} className="flex items-start space-x-4">
@@ -169,20 +194,20 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Timeline Section */}
+          {/* Aprendizados e Conquistas */}
           <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
             <div className="border-b border-gray-200 bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-4 dark:border-gray-700 dark:from-orange-900/20 dark:to-orange-800/20">
               <h2 className="flex items-center space-x-2 text-2xl font-bold text-gray-900 dark:text-white">
                 <Award className="h-6 w-6 text-orange-500" />
-                <span>Nossa Jornada</span>
+                <span>{t("learnings.title")}</span>
               </h2>
             </div>
             <div className="p-6">
               <div className="space-y-6">
-                {timeline.map((item, index) => (
+                {learnings.map((item, index) => (
                   <div key={index} className="flex items-start space-x-4">
-                    <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900/30">
-                      <span className="text-sm font-bold text-orange-600 dark:text-orange-400">
+                    <div className="flex size-20 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900/30">
+                      <span className="text-center text-xs font-bold text-orange-600 dark:text-orange-400">
                         {item.year}
                       </span>
                     </div>
@@ -203,80 +228,49 @@ export default function AboutPage() {
 
         {/* Sidebar */}
         <div className="space-y-6 lg:col-span-1">
-          {/* Skills Section */}
+          {/* Competências Técnicas */}
           <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
             <div className="border-b border-gray-200 bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-4 dark:border-gray-700 dark:from-orange-900/20 dark:to-orange-800/20">
               <h3 className="flex items-center space-x-2 text-lg font-semibold text-gray-900 dark:text-white">
                 <Code className="h-5 w-5 text-orange-500" />
-                <span>Competências</span>
+                <span>{t("skills.title")}</span>
               </h3>
             </div>
-            <div className="space-y-4 p-6">
+            <div className="divide-y divide-gray-200 dark:divide-gray-700">
               {skills.map((skill, index) => (
-                <div key={index}>
-                  <div className="mb-2 flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                <div key={index} className="p-6">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-md font-semibold text-gray-800 dark:text-white">
                       {skill.name}
-                    </span>
-                    <span className="text-sm font-semibold text-orange-600 dark:text-orange-400">
-                      {skill.level}%
+                    </h4>
+                    <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-bold text-orange-700 dark:bg-orange-900/50 dark:text-orange-300">
+                      {skill.level}
                     </span>
                   </div>
-                  <div className="h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700">
-                    <div
-                      className="h-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 transition-all duration-300"
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
-                  </div>
+                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    {skill.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Team Section */}
-          <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-            <div className="border-b border-gray-200 bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-4 dark:border-gray-700 dark:from-orange-900/20 dark:to-orange-800/20">
-              <h3 className="flex items-center space-x-2 text-lg font-semibold text-gray-900 dark:text-white">
-                <Users className="h-5 w-5 text-orange-500" />
-                <span>Equipe</span>
-              </h3>
-            </div>
-            <div className="p-6">
-              <div className="text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600">
-                  <span className="text-xl font-bold text-white">IA</span>
-                </div>
-                <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
-                  Equipe IA Historietas
-                </h4>
-                <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                  Desenvolvedores, designers e especialistas em IA trabalhando
-                  juntos para criar as melhores histórias.
-                </p>
-                <div className="flex justify-center space-x-2">
-                  <span className="rounded-full bg-orange-100 px-2 py-1 text-xs text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
-                    Criativo
-                  </span>
-                  <span className="rounded-full bg-orange-100 px-2 py-1 text-xs text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
-                    Inovador
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Section */}
-          <div className="rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 p-6 text-white">
+          {/* CTA Contato */}
+          <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
             <div className="text-center">
-              <Lightbulb className="mx-auto mb-4 h-12 w-12 opacity-90" />
-              <h3 className="mb-2 text-xl font-bold">Tem uma ideia?</h3>
-              <p className="mb-4 text-sm text-orange-100">
-                Adoraríamos ouvir suas sugestões para novas histórias ou
-                melhorias no site.
+              <Lightbulb className="mx-auto mb-4 h-10 w-10 text-gray-400" />
+              <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
+                {t("contact.title")}
+              </h3>
+              <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+                {t("contact.description")}
               </p>
-              <button className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-orange-600 transition-colors hover:bg-orange-50">
-                Entre em Contato
-              </button>
+              <Link
+                href={"/contact"}
+                className="cursor-pointer rounded-lg bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-700 transition-colors hover:bg-orange-200 dark:bg-orange-900/30 dark:text-orange-300 dark:hover:bg-orange-900/50"
+              >
+                {t("contact.button")}
+              </Link>
             </div>
           </div>
         </div>

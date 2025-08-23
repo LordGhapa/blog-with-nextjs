@@ -45,5 +45,93 @@
     "title": "Page Not Found",
     "description": "The page you are looking for does not exist or has been moved.",
     "backToHome": "Back to Home"
+  },
+  "contactPage": {
+    "emailDescription": "Get in touch directly by email",
+    "githubDescription": "See the project",
+    "linkedinDescription": "Connect with us professionally",
+    "portfolioDescription": "Discover my work and projects",
+    "locationTitle": "Location",
+    "locationValue": "Brazil",
+    "locationDescription": "Remote assistance throughout the country",
+    "phoneTitle": "Phone",
+    "phoneValue": "+55 (11) 99999-9999",
+    "phoneDescription": "WhatsApp available",
+    "scheduleTitle": "Schedule",
+    "scheduleValue": "Mon - Fri: 9am to 6pm",
+    "scheduleDescription": "Brasília time (GMT-3)",
+    "title": "Get in Touch",
+    "subtitle": "Have a question, suggestion, or want to collaborate with us? We'd love to hear from you!",
+    "connectWithUs": "Connect with Us",
+    "connectSubtitle": "Choose the best way to get in touch",
+    "contactInfo": "Contact Information",
+    "faqTitle": "Frequently Asked Questions",
+    "faq1Question": "How are the stories created?",
+    "faq1Answer": "We use advanced artificial intelligence to generate creative and engaging stories.",
+    "faq2Question": "Can I suggest themes?",
+    "faq2Answer": "Of course! We love receiving theme suggestions and ideas for new stories.",
+    "faq3Question": "Response time?",
+    "faq3Answer": "We respond to all messages within 42 business days."
+  },
+  "aboutPage": {
+    "mainTitle": "Behind the Scenes of",
+    "mainTitleHighlight": "AI Storytelling",
+    "subtitle": "This project is a practical case study demonstrating the construction of a modern, multilingual, and high-performance web application.",
+    "stats": {
+      "languages": "Supported Languages",
+      "serverComponents": "Server Components",
+      "sanitySchemas": "Schemas in Sanity.io",
+      "challengeCompleted": "Challenge Completed"
+    },
+    "mainGoal": {
+      "title": "Main Goal",
+      "paragraph1": "The central objective of this project was to deepen knowledge in <strong>Next.js</strong>, with an emphasis on the use of <strong>Server Components</strong>, and to explore integration with the Headless CMS <strong>Sanity.io</strong> for managing dynamic and multilingual content.",
+      "paragraph2": "The result is a robust content platform that serves as a technical portfolio, demonstrating the ability to build a modern, high-performance, and scalable web application."
+    },
+    "challenges": {
+      "title": "Challenges and Solutions",
+      "i18n": "Implementation of dynamic routes, interface translations, and localized content (posts, categories) from Sanity.io.",
+      "nextjs": "Improvement in the use of Server Components, App Router, and strict typing to create a high-performance and easily maintainable application.",
+      "headless": "Creation of content schemas in Sanity.io, real-time data fetching, and implementation of a draft mode system.",
+      "ux": "Development of a cohesive interface that allows for fluid language switching and content preview before publication."
+    },
+    "learnings": {
+      "title": "Learnings and Achievements",
+      "hardSkill": "Mastery of Next.js and TypeScript",
+      "hardSkillDescription": "Significant improvement in using advanced Next.js features and applying TypeScript for more robust code.",
+      "integration": "Integration with Sanity.io",
+      "integrationDescription": "Fundamental achievement in creating content schemas, real-time data fetching, and implementing Draft Mode for preview.",
+      "feature": "Fluid Multilingual System",
+      "featureDescription": "Successful implementation of language switching, offering a localized and optimized user experience."
+    },
+    "skills": {
+      "title": "Technical Skills",
+      "nextjs": "Focus on App Router, Server Components, and performance.",
+      "sanity": "Data modeling, GROQ, and real-time integration.",
+      "typescript": "Strict typing for safer and more maintainable code.",
+      "i18n": "Creation of robust multilingual applications.",
+      "tailwind": "Modern styling and responsive design."
+    },
+    "contact": {
+      "title": "Feedback or Contact?",
+      "description": "I would love to hear your suggestions or discuss technology.",
+      "button": "Get in Touch"
+    },
+    "skillLevels": {
+      "advanced": "Advanced",
+      "experienced": "Experienced",
+      "intermediate": "Intermediate"
+    },
+    "learningTypes": {
+      "hardSkill": "Hard Skill",
+      "integration": "Integration",
+      "feature": "Feature"
+    },
+    "challengeTitles": {
+      "i18n": "i18n Architecture",
+      "nextjs": "Next.js and TypeScript",
+      "headless": "Integration with Headless CMS",
+      "ux": "User Experience (UX)"
+    }
   }
 }

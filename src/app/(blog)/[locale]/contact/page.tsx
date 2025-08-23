@@ -9,15 +9,18 @@ import {
   Clock,
   BookOpen,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const t = await getTranslations("contactPage");
+
   const contactLinks = [
     {
       name: "Email",
       value: "felipef32@hotmail.com",
       href: "mailto:felipef32@hotmail.com",
       icon: Mail,
-      description: "Entre em contato direto por email",
+      description: t("emailDescription"),
       color: "text-blue-600 dark:text-blue-400",
     },
     {
@@ -25,17 +28,16 @@ export default function ContactPage() {
       value: "github.com/iahistorietas",
       href: "https://github.com/LordGhapa/blog-with-nextjs",
       icon: Github,
-      description: "Veja o projeto ",
+      description: t("githubDescription"),
       color: "text-gray-800 dark:text-gray-200",
     },
     {
       name: "LinkedIn",
-      // value: "linkedin.com/in/iahistorietas",
       value: "linkedin.com/in/felipe-lacerda-oliveira/",
       href: "https://www.linkedin.com/in/felipe-lacerda-oliveira/",
 
       icon: Linkedin,
-      description: "Conecte-se conosco profissionalmente",
+      description: t("linkedinDescription"),
       color: "text-blue-700 dark:text-blue-300",
     },
     {
@@ -43,7 +45,7 @@ export default function ContactPage() {
       value: "felipe-lacerda.vercel.app/",
       href: "https://felipe-lacerda.vercel.app/",
       icon: ExternalLink,
-      description: "Conheça meus trabalhos e projetos",
+      description: t("portfolioDescription"),
       color: "text-orange-600 dark:text-orange-400",
     },
   ];
@@ -51,21 +53,21 @@ export default function ContactPage() {
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Localização",
-      value: "Brasil",
-      description: "Atendimento remoto em todo o país",
+      title: t("locationTitle"),
+      value: t("locationValue"),
+      description: t("locationDescription"),
     },
     {
       icon: Phone,
-      title: "Telefone",
-      value: "+55 (11) 99999-9999",
-      description: "WhatsApp disponível",
+      title: t("phoneTitle"),
+      value: t("phoneValue"),
+      description: t("phoneDescription"),
     },
     {
       icon: Clock,
-      title: "Horário",
-      value: "Seg - Sex: 9h às 18h",
-      description: "Horário de Brasília (GMT-3)",
+      title: t("scheduleTitle"),
+      value: t("scheduleValue"),
+      description: t("scheduleDescription"),
     },
   ];
 
@@ -78,11 +80,10 @@ export default function ContactPage() {
             <BookOpen className="h-12 w-12 text-white" />
           </div>
           <h1 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
-            Entre em <span className="text-orange-500">Contato</span>
+            {t("title")}
           </h1>
           <p className="mx-auto max-w-2xl text-xl text-gray-600 dark:text-gray-300">
-            Tem alguma dúvida, sugestão ou quer colaborar conosco? Adoraríamos
-            ouvir de você!
+            {t("subtitle")}
           </p>
         </div>
       </div>
@@ -93,10 +94,10 @@ export default function ContactPage() {
           <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
             <div className="border-b border-gray-200 bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-4 dark:border-gray-700 dark:from-orange-900/20 dark:to-orange-800/20">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Conecte-se Conosco
+                {t("connectWithUs")}
               </h2>
               <p className="mt-1 text-gray-600 dark:text-gray-400">
-                Escolha a melhor forma de entrar em contato
+                {t("connectSubtitle")}
               </p>
             </div>
 
@@ -159,7 +160,7 @@ export default function ContactPage() {
           <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
             <div className="border-b border-gray-200 bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-4 dark:border-gray-700 dark:from-orange-900/20 dark:to-orange-800/20">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                Informações de Contato
+                {t("contactInfo")}
               </h3>
             </div>
 
@@ -192,37 +193,35 @@ export default function ContactPage() {
           <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
             <div className="border-b border-gray-200 bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-4 dark:border-gray-700 dark:from-orange-900/20 dark:to-orange-800/20">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                Perguntas Frequentes
+                {t("faqTitle")}
               </h3>
             </div>
 
             <div className="space-y-4 p-6">
               <div>
                 <h4 className="mb-2 font-medium text-gray-900 dark:text-white">
-                  Como as histórias são criadas?
+                  {t("faq1Question")}
                 </h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Utilizamos inteligência artificial avançada para gerar
-                  histórias criativas e envolventes.
+                  {t("faq1Answer")}
                 </p>
               </div>
 
               <div>
                 <h4 className="mb-2 font-medium text-gray-900 dark:text-white">
-                  Posso sugerir temas?
+                  {t("faq2Question")}
                 </h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Claro! Adoramos receber sugestões de temas e ideias para novas
-                  histórias.
+                  {t("faq2Answer")}
                 </p>
               </div>
 
               <div>
                 <h4 className="mb-2 font-medium text-gray-900 dark:text-white">
-                  Tempo de resposta?
+                  {t("faq3Question")}
                 </h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Respondemos todas as mensagens em até 42 dias úteis.
+                  {t("faq3Answer")}
                 </p>
               </div>
             </div>

@@ -248,9 +248,16 @@ export default function Filter({
     Object.keys(tagFilters).length > 0;
 
   return (
-    <motion.div layout transition={{ duration: 0.3 }}>
-      <div className="mb-8 rounded-xl border bg-white p-6 dark:border-slate-700 dark:bg-slate-800/50">
-        <div className="flex flex-col gap-4 md:flex-row">
+    <div>
+      <motion.div
+        layout
+        transition={{ duration: 0.3 }}
+        className="mb-8 rounded-xl border bg-white p-6 dark:border-slate-700 dark:bg-slate-800/50"
+      >
+        <motion.div
+          layoutId="filter"
+          className="flex flex-col gap-4 md:flex-row"
+        >
           <div className="relative flex-grow">
             <input
               type="text"
@@ -285,7 +292,7 @@ export default function Filter({
               ▼
             </span>
           </button>
-        </div>
+        </motion.div>
 
         {isAdvancedFiltersOpen && (
           <AdvancedFilters
@@ -298,7 +305,7 @@ export default function Filter({
             onClearFilters={handleClearFilters}
           />
         )}
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }

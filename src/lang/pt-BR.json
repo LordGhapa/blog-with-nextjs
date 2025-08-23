@@ -41,5 +41,93 @@
     "title": "Página Não Encontrada",
     "description": "A página que você está procurando não existe ou foi movida.",
     "backToHome": "Voltar para a Home"
+  },
+  "contactPage": {
+    "emailDescription": "Entre em contato direto por email",
+    "githubDescription": "Veja o projeto",
+    "linkedinDescription": "Conecte-se conosco profissionalmente",
+    "portfolioDescription": "Conheça meus trabalhos e projetos",
+    "locationTitle": "Localização",
+    "locationValue": "Brasil",
+    "locationDescription": "Atendimento remoto em todo o país",
+    "phoneTitle": "Telefone",
+    "phoneValue": "+55 (11) 99999-9999",
+    "phoneDescription": "WhatsApp disponível",
+    "scheduleTitle": "Horário",
+    "scheduleValue": "Seg - Sex: 9h às 18h",
+    "scheduleDescription": "Horário de Brasília (GMT-3)",
+    "title": "Entre em Contato",
+    "subtitle": "Tem alguma dúvida, sugestão ou quer colaborar conosco? Adoraríamos ouvir de você!",
+    "connectWithUs": "Conecte-se Conosco",
+    "connectSubtitle": "Escolha a melhor forma de entrar em contato",
+    "contactInfo": "Informações de Contato",
+    "faqTitle": "Perguntas Frequentes",
+    "faq1Question": "Como as histórias são criadas?",
+    "faq1Answer": "Utilizamos inteligência artificial avançada para gerar histórias criativas e envolventes.",
+    "faq2Question": "Posso sugerir temas?",
+    "faq2Answer": "Claro! Adoramos receber sugestões de temas e ideias para novas histórias.",
+    "faq3Question": "Tempo de resposta?",
+    "faq3Answer": "Respondemos todas as mensagens em até 42 dias úteis."
+  },
+  "aboutPage": {
+    "mainTitle": "Nos Bastidores do",
+    "mainTitleHighlight": "IA Historietas",
+    "subtitle": "Este projeto é um estudo de caso prático que demonstra a construção de uma aplicação web moderna, multilíngue e de alta performance.",
+    "stats": {
+      "languages": "Idiomas Suportados",
+      "serverComponents": "Componentes Servidor",
+      "sanitySchemas": "Schemas no Sanity.io",
+      "challengeCompleted": "Desafio Concluído"
+    },
+    "mainGoal": {
+      "title": "Objetivo Principal",
+      "paragraph1": "O objetivo central deste projeto foi aprofundar o conhecimento em <strong>Next.js</strong>, com ênfase no uso de <strong>Server Components</strong>, e explorar a integração com o Headless CMS <strong>Sanity.io</strong> para o gerenciamento de conteúdo dinâmico e multilíngue.",
+      "paragraph2": "O resultado é uma plataforma de conteúdo robusta que serve como um portfólio técnico, demonstrando a capacidade de construir uma aplicação web moderna, performática e escalável."
+    },
+    "challenges": {
+      "title": "Desafios e Soluções",
+      "i18n": "Implementação de rotas dinâmicas, traduções de interface e conteúdo localizado (posts, categorias) a partir do Sanity.io.",
+      "nextjs": "Aprimoramento no uso de Server Components, App Router e tipagem estrita para criar uma aplicação performática e de fácil manutenção.",
+      "headless": "Criação de schemas de conteúdo no Sanity.io, busca de dados em tempo real e implementação de um sistema de rascunho (draft mode).",
+      "ux": "Desenvolvimento de uma interface coesa que permite alternar entre idiomas de forma fluida e pré-visualizar conteúdo antes da publicação."
+    },
+    "learnings": {
+      "title": "Aprendizados e Conquistas",
+      "hardSkill": "Domínio de Next.js e TypeScript",
+      "hardSkillDescription": "Aprimoramento significativo no uso de funcionalidades avançadas do Next.js e na aplicação de TypeScript para um código mais robusto.",
+      "integration": "Integração com Sanity.io",
+      "integrationDescription": "Conquista fundamental na criação de schemas de conteúdo, busca de dados em tempo real e implementação de Draft Mode para preview.",
+      "feature": "Sistema Multilíngue Fluido",
+      "featureDescription": "Implementação bem-sucedida da alternância de idiomas, oferecendo uma experiência de usuário localizada e otimizada."
+    },
+    "skills": {
+      "title": "Competências Técnicas",
+      "nextjs": "Foco em App Router, Server Components e performance.",
+      "sanity": "Modelagem de dados, GROQ e integração em tempo real.",
+      "typescript": "Tipagem estrita para um código mais seguro e manutenível.",
+      "i18n": "Criação de aplicações multilíngues robustas.",
+      "tailwind": "Estilização moderna e design responsivo."
+    },
+    "contact": {
+      "title": "Feedback ou Contato?",
+      "description": "Adoraria ouvir suas sugestões ou discutir sobre tecnologia.",
+      "button": "Entre em Contato"
+    },
+    "skillLevels": {
+      "advanced": "Avançado",
+      "experienced": "Experiente",
+      "intermediate": "Intermediário"
+    },
+    "learningTypes": {
+      "hardSkill": "Hard Skill",
+      "integration": "Integração",
+      "feature": "Recurso"
+    },
+    "challengeTitles": {
+      "i18n": "Arquitetura de i18n",
+      "nextjs": "Next.js e TypeScript",
+      "headless": "Integração com Headless CMS",
+      "ux": "Experiência do Usuário (UX)"
+    }
   }
 }
