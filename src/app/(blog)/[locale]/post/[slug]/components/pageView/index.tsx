@@ -60,13 +60,19 @@ export default function PageView({
               />
             )}
             <div className="absolute top-6 left-6">
-              <span className="rounded-full bg-orange-500 px-4 py-2 text-sm font-medium text-white">
+              <Link
+                href={{
+                  pathname: "/",
+                  query: { cat_include: post?.categories?.[0]?.slug ?? "" },
+                }}
+                className="cursor-pointer rounded-full bg-orange-500 px-4 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-orange-700"
+              >
                 {Array.isArray(post?.categories) &&
                 typeof post.categories[0] === "object" &&
                 "title" in post.categories[0]
                   ? post.categories[0].title
                   : "no category"}
-              </span>
+              </Link>
             </div>
           </motion.div>
 
@@ -136,7 +142,10 @@ export default function PageView({
             >
               {post.tags?.map((tag) => (
                 <Link
-                  href={"/"}
+                  href={{
+                    pathname: "/",
+                    query: { tag_include: tag.slug },
+                  }}
                   key={tag._id}
                   className="group/tag inline-flex cursor-pointer items-center space-x-1 rounded-full bg-orange-100 px-3 py-2 text-sm font-medium text-orange-700 transition-colors hover:bg-orange-200 hover:text-orange-600 dark:bg-orange-900/30 dark:text-orange-300 dark:hover:bg-orange-900/50"
                 >

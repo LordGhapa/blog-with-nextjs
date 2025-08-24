@@ -69,11 +69,17 @@ export function PostCard({ post, locale }: PostCardProps) {
             />
           )}
 
-          <div className="absolute top-4 left-4">
-            <span className="rounded-full bg-orange-500 px-3 py-1 text-sm font-medium text-white">
+          <Link
+            href={{
+              pathname: "/",
+              query: { cat_include: post?.categories?.[0]?.slug ?? "" },
+            }}
+            className="absolute top-4 left-4 z-20"
+          >
+            <span className="z-20 cursor-pointer rounded-full bg-orange-500 px-3 py-1 text-sm font-medium text-white transition-colors duration-300 hover:bg-orange-700">
               {post.categories?.[0]?.title ?? ""}
             </span>
-          </div>
+          </Link>
         </motion.div>
         <div className="flex flex-1 flex-col p-6">
           <motion.div
@@ -120,7 +126,10 @@ export function PostCard({ post, locale }: PostCardProps) {
             >
               {post.tags?.slice(0, 4).map((tag, index) => (
                 <Link
-                  href={"#"}
+                  href={{
+                    pathname: "/",
+                    query: { tag_include: tag.slug },
+                  }}
                   key={tag._id}
                   className={cn(
                     "group/tag z-10 inline-flex items-center space-x-1 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:text-orange-500 dark:bg-gray-700 dark:text-gray-300",

@@ -1,5 +1,11 @@
 "use client";
-import React, { useState, useMemo, useCallback, useEffect } from "react";
+import React, {
+  useState,
+  useMemo,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react";
 
 import { SearchIcon, XIcon } from "lucide-react";
 import {
@@ -34,56 +40,58 @@ export default function Filter({
   const searchParams = useSearchParams();
   const t = useTranslations("filter");
 
-  const [searchQuery, setSearchQuery] = useState(
-    () => searchParams.get("search") || "",
-  );
-  const [inputValue, setInputValue] = useState(searchQuery);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setSearchQuery(inputValue);
-    }, 1500);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [inputValue]);
-
+  const [searchQuery, setSearchQuery] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const [categoryFilters, setCategoryFilters] = useState<CategoryFilterValues>(
-    () => {
-      const filters: CategoryFilterValues = {};
-      searchParams
-        .get("cat_include")
-        ?.split(",")
-        .forEach((cat) => {
-          if (cat) filters[cat] = FilterState.INCLUDE;
-        });
-      searchParams
-        .get("cat_exclude")
-        ?.split(",")
-        .forEach((cat) => {
-          if (cat) filters[cat] = FilterState.EXCLUDE;
-        });
-      return filters;
-    },
+    {},
   );
+  const [tagFilters, setTagFilters] = useState<TagFilterValues>({});
 
-  const [tagFilters, setTagFilters] = useState<TagFilterValues>(() => {
-    const filters: TagFilterValues = {};
+  const isUpdatingFromUrl = useRef(false);
+
+  // Effect to synchronize URL search parameters TO the component's state
+  useEffect(() => {
+    isUpdatingFromUrl.current = true;
+
+    const newSearchQuery = searchParams.get("search") || "";
+    setSearchQuery(newSearchQuery);
+    setInputValue(newSearchQuery);
+
+    const newCatFilters: CategoryFilterValues = {};
+    searchParams
+      .get("cat_include")
+      ?.split(",")
+      .forEach((cat) => {
+        if (cat) newCatFilters[cat] = FilterState.INCLUDE;
+      });
+    searchParams
+      .get("cat_exclude")
+      ?.split(",")
+      .forEach((cat) => {
+        if (cat) newCatFilters[cat] = FilterState.EXCLUDE;
+      });
+    setCategoryFilters(newCatFilters);
+
+    const newTagFilters: TagFilterValues = {};
     searchParams
       .get("tag_include")
       ?.split(",")
       .forEach((tag) => {
-        if (tag) filters[tag] = FilterState.INCLUDE;
+        if (tag) newTagFilters[tag] = FilterState.INCLUDE;
       });
     searchParams
       .get("tag_exclude")
       ?.split(",")
       .forEach((tag) => {
-        if (tag) filters[tag] = FilterState.EXCLUDE;
+        if (tag) newTagFilters[tag] = FilterState.EXCLUDE;
       });
-    return filters;
-  });
+    setTagFilters(newTagFilters);
+
+    // Schedule a microtask to reset the flag after state updates have been processed.
+    Promise.resolve().then(() => {
+      isUpdatingFromUrl.current = false;
+    });
+  }, [searchParams]);
 
   const filteredPosts = useMemo(() => {
     const getFilters = (
@@ -142,8 +150,12 @@ export default function Filter({
     });
   }, [searchQuery, categoryFilters, tagFilters, posts]);
 
+  // Effect to synchronize the component's state TO the URL search parameters
   useEffect(() => {
-    const currentParams = searchParams.toString();
+    if (isUpdatingFromUrl.current) {
+      return;
+    }
+
     const newParams = new URLSearchParams();
 
     if (searchQuery) {
@@ -179,11 +191,11 @@ export default function Filter({
     }
 
     const newParamsString = newParams.toString();
+    const currentParams = searchParams.toString();
 
     if (currentParams !== newParamsString) {
       router.replace(`${pathname}?${newParamsString}`, { scroll: false });
     }
-    onFilterChange(filteredPosts);
   }, [
     searchQuery,
     categoryFilters,
@@ -191,9 +203,24 @@ export default function Filter({
     pathname,
     router,
     searchParams,
-    onFilterChange,
-    filteredPosts,
   ]);
+
+  // Effect to debounce search input
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setSearchQuery(inputValue);
+    }, 1500);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [inputValue]);
+
+  // Effect to notify parent component of filter changes
+  useEffect(() => {
+    onFilterChange(filteredPosts);
+    setIsAdvancedFiltersOpen(true);
+  }, [filteredPosts, onFilterChange]);
 
   const handleCategoryFilterChange = useCallback((category: string) => {
     setCategoryFilters((prev) => {
