@@ -129,5 +129,12 @@
       "headless": "Integração com Headless CMS",
       "ux": "Experiência do Usuário (UX)"
     }
+  },
+  "footer": {
+    "description": "Um blog dedicado a histórias criativas geradas por inteligência artificial. Explore mundos fantásticos e aventuras únicas criadas pela tecnologia moderna.",
+    "quickLinks": "Links Rápidos",
+    "categories": "Categorias",
+    "copyright": "© {year} IA Historietas. Feito com {heart} e tecnologia.",
+    "credits": "Histórias geradas por Inteligência Artificial"
   }
 }

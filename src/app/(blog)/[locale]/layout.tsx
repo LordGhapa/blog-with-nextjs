@@ -16,6 +16,8 @@ import { ViewModeScript } from "@/components/ViewModeScript";
 import { ViewModeUpdater } from "@/components/ViewModeUpdater";
 import { PageTransition } from "@/providers/page-transition";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
+
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -60,6 +62,7 @@ export default async function RootLayout({
           >
             <Header />
             <PageTransition>{children}</PageTransition>
+            <Footer />
           </ThemeProvider>
 
           <ViewModeUpdater />

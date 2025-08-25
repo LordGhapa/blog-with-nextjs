@@ -60,7 +60,7 @@
     "subtitle": "¿Tienes alguna pregunta, sugerencia o quieres colaborar con nosotros? ¡Nos encantaría saber de ti!",
     "connectWithUs": "Conecta con Nosotros",
     "connectSubtitle": "Elige la mejor forma de ponerte en contacto",
-    "contactInfo": "Información de Contacto",
+    "contactInfo": "Información de Contato",
     "faqTitle": "Preguntas Frecuentes",
     "faq1Question": "¿Cómo se crean las historias?",
     "faq1Answer": "Utilizamos inteligencia artificial avanzada para generar historias creativas y atractivas.",
@@ -71,7 +71,7 @@
   },
   "aboutPage": {
     "mainTitle": "Detrás de Escena de",
-    "mainTitleHighlight": "Historietas de IA",
+    "mainTitleHighlight": "IA Historietas",
     "subtitle": "Este proyecto es un estudio de caso práctico que demuestra la construcción de una aplicación web moderna, multilingüe y de alto rendimiento.",
     "stats": {
       "languages": "Idiomas Soportados",
@@ -129,5 +129,12 @@
       "headless": "Integración con Headless CMS",
       "ux": "Experiencia de Usuario (UX)"
     }
+  },
+  "footer": {
+    "description": "Un blog dedicado a historias creativas generadas por inteligencia artificial. Explora mundos fantásticos y aventuras únicas creadas por la tecnología moderna.",
+    "quickLinks": "Enlaces Rápidos",
+    "categories": "Categorías",
+    "copyright": "© {year} Historietas de IA. Hecho con {heart} y tecnología.",
+    "credits": "Historias generadas por Inteligencia Artificial"
   }
 }

@@ -219,7 +219,6 @@ export default function Filter({
   // Effect to notify parent component of filter changes
   useEffect(() => {
     onFilterChange(filteredPosts);
-    setIsAdvancedFiltersOpen(true);
   }, [filteredPosts, onFilterChange]);
 
   const handleCategoryFilterChange = useCallback((category: string) => {
@@ -258,6 +257,7 @@ export default function Filter({
       searchParams.has("tag_exclude")
     );
   });
+
 
   const handleClearFilters = useCallback(() => {
     setSearchQuery("");
