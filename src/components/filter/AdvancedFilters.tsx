@@ -1,5 +1,5 @@
 import FilterChip from "./filterChip";
-import { BookOpenIcon, TagIcon, SearchIcon } from "lucide-react";
+import { BookOpenIcon, TagIcon, SearchIcon, Eye } from "lucide-react";
 import {
   ALL_CATEGORIES_QUERYResult,
   ALL_TAGS_QUERYResult,
@@ -29,7 +29,7 @@ export default function AdvancedFilters({
   onTagFilterChange,
   onClearFilters,
 }: AdvancedFiltersProps) {
-  const t = useTranslations('filter');
+  const t = useTranslations("filter");
   const [tagSearchQuery, setTagSearchQuery] = useState("");
 
   const filteredTags = tags.filter(
@@ -47,39 +47,53 @@ export default function AdvancedFilters({
     <div className="mt-6 border-t border-gray-200 pt-6 dark:border-slate-700/50">
       <div className="mb-2 flex items-center justify-between">
         <h3 className="text-lg font-semibold text-black dark:text-white">
-          {t('advancedFilters')}
+          {t("advancedFilters")}
         </h3>
         <button
           onClick={handleClear}
           className="rounded-md border border-gray-300 px-3 py-1 text-sm font-semibold text-gray-700 transition-colors hover:text-orange-500 dark:text-slate-400 dark:hover:bg-slate-700/50"
         >
-          {t('clearFilters')}
+          {t("clearFilters")}
         </button>
       </div>
 
       <div className="mb-6 flex flex-wrap gap-x-6 gap-y-2 rounded-lg bg-slate-100 p-3 text-sm dark:bg-slate-700/30 dark:text-slate-400">
         <span className="font-semibold text-gray-600 dark:text-slate-300">
-          {t('howToUseFilters')}
+          {t("howToUseFilters")}
         </span>
         <div className="flex items-center gap-2">
           <div className="h-4 w-4 rounded-full border-2 border-slate-500 bg-slate-600"></div>
-          <span>{t('firstClick')}</span>
+          <span>{t("firstClick")}</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="h-4 w-4 rounded-full border-2 border-green-400 bg-green-500"></div>
-          <span>{t('secondClick')}</span>
+          <span>{t("secondClick")}</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="h-4 w-4 rounded-full border-2 border-red-400 bg-red-500"></div>
-          <span>{t('thirdClick')}</span>
+          <span>{t("thirdClick")}</span>
         </div>
       </div>
 
       <div className="space-y-6">
         <div>
           <h4 className="mb-3 flex items-center gap-2 font-bold text-gray-800 dark:text-white">
+            Lidos :
+            <FilterChip
+              label={
+                <Eye className="h-5 w-5 text-gray-500 dark:text-slate-400" />
+              }
+              state={FilterState.NEUTRAL}
+              onClick={() => {
+                onTagFilterChange("magic");
+              }}
+            />
+          </h4>
+        </div>
+        <div>
+          <h4 className="mb-3 flex items-center gap-2 font-bold text-gray-800 dark:text-white">
             <BookOpenIcon className="h-5 w-5 text-gray-500 dark:text-slate-400" />
-            {t('categories')}
+            {t("categories")}
           </h4>
           <div className="flex flex-wrap gap-3">
             {categories.map(
@@ -104,12 +118,12 @@ export default function AdvancedFilters({
         <div>
           <h4 className="mb-3 flex items-center gap-2 font-bold text-gray-800 dark:text-white">
             <TagIcon className="h-5 w-5 text-gray-500 dark:text-slate-400" />
-            {t('tags')}
+            {t("tags")}
           </h4>
           <div className="relative mb-3">
             <input
               type="text"
-              placeholder={t('searchTags')}
+              placeholder={t("searchTags")}
               value={tagSearchQuery}
               onChange={(e) => setTagSearchQuery(e.target.value)}
               className="w-full rounded-lg border border-gray-300 bg-white py-2 pr-4 pl-10 text-sm transition-colors focus:ring-2 focus:ring-orange-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800"

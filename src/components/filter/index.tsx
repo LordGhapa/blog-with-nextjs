@@ -7,6 +7,7 @@ import React, {
   useRef,
 } from "react";
 
+import { useReadPostsStore } from "@/app/store";
 import { SearchIcon, XIcon } from "lucide-react";
 import {
   ALL_CATEGORIES_QUERYResult,
@@ -86,6 +87,9 @@ export default function Filter({
         if (tag) newTagFilters[tag] = FilterState.EXCLUDE;
       });
     setTagFilters(newTagFilters);
+
+    // const { getAllReadPosts } = useReadPostsStore();
+    // console.log("todo ja lidos", getAllReadPosts());
 
     // Schedule a microtask to reset the flag after state updates have been processed.
     Promise.resolve().then(() => {
@@ -257,7 +261,6 @@ export default function Filter({
       searchParams.has("tag_exclude")
     );
   });
-
 
   const handleClearFilters = useCallback(() => {
     setSearchQuery("");

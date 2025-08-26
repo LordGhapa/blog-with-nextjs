@@ -7,7 +7,7 @@ export enum FilterState {
 }
 
 interface FilterChipProps {
-  label: string;
+  label: React.ReactNode;
   state: FilterState;
   onClick: () => void;
 }
