@@ -13,8 +13,10 @@ interface AdvancedFiltersProps {
   tags: ALL_TAGS_QUERYResult;
   categoryFilters: CategoryFilterValues;
   tagFilters: TagFilterValues;
+  isReadFilter: FilterState;
   onCategoryFilterChange: (category: string) => void;
   onTagFilterChange: (tag: string) => void;
+  onIsReadFilterChange: () => void;
   onClearFilters: () => void;
 }
 
@@ -25,8 +27,10 @@ export default function AdvancedFilters({
   tags,
   categoryFilters,
   tagFilters,
+  isReadFilter,
   onCategoryFilterChange,
   onTagFilterChange,
+  onIsReadFilterChange,
   onClearFilters,
 }: AdvancedFiltersProps) {
   const t = useTranslations("filter");
@@ -83,10 +87,8 @@ export default function AdvancedFilters({
               label={
                 <Eye className="h-5 w-5 text-gray-500 dark:text-slate-400" />
               }
-              state={FilterState.NEUTRAL}
-              onClick={() => {
-                onTagFilterChange("magic");
-              }}
+              state={isReadFilter}
+              onClick={onIsReadFilterChange}
             />
           </h4>
         </div>

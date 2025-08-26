@@ -47,7 +47,10 @@ export default function Filter({
     {},
   );
   const [tagFilters, setTagFilters] = useState<TagFilterValues>({});
-
+  const [isReadFilter, setIsReadFilter] = useState<FilterState>(
+    FilterState.NEUTRAL,
+  );
+  const { getAllReadPosts } = useReadPostsStore();
   const isUpdatingFromUrl = useRef(false);
 
   // Effect to synchronize URL search parameters TO the component's state
@@ -88,8 +91,14 @@ export default function Filter({
       });
     setTagFilters(newTagFilters);
 
-    // const { getAllReadPosts } = useReadPostsStore();
-    // console.log("todo ja lidos", getAllReadPosts());
+    const readFilterValue = searchParams.get("read");
+    if (readFilterValue === "include") {
+      setIsReadFilter(FilterState.INCLUDE);
+    } else if (readFilterValue === "exclude") {
+      setIsReadFilter(FilterState.EXCLUDE);
+    } else {
+      setIsReadFilter(FilterState.NEUTRAL);
+    }
 
     // Schedule a microtask to reset the flag after state updates have been processed.
     Promise.resolve().then(() => {
@@ -110,6 +119,7 @@ export default function Filter({
     const excludedCategories = getFilters(categoryFilters, FilterState.EXCLUDE);
     const includedTags = getFilters(tagFilters, FilterState.INCLUDE);
     const excludedTags = getFilters(tagFilters, FilterState.EXCLUDE);
+    const readPosts = getAllReadPosts();
 
     return posts.filter((post) => {
       // Search filter
@@ -118,6 +128,13 @@ export default function Filter({
         post.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.body?.toLowerCase().includes(searchQuery.toLowerCase());
       if (!searchMatch) return false;
+
+      // Read filter
+      if (isReadFilter === FilterState.INCLUDE) {
+        if (!readPosts.includes(post._id)) return false;
+      } else if (isReadFilter === FilterState.EXCLUDE) {
+        if (readPosts.includes(post._id)) return false;
+      }
 
       // Category filter
       const postCategorySlugs =
@@ -152,7 +169,14 @@ export default function Filter({
 
       return true;
     });
-  }, [searchQuery, categoryFilters, tagFilters, posts]);
+  }, [
+    searchQuery,
+    categoryFilters,
+    tagFilters,
+    posts,
+    isReadFilter,
+    getAllReadPosts,
+  ]);
 
   // Effect to synchronize the component's state TO the URL search parameters
   useEffect(() => {
@@ -194,6 +218,12 @@ export default function Filter({
       newParams.set("tag_exclude", tagExcludes.join(","));
     }
 
+    if (isReadFilter === FilterState.INCLUDE) {
+      newParams.set("read", "include");
+    } else if (isReadFilter === FilterState.EXCLUDE) {
+      newParams.set("read", "exclude");
+    }
+
     const newParamsString = newParams.toString();
     const currentParams = searchParams.toString();
 
@@ -204,6 +234,7 @@ export default function Filter({
     searchQuery,
     categoryFilters,
     tagFilters,
+    isReadFilter,
     pathname,
     router,
     searchParams,
@@ -253,12 +284,17 @@ export default function Filter({
     });
   }, []);
 
+  const handleIsReadFilterChange = useCallback(() => {
+    setIsReadFilter((prev) => (prev + 1) % 3);
+  }, []);
+
   const [isAdvancedFiltersOpen, setIsAdvancedFiltersOpen] = useState(() => {
     return (
       searchParams.has("cat_include") ||
       searchParams.has("cat_exclude") ||
       searchParams.has("tag_include") ||
-      searchParams.has("tag_exclude")
+      searchParams.has("tag_exclude") ||
+      searchParams.has("read")
     );
   });
 
@@ -266,6 +302,7 @@ export default function Filter({
     setSearchQuery("");
     setCategoryFilters({});
     setTagFilters({});
+    setIsReadFilter(FilterState.NEUTRAL);
   }, []);
 
   const toggleAdvancedFilters = () => {
@@ -275,7 +312,8 @@ export default function Filter({
   const areFiltersActive =
     searchQuery !== "" ||
     Object.keys(categoryFilters).length > 0 ||
-    Object.keys(tagFilters).length > 0;
+    Object.keys(tagFilters).length > 0 ||
+    isReadFilter !== FilterState.NEUTRAL;
 
   return (
     <div>
@@ -330,7 +368,9 @@ export default function Filter({
             tags={tags}
             categoryFilters={categoryFilters}
             tagFilters={tagFilters}
+            isReadFilter={isReadFilter}
             onCategoryFilterChange={handleCategoryFilterChange}
+            onIsReadFilterChange={handleIsReadFilterChange}
             onTagFilterChange={handleTagFilterChange}
             onClearFilters={handleClearFilters}
           />
