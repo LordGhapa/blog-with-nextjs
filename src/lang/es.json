@@ -35,7 +35,8 @@
     "thirdClick": "3er clic: Excluir",
     "categories": "Categorías",
     "tags": "Etiquetas",
-    "searchTags": "Buscar etiquetas..."
+    "searchTags": "Buscar etiquetas...",
+    "read": "Leídos"
   },
   "notFound": {
     "title": "Página No Encontrada",

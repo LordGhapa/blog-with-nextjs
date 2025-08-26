@@ -39,7 +39,8 @@
     "thirdClick": "3rd click: Exclude",
     "categories": "Categories",
     "tags": "Tags",
-    "searchTags": "Search tags..."
+    "searchTags": "Search tags...",
+    "read": "Read"
   },
   "notFound": {
     "title": "Page Not Found",

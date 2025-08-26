@@ -82,7 +82,7 @@ export default function AdvancedFilters({
       <div className="space-y-6">
         <div>
           <h4 className="mb-3 flex items-center gap-2 font-bold text-gray-800 dark:text-white">
-            Lidos :
+            {t("read")} :
             <FilterChip
               label={
                 <Eye className="h-5 w-5 text-gray-500 dark:text-slate-400" />

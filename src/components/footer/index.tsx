@@ -3,6 +3,7 @@ import { getAllCategories } from "@/sanity/lib/fetch/getAllCategories";
 import { BookOpen, Mail, Linkedin, ExternalLink, Github } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import FooterCopyright from "./footerCopyright";
+import { ALL_CATEGORIES_QUERYResult } from "../../../sanity.types";
 
 interface HeaderLink {
   label: string;
@@ -12,8 +13,8 @@ interface HeaderLink {
 export default async function Footer() {
   const locale = await getLocale();
   const t = await getTranslations();
-  // @ts-expect-error
-  const allCategories = await getAllCategories(locale);
+  // @ts-expect-error Server Component
+  const allCategories: ALL_CATEGORIES_QUERYResult = await getAllCategories(locale);
 
   const socialLinks = [
     {
@@ -94,7 +95,7 @@ export default async function Footer() {
               {t("footer.categories")}
             </h3>
             <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-              {allCategories.slice(0, 4).map((category: any) => (
+              {allCategories.slice(0, 4).map((category: ALL_CATEGORIES_QUERYResult[0]) => (
                 <li key={category._id}>
                   <Link
                     href={{
