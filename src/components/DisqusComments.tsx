@@ -29,14 +29,15 @@ export default function DisqusComments({
   const finalIdentifier = identifier || post?._id || pathname;
   const finalTitle = title || post?.title || "Comentários";
 
-  const disqusShortname = "iahistorias";
+  const disqusShortname = process.env.NEXT_PUBLIC_DISQUS;
+  if (!disqusShortname)
+    return <p className="text-black">disqusShortname: not found</p>;
   const disqusConfig = {
     url: fullUrl,
     identifier: finalIdentifier,
     title: finalTitle,
     language: locale,
   };
-
   return (
     <DiscussionEmbed
       key={fullUrl}

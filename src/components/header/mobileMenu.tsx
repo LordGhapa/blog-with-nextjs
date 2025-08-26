@@ -12,7 +12,7 @@ import {
 import { Link } from "@/i18n/navigation";
 import { BookOpen, Home, Info, Mail, Menu as MenuIcon } from "lucide-react";
 import React, { useState } from "react";
-import LanguageSwitcher from "../language-switcher";
+import LanguageSwitcher from "../languageSwitcher";
 import DarkMode from "./darkMode";
 
 interface MobileMenuProps {
@@ -23,9 +23,9 @@ interface MobileMenuProps {
 }
 
 const iconMap: { [key: string]: React.ElementType } = {
-  Home: Home,
-  About: Info,
-  Contact: Mail,
+  "/": Home,
+  "/about": Info,
+  "/contact": Mail,
 };
 
 export default function MobileMenu({ headerLinks }: MobileMenuProps) {
@@ -40,7 +40,7 @@ export default function MobileMenu({ headerLinks }: MobileMenuProps) {
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="flex w-full flex-col bg-white sm:max-w-sm dark:bg-gray-950"
+        className="flex w-full flex-col border-none bg-white sm:max-w-sm dark:bg-gray-900"
       >
         <SheetHeader className="mb-4">
           <SheetTitle className="text-left text-xl">
@@ -65,9 +65,9 @@ export default function MobileMenu({ headerLinks }: MobileMenuProps) {
         {/* Links  */}
         <div className="flex flex-1 flex-col space-y-2">
           {headerLinks.map((item) => {
-            const Icon = iconMap[item.label] || Home;
+            const Icon = iconMap[item.link] || Home;
             return (
-              <SheetClose asChild key={item.label}>
+              <SheetClose asChild key={item.link}>
                 <Link
                   href={item.link}
                   className="flex items-center space-x-3 rounded-md p-3 text-lg font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-orange-500 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-orange-400"

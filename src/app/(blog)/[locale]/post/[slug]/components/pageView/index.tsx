@@ -99,7 +99,7 @@ export default function PageView({
 
             <motion.h1
               layoutId={`post-title-${post._id}`}
-              className="mb-6 text-3xl leading-tight font-bold text-gray-900 md:text-4xl dark:text-white"
+              className="mb-6 text-xl leading-tight font-bold text-gray-900 sm:text-3xl md:text-4xl dark:text-white"
             >
               {post.title}
             </motion.h1>

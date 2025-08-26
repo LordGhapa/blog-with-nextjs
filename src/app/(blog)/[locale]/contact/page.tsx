@@ -1,4 +1,5 @@
 import DisqusComments from "@/components/DisqusComments";
+import { Link } from "@/i18n/navigation";
 import {
   Mail,
   Github,
@@ -72,17 +73,17 @@ export default async function ContactPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl py-8">
+    <div className="mx-auto max-w-7xl px-4 py-8">
       {/* Header */}
       <div className="mb-8">
         <div className="mb-12 text-center">
           <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600">
             <BookOpen className="h-12 w-12 text-white" />
           </div>
-          <h1 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+          <h1 className="mb-4 text-2xl font-bold text-gray-900 sm:text-4xl md:text-5xl dark:text-white">
             {t("title")}
           </h1>
-          <p className="mx-auto max-w-2xl text-xl text-gray-600 dark:text-gray-300">
+          <p className="mx-auto max-w-3xl text-base leading-relaxed text-gray-600 sm:text-xl dark:text-gray-300">
             {t("subtitle")}
           </p>
         </div>
@@ -93,10 +94,10 @@ export default async function ContactPage() {
         <div className="lg:col-span-2">
           <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
             <div className="border-b border-gray-200 bg-gradient-to-r from-orange-50 to-orange-100 px-6 py-4 dark:border-gray-700 dark:from-orange-900/20 dark:to-orange-800/20">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+              <h2 className="text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">
                 {t("connectWithUs")}
               </h2>
-              <p className="mt-1 text-gray-600 dark:text-gray-400">
+              <p className="mt-1 text-sm text-gray-600 sm:text-base dark:text-gray-400">
                 {t("connectSubtitle")}
               </p>
             </div>
@@ -106,7 +107,7 @@ export default async function ContactPage() {
                 {contactLinks.map((link) => {
                   const IconComponent = link.icon;
                   return (
-                    <a
+                    <Link
                       key={link.name}
                       href={link.href}
                       target={
@@ -121,14 +122,19 @@ export default async function ContactPage() {
                     >
                       <div className="flex items-start space-x-4">
                         <div
-                          className={`rounded-lg bg-white p-3 shadow-sm transition-shadow group-hover:shadow-md dark:bg-gray-800 ${link.color}`}
+                          className={`hidden rounded-lg bg-white p-3 shadow-sm transition-shadow group-hover:shadow-md min-[425px]:block dark:bg-gray-800 ${link.color}`}
                         >
                           <IconComponent className="h-6 w-6" />
                         </div>
-                        <div className="">
-                          <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-                            {link.name}
-                          </h3>
+                        <div>
+                          <div className="flex items-center justify-between">
+                            <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                              {link.name}
+                            </h3>
+                            <span>
+                              <ExternalLink className="size-4 text-gray-400 transition-colors group-hover:text-orange-500" />
+                            </span>
+                          </div>
                           <p className="mb-2 font-medium text-orange-600 transition-colors group-hover:text-orange-700 dark:text-orange-400 dark:group-hover:text-orange-300">
                             {link.value}
                           </p>
@@ -136,11 +142,8 @@ export default async function ContactPage() {
                             {link.description}
                           </p>
                         </div>
-                        <div>
-                          <ExternalLink className="size-4 text-gray-400 transition-colors group-hover:text-orange-500" />
-                        </div>
                       </div>
-                    </a>
+                    </Link>
                   );
                 })}
               </div>
@@ -148,7 +151,7 @@ export default async function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="rounded-2xl bg-white p-4">
+          <div className="mt-4 rounded-2xl bg-white p-4">
             <div className="overflow-hidden rounded-2xl">
               <DisqusComments title="ContactPage" />
             </div>

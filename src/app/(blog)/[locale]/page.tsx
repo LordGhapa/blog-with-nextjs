@@ -6,7 +6,7 @@ import { setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 
-import RecentPosts from "@/components/recent-posts";
+import RecentPosts from "@/components/recentPosts";
 
 import HomeView from "@/components/post/homeView";
 

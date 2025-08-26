@@ -42,7 +42,7 @@ export default async function Footer() {
 
   return (
     <footer className="mt-16 border-t border-gray-200 bg-white/95 backdrop-blur-sm transition-colors dark:border-gray-700 dark:bg-gray-900/95">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto max-w-7xl px-4 py-12">
         <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="md:col-span-2">
             <Link
@@ -110,7 +110,7 @@ export default async function Footer() {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-between border-t border-gray-200 pt-6 text-sm text-gray-600 md:flex-row dark:text-gray-400">
+        <div className="flex flex-col items-center justify-center border-t border-gray-200 pt-6 text-center text-sm text-gray-600 md:flex-row md:justify-between dark:text-gray-400">
           <FooterCopyright />
           <p>{t("footer.credits")}</p>
         </div>

@@ -2,7 +2,7 @@
 import { Link } from "@/i18n/navigation";
 import { BookOpen } from "lucide-react";
 import { useMessages, useTranslations } from "next-intl";
-import LanguageSwitcher from "../language-switcher";
+import LanguageSwitcher from "../languageSwitcher";
 import DarkMode from "./darkMode";
 import MobileMenu from "./mobileMenu";
 import { Suspense } from "react";
@@ -23,8 +23,8 @@ export default function Header() {
           href={"/"}
           className="group flex cursor-pointer items-center space-x-3"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600 transition-shadow">
-            <BookOpen className="h-6 w-6 text-white" />
+          <div className="flex h-10 min-w-10 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600 transition-shadow">
+            <BookOpen className="size-6 text-white" />
           </div>
           <div>
             <p className="text-xl font-bold text-gray-900 transition-colors group-hover:text-orange-500 dark:text-white dark:group-hover:text-orange-400">
